@@ -43,7 +43,7 @@ export const uploudImg = async (res, files) => {
       folder: "profile",
     },
     (err, result) => {
-      if (err) return res.status(500).send(error);
+      if (err) return res.status(500).send(err);
       return result;
     }
   );

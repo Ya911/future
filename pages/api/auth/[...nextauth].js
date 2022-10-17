@@ -7,7 +7,7 @@ import axios from "axios";
 
 async function refreshAccessToken(token) {
   try {
-    let url = `${process.env.NEXTAUTH_URL}/api/auth/tokensref`
+    let url = `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/tokensref`
     const response = await axios.post(url,{tokenRf: token.refreshToken});
 
     const refreshedTokens = await response.data
@@ -54,7 +54,7 @@ export const authOptions = {
       async authorize(credentials) {
 
         const result = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/auth/tokens`,
+          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/tokens`,
           credentials,
           {
             headers: { "Content-Type": "application/json" },

@@ -54,10 +54,9 @@ export const addUser = async (res, files, fields) => {
     await c_db();
     let find_em = await Dataset.findOne({ email: fields.email });
     let find_us = await Dataset.findOne({ email: fields.username });
-
     if (!find_us && !find_em) {
-
-      let { public_id, url } = await uploudImg(res, files);
+      console.log("Start");
+    let { public_id, url } = await uploudImg(res, files);
 
     let User = new Dataset({
       fristname: fields.fristname,

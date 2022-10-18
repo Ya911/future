@@ -48,16 +48,17 @@ export default function Signup() {
     formdata.append("password", password);
     formdata.append("image", image[0]);
 
-    let url = process.env.NEXTAUTH_URL+"/api/auth/signup";
-    setLooding(true)
+    let url = process.env.NEXT_PUBLIC_URL + "/api/auth/signup";
+
     const Router = (await import('next/router')).default
     const axios = (await import('axios')).default
-    
+    setLooding(true)
     axios
       .post(url, formdata, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
+        console.log(res.status);
         if(res.status === 200){
         setLooding(false)
         return res.data && Router.push("/auth")

@@ -34,7 +34,6 @@ SUsers.pre("save", async function (next) {
   try {
     let solit = await bcrypt.genSalt(10); // ! Step 1
     let hash_password = await bcrypt.hash(this.password, solit); // ! Step 2
-    console.log(hash_password);
     this.password = hash_password
     return next; // ! step 3 , END Hash
   } catch (error) {
@@ -48,7 +47,7 @@ SUsers.method('isVaildPassword',async function(password){
 
   try {
 
-    return await bcrypt.compareSync(password,this.password)
+    return bcrypt.compareSync(password,this.password)
     
   } catch (error) {
     throw new Error(error)

@@ -48,7 +48,7 @@ export default function Signup() {
     formdata.append("password", password);
     formdata.append("image", image[0]);
 
-    let url = "http://localhost:3000/api/auth/signup";
+    let url = process.env.NEXTAUTH_URL+"/api/auth/signup";
     setLooding(true)
     const Router = (await import('next/router')).default
     const axios = (await import('axios')).default

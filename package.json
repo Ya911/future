@@ -8,19 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "next-unused": {
-    "alias": {},
-    "include": [
-      "component",
-      "helper",
-      "lib",
-      "model",
-      "public",
-      "store"
-    ],
-    "exclude": [],
-    "entrypoints": []
-  },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -54,7 +41,6 @@
     "autoprefixer": "^10.4.7",
     "eslint": "8.14.0",
     "eslint-config-next": "^12.2.0",
-    "next-unused": "^0.0.6",
     "postcss": "^8.4.13",
     "tailwindcss": "^3.0.24"
   }

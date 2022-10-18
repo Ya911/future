@@ -50,7 +50,7 @@ export default function Signup() {
 
     let url = "http://localhost:3000/api/auth/signup";
     setLooding(true)
-    const Router = (await (await import('next/router'))).default
+    const Router = (await import('next/router')).default
     const axios = (await import('axios')).default
     
     axios
@@ -58,13 +58,16 @@ export default function Signup() {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
+        if(res.status === 200){
+        setLooding(false)
+        return res.data && Router.push("/auth")
+      }
         setLooding(false);
-     
-        res.data && Router.push("/auth");
+        return setErrorServer("Error in login ") 
       })
       .catch(e=>{
         setLooding(false);
-        setErrorServer(e.response.data)})
+        return setErrorServer(e.response.data)})
     };
       
  

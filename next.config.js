@@ -12,6 +12,9 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  

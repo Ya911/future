@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "find": "next-unused",
-    "analyze": "ANALYZE=true next build"
+    "lint": "next lint"
   },
   "next-unused": {
     "alias": {},
@@ -53,7 +51,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.3.1",
     "autoprefixer": "^10.4.7",
     "eslint": "8.14.0",
     "eslint-config-next": "^12.2.0",

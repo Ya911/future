@@ -32,16 +32,16 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-// withPWA((phase, { defaultConfig }) => {
+withPWA((phase, { defaultConfig }) => {
 
-//   if (phase === PHASE_DEVELOPMENT_SERVER) {
-//     return nextConfig
-//   }
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return nextConfig
+  }
 
-//   return withPWA() 
+  return withPWA(nextConfig) 
     
   
-// })
+})
 
 
 

@@ -25,6 +25,7 @@
     "mongoose": "^6.3.5",
     "next": "^12.2.5",
     "next-auth": "^4.10.3",
+    "next-build-id": "^3.0.0",
     "next-pwa": "^5.6.0",
     "nextjs-progressbar": "^0.0.16",
     "node-telegram-bot-api": "^0.59.0",

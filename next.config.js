@@ -1,5 +1,7 @@
 
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const nextBuildId = require('next-build-id')
+
 const withPWA = require('next-pwa')({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
@@ -12,6 +14,7 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   reactStrictMode: true,
+  generateBuildId: () => nextBuildId({ dir: __dirname , describe : true }),
   eslint: {
     ignoreDuringBuilds: true,
   },

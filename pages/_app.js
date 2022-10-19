@@ -1,7 +1,10 @@
 import '../styles/globals.css'
 import {SessionProvider} from 'next-auth/react'
 import Head from 'next/head'
-import {NextNProgressProps} from 'nextjs-progressbar';
+import dynamic from 'next/dynamic';
+
+
+const NextPr = dynamic(()=>import('nextjs-progressbar'))
 
 
 
@@ -17,7 +20,7 @@ return (
 <>
 
 {/* Lyout Start with Chaldrin with progress */}
-<NextNProgressProps
+<NextPr
 nonce={`${import('../styles/nprogress.css')}`}
 color="#29D"
 height={4}
@@ -36,10 +39,9 @@ height={4}
 <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png"/>
 <meta name="theme-color" content="#317efb" />
 </Head>
+
 <SessionProvider session={session} >
 {getLayout(<Component {...pageProps} />)}
-
-{/*  Lyout END with Chaldrin with progress*/}
 </SessionProvider>
 </>
 )

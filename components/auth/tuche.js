@@ -1,6 +1,6 @@
 import { memo } from "react";
 import dynamic from "next/dynamic";
-const FingerPrintIcon = dynamic(() => import("@heroicons/react/solid"), {
+const FingerPrintIcon = dynamic(() => import("@heroicons/react/solid/FingerPrintIcon"), {
   ssr: false,
   loading : ()=>''
 });

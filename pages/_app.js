@@ -1,9 +1,7 @@
 import '../styles/globals.css'
 import {SessionProvider} from 'next-auth/react'
 import Head from 'next/head'
-import dynamic from 'next/dynamic';
-
-const NextPr = dynamic(()=>import('nextjs-progressbar'))
+import {NextNProgressProps} from 'nextjs-progressbar';
 
 
 
@@ -19,7 +17,7 @@ return (
 <>
 
 {/* Lyout Start with Chaldrin with progress */}
-<NextPr
+<NextNProgressProps
 nonce={`${import('../styles/nprogress.css')}`}
 color="#29D"
 height={4}
@@ -40,9 +38,9 @@ height={4}
 </Head>
 <SessionProvider session={session} >
 {getLayout(<Component {...pageProps} />)}
-</SessionProvider>
-{/*  Lyout END with Chaldrin with progress*/}
 
+{/*  Lyout END with Chaldrin with progress*/}
+</SessionProvider>
 </>
 )
 

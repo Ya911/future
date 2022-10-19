@@ -41,13 +41,15 @@ function Bot() {
 
 
 
+
   useEffect(()=>{
-    setTimeout(()=>{
     if(errors.server_error){
+    setTimeout(()=>{
       reset()
       clearErrors('server_error')
-     }},[2000])
-    },[errors.server_error,clearErrors,reset])
+     },[2000])
+    }
+    },[errors.server_error,clearErrors,reset,errors])
 
 
   let Submit = async (data) => {
@@ -66,8 +68,7 @@ function Bot() {
   };
 
  
-
-
+// if(errors)
 
 
 
@@ -92,24 +93,24 @@ function Bot() {
               </Alert>
         }
         <TextField
+           defaultValue=''
           id="outlined-multiline-flexible"
-          label="apiToken"
+          label="api_Token"
           size="small"
-          required
-          error={errors.api_Token && true}
-          helperText={errors.api_Token && errors.api_Token.message}
           {...register("api_Token", {
             required: { value: true, message: "لايمكن ترك الخانة فارغة" },
           })}
+          helperText={errors.api_Token && errors.api_Token.message}
+          error={errors.api_Token && true}
         />
         <TextField
+          defaultValue=''
           autoComplete="off"
           size="small"
-          defaultValue={""}
+          // value={getValues}
           style={{ width: 195 }}
           id="outlined-select-currency"
           select
-          required
           label="مهمة البوت"
           {...register("dojop", {
             required: { value: true, message: "لايمكن ترك الخانة فارغة" },

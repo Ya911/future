@@ -1,5 +1,9 @@
-import { FingerPrintIcon } from "@heroicons/react/solid";
 import { memo } from "react";
+import dynamic from "next/dynamic";
+const FingerPrintIcon = dynamic(() => import("@heroicons/react/solid"), {
+  ssr: false,
+  loading : ()=>''
+});
 
 function Tuche() {
     return (

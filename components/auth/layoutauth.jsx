@@ -1,7 +1,5 @@
 import PageTitel from "../PageTitel";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 
 const Iconl = dynamic(() => import('./iconl'), {

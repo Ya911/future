@@ -2,6 +2,7 @@ import PerntSidbar from "../components/index/pernt";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 
 
 const MenuItem = dynamic(() => import("@mui/material/MenuItem/MenuItem"), {
@@ -40,7 +41,7 @@ function Bot() {
   });
 
 
-
+const [token , setToken]=useState()
 
   useEffect(()=>{
     if(errors.server_error){
@@ -93,7 +94,8 @@ function Bot() {
               </Alert>
         }
         <TextField
-           defaultValue=''
+          defaultValue=''
+          value={token}
           id="outlined-multiline-flexible"
           label="api_Token"
           size="small"

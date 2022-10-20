@@ -8,8 +8,8 @@ import {
     ClockIcon,
     HomeIcon,
     BookOpenIcon,
-    ChatAltIcon
-    
+    ChatAltIcon,
+    CloudDownloadIcon
   } from "@heroicons/react/solid";
 
 
@@ -24,7 +24,9 @@ const initialState = {
     {id:4, Herf: "/books", Text: "الكتب", Icon: BookOpenIcon },
     {id:5, Herf: "/bot", Text: "بوت تيلقرام", Icon: ChatAltIcon },
     {id:6, Herf: "/myaccount", Text: "حسابي", Icon: KeyIcon },
-    {id:7, Herf: "/setting", Text: "الأعدادات", Icon: CogIcon },
+    {id:7, Herf: "/update", Text: "التحديثات", Icon: CloudDownloadIcon },
+    {id:8, Herf: "/setting", Text: "الأعدادات", Icon: CogIcon },
+,
   ],
   targetBar : {},
   Calec: {value1:0 , obr:null , value2:0,hovecaluc:null ,valueCal :null}

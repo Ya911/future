@@ -5,16 +5,12 @@ const nextBuildId = require('next-build-id')
 const withPWA = require('next-pwa')({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
-  // register: true,
-  // scope: '/app',
-  // sw: 'service-worker.js',
-  //...
 })
 
-
+// O ps some ch 
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId: () => nextBuildId({ dir: __dirname , describe : true }),
+  generateBuildId: () => nextBuildId({ dir: __dirname , describe : true}),
   eslint: {
     ignoreDuringBuilds: true,
   },

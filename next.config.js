@@ -10,7 +10,7 @@ const withPWA = require('next-pwa')({
 // O ps some ch h eeeewkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId: () => nextBuildId.sync({describe: true, fallbackToSha: true}),
+  generateBuildId: () => nextBuildId({  describe: true, fallbackToSha: true}),
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -37,7 +37,7 @@ withPWA((phase, { defaultConfig }) => {
     return nextConfig
   }
 
-  return withPWA(nextConfig) 
+  return nextConfig
     
   
 })

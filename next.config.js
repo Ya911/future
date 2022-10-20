@@ -7,10 +7,10 @@ const withPWA = require('next-pwa')({
   disable: process.env.NODE_ENV === 'development',
 })
 
-// O ps some ch h  d fiXXX rfjirdfdklj f
+// O ps some ch h eewkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId: () => nextBuildId({ dir: __dirname , describe : true}),
+  generateBuildId: () => nextBuildId.sync({describe: true, fallbackToSha: true}),
   eslint: {
     ignoreDuringBuilds: true,
   },

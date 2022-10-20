@@ -1,8 +1,9 @@
 on:
-  push:
-    # Pattern matched against refs/tags
+  push: 
+      branches:
+      - 'releases/**'
     tags:        
-      - '*' # Push events to every tag not containing /
+      - 'v.1.*' 
 
 jobs:
   build:

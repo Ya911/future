@@ -3,13 +3,12 @@ const nextBuildId = require('next-build-id')
 
 const withPWA = require('next-pwa')({
   dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
 })
 
 // O ps some ch h eeeewkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId: () => nextBuildId({  describe: true, fallbackToSha: true}),
+  generateBuildId: () => nextBuildId({ dir: __dirname, describe: true }),
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  

@@ -1,5 +1,4 @@
 
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 const nextBuildId = require('next-build-id')
 
 const withPWA = require('next-pwa')({
@@ -11,9 +10,6 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   reactStrictMode: true,
   generateBuildId: () => nextBuildId({  describe: true, fallbackToSha: true}),
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  
@@ -29,18 +25,7 @@ const nextConfig = {
 
 
 
-module.exports = nextConfig
-
-withPWA((phase, { defaultConfig }) => {
-
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return nextConfig
-  }
-
-  return nextConfig
-    
-  
-})
+module.exports = withPWA(nextConfig) 
 
 
 

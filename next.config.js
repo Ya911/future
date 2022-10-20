@@ -5,7 +5,7 @@ const withPWA = require('next-pwa')({
   dest: 'public',
 })
 
-// O ps some ch h eeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
+// O ps some ch hd eeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
   generateBuildId: () => nextBuildId({ dir: __dirname, describe: true }),

@@ -11,7 +11,7 @@ const withPWA = require('next-pwa')({
 // O ps some ch hdfk feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId:async() => nextBuildId({ dir: __dirname, describe: true }),
+  generateBuildId:async() => await nextBuildId({ dir: __dirname, describe: true }),
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  

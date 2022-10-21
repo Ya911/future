@@ -2,13 +2,6 @@ import '../styles/globals.css'
 import {SessionProvider} from 'next-auth/react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
-import getConfig from 'next/config'
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
-// يتاح فقط في جانب الخادم
-console.log("serverRuntimeConfig",serverRuntimeConfig.mySecret)
-// يُتاح في كلا الجانبين
-console.log("publicRuntimeConfig",publicRuntimeConfig.staticFolder)
-
 
 const NextPr = dynamic(()=>import('nextjs-progressbar'))
 

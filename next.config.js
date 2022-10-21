@@ -7,7 +7,8 @@ const withPWA = require('next-pwa')({
   
 })
 
-// O ps some ch hd feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
+// O ps some ch hdfk feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
+// O ps some ch hdfk feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
   generateBuildId:async() => nextBuildId({ dir: __dirname, describe: true }),

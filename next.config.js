@@ -10,7 +10,7 @@ const withPWA = require('next-pwa')({
 // O ps some ch hd eeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId: () => nextBuildId({ dir: __dirname, describe: true }),
+  generateBuildId:async() => nextBuildId({ dir: __dirname, describe: true }),
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  
@@ -19,6 +19,10 @@ const nextConfig = {
     locales: ["ar"],
     defaultLocale: "ar",
     
+},
+eslint: {
+  // ESLint يسمح ذلك بنجاح بناء التطبيق حتى لو كانت هناك أخطاء في المدقق
+  ignoreDuringBuilds: true,
 },
 
 

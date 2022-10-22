@@ -5,18 +5,11 @@ const withPWA = require('next-pwa')({
   
 })
 
-// O ps some ch hdfk feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
-// O ps some ch hdfk feeeefkfkwhhdfdfrkl d fiXXX rfjirdfdklj f
+
+
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId:async() => {
-
-    if(process.env.BUILD_ID){
-      return process.env.BUILD_ID
-    }
-    return "v"
-
-  },
+  generateBuildId:async() => process.env.npm_package_version,
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  

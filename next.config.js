@@ -16,7 +16,7 @@ const nextConfig = {
     //   return process.env.BUILD_ID
     // }
     const fromGit =  nextBuildId({ dir: __dirname, describe: true })
-    return fromGit.id;
+    return toString(fromGit.id)
 
   },
   images: {

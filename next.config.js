@@ -1,6 +1,4 @@
 
-const nextBuildId = require('next-build-id')
-
 const withPWA = require('next-pwa')({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
@@ -14,7 +12,7 @@ const nextConfig = {
   generateBuildId:async() => {
 
     if(process.env.BUILD_ID){
-      return JSON.stringify(process.env.npm_package_version).toString()
+      return process.env.BUILD_ID
     }
     return "v"
 

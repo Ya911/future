@@ -12,11 +12,11 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   reactStrictMode: true,
   generateBuildId:async() => {
-    // if(process.env.BUILD_ID){
-    //   return process.env.BUILD_ID
-    // }
-    const fromGit =  nextBuildId({ dir: __dirname, describe: true })
-    return toString(fromGit.id)
+
+    if(process.env.BUILD_ID){
+      return process.env.BUILD_ID
+    }
+    return "v"
 
   },
   images: {

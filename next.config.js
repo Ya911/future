@@ -14,7 +14,7 @@ const nextConfig = {
   generateBuildId:async() => {
 
     if(process.env.BUILD_ID){
-      return `${process.env.npm_package_version}`
+      return JSON.stringify(process.env.npm_package_version)
     }
     return "v"
 

@@ -9,7 +9,13 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   reactStrictMode: true,
-  generateBuildId:async() => process.env.npm_package_version,
+  generateBuildId:async() => {
+    if(process.env.NEXT_PUBLIC_BUILD_ID){
+      return process.env.NEXT_PUBLIC_BUILD_ID
+    }
+    return "test"
+
+  },
   images: {
     domains: ['res.cloudinary.com' , 'books.google.com'],
  

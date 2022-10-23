@@ -25,7 +25,7 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
       name: "future",
       source: "git",
     };
-
+//
     try {
       if (reftag === NEXT_PUBLIC_BUILD_ID) {
         setDeply({ message: "تم التحديث ", statu: false });
@@ -35,7 +35,7 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
       }
       const {
         deployments: [friatDEploy],
-      } = await (
+      } = await ( 
         await fetch("https://api.vercel.com/v6/deployments", {
           headers: AuthHeade,
           method: "GET",
@@ -45,8 +45,10 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
       switch (friatDEploy.state) {
         case "BUILDING":
           throw { message: "يوجد عملية تحديث يرجى الأنتظار", statu: true };
-        case "QUEUED":
-          return { message: "العملية قيد الأنتظار", statu: true };
+        case"CANCELED":
+          return 
+          case "QUEUED":
+        return { message: "العملية قيد الأنتظار", statu: true };
         case "READY":
           if (Date.now() < friatDEploy.ready + 3 * 60 * 1000) {
             onsole.log("d");

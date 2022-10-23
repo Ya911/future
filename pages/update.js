@@ -25,7 +25,7 @@ let [CheakUP , setCheakUP] = useState({message : 'التحقق من التحدي
 let [TrueFlase , setTrueFlase] = useState(false)
 let [sha , setSha] = useState()
 let [reftag , setReftag] = useState()
-let [repoId , setRepoId] = useState()
+
 
 
 
@@ -34,6 +34,8 @@ let [repoId , setRepoId] = useState()
 
 const getVersoin = async ()=>{
 
+      // let isNew = await octokit.request('GET /repos/Ya911/future')
+    // await octokit.request('GET /repos/Ya911/future/commits/main/check-suites').then(e=>console.log(e.data))
   try {
 
     let O = (await import('octokit')).Octokit
@@ -41,14 +43,10 @@ const getVersoin = async ()=>{
     let octokit = new O({
       auth : GIT
     })
-    let {tag_name , id} = await (await octokit.request('GET /repos/Ya911/future/releases/latest')).data
-    console.log(id);
-    // let isNew = await octokit.request('GET /repos/Ya911/future')
-    await octokit.request('GET /repos/Ya911/future/commits/main/check-suites').then(e=>console.log(e.data))
+    let {tag_name} = await (await  octokit.request('GET /repos/Ya911/future/releases/latest')).data
     if(tag_name === process.env.NEXT_PUBLIC_BUILD_ID)throw {message : ' لايوجد تحديثات ', statu : true}
+    let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
     setReftag(tag_name)
-    setRepoId(id)
-    let {data : {object : {sha}}} = await octokit.request(`GET /repos/Ya911/future/git/ref/tags/${tag_name}`)
     setSha(sha)
     setTrueFlase(true)
     return setCheakUP({message : "أظغط للتحديث" , statu : false}) 
@@ -77,7 +75,7 @@ const getVersoin = async ()=>{
        {
        !TrueFlase 
        ?<Button disabled={CheakUP.statu} onClick={getVersoin}  endIcon={<Code className="h-3 pr-3 "/>}  variant="outlined"  size='medium' >{CheakUP.message}</Button>
-       :<Upatesohw sha={sha} reftag={reftag} repoId={repoId}  TOKEN_VERCEL={TOKEN_VERCEL} Button={Button} Code={Code} />
+       :<Upatesohw sha={sha} reftag={reftag}  TOKEN_VERCEL={TOKEN_VERCEL} Button={Button} Code={Code} />
        }
         </div>
 

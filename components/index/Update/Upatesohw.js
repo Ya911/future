@@ -25,7 +25,7 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
       name: "future",
       source: "git",
     };
-//
+//klk
     try {
       if (reftag === NEXT_PUBLIC_BUILD_ID) {
         setDeply({ message: "تم التحديث ", statu: false });

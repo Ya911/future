@@ -41,13 +41,14 @@ const getVersoin = async ()=>{
     let octokit = new O({
       auth : GIT
     })
-    let isUpdate = await octokit.request('GET /repos/Ya911/future/releases')
-    let isNew = await octokit.request('GET /repos/Ya911/future')
-    console.log(isNew);
-    if(isUpdate.data[0].tag_name === process.env.NEXT_PUBLIC_BUILD_ID)throw {message : ' لايوجد تحديثات ', statu : true}
-    setReftag(isUpdate.data[0].tag_name)
-    setRepoId(isUpdate.data[0].id)
-    let {data : {object : {sha}}} = await octokit.request(`GET /repos/Ya911/future/git/ref/tags/${isUpdate.data[0].tag_name}`)
+    let {tag_name , id} = await (await octokit.request('GET /repos/Ya911/future/releases/latest')).data
+    console.log(id);
+    // let isNew = await octokit.request('GET /repos/Ya911/future')
+    await octokit.request('GET /repos/Ya911/future/commits/main/check-suites').then(e=>console.log(e.data))
+    if(tag_name === process.env.NEXT_PUBLIC_BUILD_ID)throw {message : ' لايوجد تحديثات ', statu : true}
+    setReftag(tag_name)
+    setRepoId(id)
+    let {data : {object : {sha}}} = await octokit.request(`GET /repos/Ya911/future/git/ref/tags/${tag_name}`)
     setSha(sha)
     setTrueFlase(true)
     return setCheakUP({message : "أظغط للتحديث" , statu : false}) 

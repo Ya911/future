@@ -10,7 +10,7 @@ function Upatesohw({TOKEN_VERCEL , reftag , sha , repoId}) {
       type: "github",
       ref: "main",
       repoId: 552801563,
-      sha: sha,
+      sha: "474e900c5a51b2b9e6d1864a82f30b13e64a0ec4",
       prId: null,
     };
     // "J2Uhy4z8kmSTMajZ"

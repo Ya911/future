@@ -16,7 +16,7 @@ const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"), {
     ssr: false,
   });
   
-export default function Update({GIT,TOKEN_VERCEL}) {
+export default function Update({GIT,TOKEN_VERCEL , NEXT_PUBLIC_BUILD_ID}) {
 
 
 
@@ -75,7 +75,7 @@ const getVersoin = async ()=>{
        {
        !TrueFlase 
        ?<Button disabled={CheakUP.statu} onClick={getVersoin}  endIcon={<Code className="h-3 pr-3 "/>}  variant="outlined"  size='medium' >{CheakUP.message}</Button>
-       :<Upatesohw sha={sha} reftag={reftag}  TOKEN_VERCEL={TOKEN_VERCEL} Button={Button} Code={Code} />
+       :<Upatesohw NEXT_PUBLIC_BUILD_ID={NEXT_PUBLIC_BUILD_ID} sha={sha} reftag={reftag}  TOKEN_VERCEL={TOKEN_VERCEL} Button={Button} Code={Code} />
        }
         </div>
 
@@ -87,9 +87,9 @@ const getVersoin = async ()=>{
 
 export async function getStaticProps() {
 
-let {GIT ,TOKEN_VERCEL} = process.env
+let {GIT ,TOKEN_VERCEL , NEXT_PUBLIC_BUILD_ID} = process.env
 
-return {props : {GIT,TOKEN_VERCEL}}
+return {props : {GIT,TOKEN_VERCEL , NEXT_PUBLIC_BUILD_ID}}
 }
 Update.getLayout = function getLayout (page){
   return ( 

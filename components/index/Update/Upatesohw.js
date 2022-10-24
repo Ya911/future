@@ -70,14 +70,15 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
                 }
               );
               const {id } = await response.json();
-              console.log(id);
-            // (async function lole(){
+              console.log(response);
+
             //  let { readyState } = await (await fetch(`https://api.vercel.com/v13/deployments/${id}`,{headers: AuthHeade,method: "GET",})).json()
             //  console.log(readyState);
             //  setProsess((e)=>e === 100 ? 0  : e + 10);
-            //   if(readyState !== "READY")return lole()
-            //   return
-            //   })()
+            //  console.log(readyState);
+  
+
+
               if(error)throw {message : "خطا في  [تأكيد التحديث]" , statu : false}
               await fetch(
                 "https://api.vercel.com/v9/projects/future/env/J2Uhy4z8kmSTMajZ",

@@ -1,18 +1,34 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Button = dynamic(() => import("@mui/material/Button"));
 const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"));
-const CircularDeterminate = dynamic(() => import("./Loding.js"));
+
 
 function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
   let [loding, setloding] = useState(false);
   let [deply, setDeply] = useState({ message: "", statu: "" });
-  let [iD, setiD] = useState(false);
-  let [prosess, setProsess] = useState(0);
+  let [Word, setWord] = useState("أظغط للتحديث");
+  const [prosess , setProsess] =  useState(0)
+  const [error , setError] =  useState(null)
 
+
+  useEffect(()=>{
+    (async ()=>{
+      const Router = (await import("next/router")).default
+       return Word === "جاري تحميل التحديث " ?  Router.reload() : ''
+    })()
+  },[Word])
+
+//_ أمر حذف تاق واحد
+
+  // console.log("error", error);
+  // console.log("document", document.readyState);
   let Updeat = async () => {
     setloding(true);
-    let AuthHeade = { Authorization: `Bearer ${TOKEN_VERCEL}` };
+    let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
+    let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
+
+    let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let body = {
       gitSource: {
         type: "github",
@@ -25,85 +41,36 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
       name: "future",
       source: "git",
     };
-//klk
     try {
-      if (reftag === NEXT_PUBLIC_BUILD_ID) {
-        setDeply({ message: "تم التحديث ", statu: false });
+
+      let {message: {value}} = await (await import('../../../helper/update/getDeply')).getkeys(ID_CK_IUPDATE , AuthHeade , ID_CK_BULID , NEXT_PUBLIC_BUILD_ID)
+      setWord("جاري تحميل التحديث ")
+
+      if(value === "null") {
+        let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
+        let {message :{readyState}} = await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , setProsess , reftag)
         setloding(false);
-        const router = (await import("next/router")).default;
-        return router.reload();
-      }
-      const {
-        deployments: [friatDEploy],
-      } = await ( 
-        await fetch("https://api.vercel.com/v6/deployments", {
-          headers: AuthHeade,
-          method: "GET",
-        })
-      ).json();
-      console.log(friatDEploy);
-      switch (friatDEploy.state) {
-        case "BUILDING":
-          throw { message: "يوجد عملية تحديث يرجى الأنتظار", statu: true };
-        case"CANCELED":
-          return 
-          case "QUEUED":
-        return { message: "العملية قيد الأنتظار", statu: true };
-        case "READY":
-          if (Date.now() < friatDEploy.ready + 3 * 60 * 1000) {
-            onsole.log("d");
-            throw {
-              message: "يوجد عملية قيد الرفع يرجى الأنتظار",
-              statu: true,
-            };
-          }
-          console.log("f");
-
-          (async function ImNot() {
-            try {
-              const response = await fetch(
-                "https://api.vercel.com/v13/deployments",
-                {
-                  headers: AuthHeade,
-                  method: "POST",
-                  body: JSON.stringify({ ...body }),
-                }
-              );
-              const {id } = await response.json();
-              console.log(response);
-
-            //  let { readyState } = await (await fetch(`https://api.vercel.com/v13/deployments/${id}`,{headers: AuthHeade,method: "GET",})).json()
-            //  console.log(readyState);
-            //  setProsess((e)=>e === 100 ? 0  : e + 10);
-            //  console.log(readyState);
-  
-
-
-              if(error)throw {message : "خطا في  [تأكيد التحديث]" , statu : false}
-              await fetch(
-                "https://api.vercel.com/v9/projects/future/env/J2Uhy4z8kmSTMajZ",
-                {
-                  method: "PATCH",
-                  body: JSON.stringify({ value: reftag }),
-                  headers: AuthHeade,
-                }
-              );
-              setloding(false);
-              return setProsess(100);
-            } catch (error) {
-              return setDeply({
-                message: "يوجد عملية قيد الرفع يرجى الأنتظار",
-                statu: true,
-              });
-            }
-          })();
-      }
-    } catch ({ message, statu }) {
+        setWord("جاري تحديث الصفحة")
+        return setDeply({message : readyState , statu : 200})
+      } 
+      let {message :{readyState}} = await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , value , setProsess , reftag)
       setloding(false);
-      if (!statu) return setDeply({ message: message, statu: statu });
-      return setDeply({ message: "خطا في التحديث", statu: false });
+      setWord("جاري تحديث الصفحة")
+      return setDeply({message : readyState , statu : 200})
+
+
+    } catch ({message ,statu}) {
+      setloding(false);
+      setProsess(0)
+      setError({message,statu})
+      setWord(message)
+      return setDeply({message : message,statu : statu})
     }
+
   };
+
+
+  // WindosLodel()
 
   return (
     <div className="flex flex-col w-full bg-slate-500">
@@ -123,14 +90,26 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
         </>
       )}
       <Button
+        sx={{
+          "::before":{
+          content:`""`,
+          position:'absolute',
+          width:`${prosess}%`,
+          height:"100%",
+          background: "black",
+          left : 0,
+          top : 0,
+          display:`${loding ? "none" : "block"}` ,
+          zIndex : 10 
+        }}}
         onClick={Updeat}
         endIcon={<Code className="h-3 pr-3 " />}
         variant="outlined"
         size="medium"
       >
-        أظغط للتحديث
+       <span className="z-10 text-xs font-fontar">{Word}</span>
       </Button>
-      {loding && <CircularDeterminate prosess={prosess} />}
+
     </div>
   );
 }

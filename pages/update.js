@@ -1,7 +1,7 @@
 
 import Perntsidbar from "../components/index/pernt";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -28,14 +28,18 @@ let [reftag , setReftag] = useState()
 
 
 
-
+useEffect(()=>{
+  window.addEventListener('beforeunload',(e)=>{
+   console.log(e.timeStamp);
+   console.log("Windos Loded");
+   
+ })
+},[])
 
 
 
 const getVersoin = async ()=>{
 
-      // let isNew = await octokit.request('GET /repos/Ya911/future')
-    // await octokit.request('GET /repos/Ya911/future/commits/main/check-suites').then(e=>console.log(e.data))
   try {
 
     let O = (await import('octokit')).Octokit
@@ -44,6 +48,7 @@ const getVersoin = async ()=>{
       auth : GIT
     })
     let {tag_name} = await (await  octokit.request('GET /repos/Ya911/future/releases/latest')).data
+    console.log(tag_name);
     if(tag_name === process.env.NEXT_PUBLIC_BUILD_ID)throw {message : ' لايوجد تحديثات ', statu : true}
     let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
     setReftag(tag_name)
@@ -74,7 +79,10 @@ const getVersoin = async ()=>{
 
        {
        !TrueFlase 
-       ?<Button disabled={CheakUP.statu} onClick={getVersoin}  endIcon={<Code className="h-3 pr-3 "/>}  variant="outlined"  size='medium' >{CheakUP.message}</Button>
+       ?<Button disabled={CheakUP.statu} onClick={getVersoin}  endIcon={<Code className="h-3 pr-3 "/>}  variant="outlined" 
+        size='medium' >
+       <span className="z-10 text-xs font-fontar">{CheakUP.message}</span>
+       </Button>
        :<Upatesohw NEXT_PUBLIC_BUILD_ID={NEXT_PUBLIC_BUILD_ID} sha={sha} reftag={reftag}  TOKEN_VERCEL={TOKEN_VERCEL} Button={Button} Code={Code} />
        }
         </div>

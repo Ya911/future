@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 
 
 
+
 const MyLogo = dynamic(() => import('./myLogo.js'), {
   ssr: false,
   loading : ()=>''
@@ -31,11 +32,11 @@ function PerntSidbar({titel, children}) {
 
   const { data: session } = useSession();
 
-
  useEffect(()=>{
-  if (session?.error === "RefreshAccessTokenError") {
-       signIn()
-   }
+  (async()=>{
+    if (session?.error === "RefreshAccessTokenError") {
+      signIn()
+  }})()
  },[session])
 
 

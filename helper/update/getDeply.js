@@ -1,26 +1,4 @@
 
-export const getkeys = async (Key_ID_UPATE, headr , key_ID_BULID , NEXT_PUBLIC_BUILD_ID_NOW) => {
-  try {
-    let keyBULID = await fetch(
-      `https://api.vercel.com/v9/projects/future/env/${key_ID_BULID}`,
-      { headers: headr, method: "get" }
-    );
-    let key_ = await keyBULID.json();
-    if(key_.value === NEXT_PUBLIC_BUILD_ID_NOW )throw {message : "لتم التحديث "  , statu : 200}
-
-
-    let keyUPDATE = await fetch(
-      `https://api.vercel.com/v9/projects/future/env/${Key_ID_UPATE}`,
-      { headers: headr, method: "get" }
-    );
-    let { value } = await keyUPDATE.json();
-    return { message: {value}, statu: keyUPDATE.status };
-
-
-  } catch ({ message, statu }) {
-    throw { message: message, statu: statu };
-  }
-};
 
 
 
@@ -38,9 +16,9 @@ export const DeployProject = async (body, headr ) => {
       }
     );
 
-    return { message : {id} , statu : key.status }
+    return { message : {id} , isUpdate : false }
   } catch ({ message}) {
-    throw { message: message, statu: 502 };
+    throw { message: message, isUpdate: false };
   }
 };
 
@@ -56,8 +34,10 @@ export async function getProjectByID(headr, id , setProcec ,value) {
       setProcec(e=>e > 100 ? 100 : e + 4)
       setTimeout(() => resolve(getProjectByID(headr, id , setProcec)), 4000);
     }else{
+      let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
+      let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
       await fetch(
-        `https://api.vercel.com/v9/projects/future/env/PhdujyopN65lVQHz`,
+        `https://api.vercel.com/v9/projects/future/env/${ID_CK_IUPDATE}`,
         {
           headers: headr,
           method: "PATCH",
@@ -65,7 +45,7 @@ export async function getProjectByID(headr, id , setProcec ,value) {
         }
       );
       await fetch(
-        `https://api.vercel.com/v9/projects/future/env/J2Uhy4z8kmSTMajZ`,
+        `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
         {
           headers: headr,
           method: "PATCH",
@@ -73,11 +53,11 @@ export async function getProjectByID(headr, id , setProcec ,value) {
         }
       );
       setProcec(100)
-      return resolve({message : {readyState} , statu : key.status })
+      return resolve({message : {readyState} , isUpdate : false })
     }
     
   }).catch(({message})=>{
-    throw {message,statu : 502 }
+    throw {message,isUpdate : false }
   })
 
 }

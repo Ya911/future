@@ -1,33 +1,21 @@
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const Button = dynamic(() => import("@mui/material/Button"));
 const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"));
 
 
-function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
-  let [loding, setloding] = useState(false);
-  let [deply, setDeply] = useState({ message: "", statu: "" });
-  let [Word, setWord] = useState("أظغط للتحديث");
-  const [prosess , setProsess] =  useState(0)
-  const [error , setError] =  useState(null)
+function Upatesohw({ TOKEN_VERCEL, reftag, sha , Callsetprocess , prosess }) {
+
+  
+  const [deply, setDeply] = useState({ message: "أظغط للتحديث", isUpdate: false });
 
 
-  useEffect(()=>{
-    (async ()=>{
-      const Router = (await import("next/router")).default
-       return Word === "جاري تحميل التحديث " ?  Router.reload() : ''
-    })()
-  },[Word])
 
 //_ أمر حذف تاق واحد
 
-  // console.log("error", error);
-  // console.log("document", document.readyState);
-  let Updeat = async () => {
-    setloding(true);
-    let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
-    let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
 
+  let Updeat = async () => {
+    setDeply({message : " .. جاري التحقق ", isUpdate : true})
     let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let body = {
       gitSource: {
@@ -43,28 +31,15 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
     };
     try {
 
-      let {message: {value}} = await (await import('../../../helper/update/getDeply')).getkeys(ID_CK_IUPDATE , AuthHeade , ID_CK_BULID , NEXT_PUBLIC_BUILD_ID)
-      setWord("جاري تحميل التحديث ")
-
-      if(value === "null") {
         let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
-        let {message :{readyState}} = await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , setProsess , reftag)
-        setloding(false);
-        setWord("جاري تحديث الصفحة")
-        return setDeply({message : readyState , statu : 200})
-      } 
-      let {message :{readyState}} = await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , value , setProsess , reftag)
-      setloding(false);
-      setWord("جاري تحديث الصفحة")
-      return setDeply({message : readyState , statu : 200})
+        await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , reftag)
+        setDeply({message : "جاري تحديث الصفحة", isUpdate : false})
+        let Router = (await import('next/router')).default
+        return Router.reload()  
 
-
-    } catch ({message ,statu}) {
-      setloding(false);
-      setProsess(0)
-      setError({message,statu})
-      setWord(message)
-      return setDeply({message : message,statu : statu})
+    } catch ({message ,isUpdate}) {
+      Callsetprocess(0)
+      return setDeply({message : message, isUpdate : isUpdate})
     }
 
   };
@@ -74,9 +49,9 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
 
   return (
     <div className="flex flex-col w-full bg-slate-500">
-      {!loding && (
-        <>
-          <span className="text-sm font-medium text-white">
+    {!deply.isUpdate &&
+    <>
+              <span className="text-sm font-medium text-white">
             - رقم التحديث : ١.٠.٠
           </span>
           <span className="text-sm font-medium text-white">
@@ -87,8 +62,10 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
             <li>تحسين جودة الصوت </li>
             <li>الخخخ</li>
           </ul>
-        </>
-      )}
+    </>
+    }
+
+
       <Button
         sx={{
           "::before":{
@@ -99,15 +76,16 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha, NEXT_PUBLIC_BUILD_ID }) {
           background: "black",
           left : 0,
           top : 0,
-          display:`${loding ? "none" : "block"}` ,
+          // display:`${d ? "none" : "block"}` ,
           zIndex : 10 
         }}}
+        disabled={deply.isUpdate}
         onClick={Updeat}
         endIcon={<Code className="h-3 pr-3 " />}
         variant="outlined"
         size="medium"
       >
-       <span className="z-10 text-xs font-fontar">{Word}</span>
+       <span className="z-10 text-xs font-fontar">{deply.message || ''}</span>
       </Button>
 
     </div>

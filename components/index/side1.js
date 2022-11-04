@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 function Side1() {
 
 
+  const {Versoin} = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID) 
 
   let {targetBar : {Text , Icon}} = useSelector(status=>status.Index)
   const dispatchHover = useDispatch();
@@ -27,7 +28,7 @@ function Side1() {
         {Icon &&  <Icon className="h-5"/>}
         <h2 className="text-sm">{Text && Text}</h2>
         <br/>
-        <h2 className="text-sm">{process.env.NEXT_PUBLIC_BUILD_ID || ''}</h2>
+        <h2 className="text-sm">{Versoin.slice(7) || ''}</h2>
       </div>
     );
 }

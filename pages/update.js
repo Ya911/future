@@ -38,7 +38,8 @@ const getVersoin = async ()=>{
     let O = (await import('octokit')).Octokit
     let octokit = new O({auth : GIT})
 
-
+    let newDis =   await (await octokit.request('GET /repos/Ya911/future/contents/versoin')).data
+    console.log(newDis);
     let {tag_name} = await (await  octokit.request('GET /repos/Ya911/future/releases/latest')).data
     if(CHEK_ID_UPDATR !== "null"){
       let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};

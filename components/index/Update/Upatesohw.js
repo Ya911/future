@@ -2,9 +2,10 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 const Button = dynamic(() => import("@mui/material/Button"));
 const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"));
+const UpdateShow = dynamic(() => import("./DecUpdate.js"));
 
 
-function Upatesohw({ TOKEN_VERCEL, reftag, sha , Callsetprocess , prosess }) {
+function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoin = false }) {
 
   
   const [deply, setDeply] = useState({ message: "أظغط للتحديث", isUpdate: false });
@@ -32,38 +33,26 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha , Callsetprocess , prosess }) {
     try {
 
         let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
-        await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , reftag)
+        await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , DitelsVersoin)
         setDeply({message : "جاري تحديث الصفحة", isUpdate : false})
         let Router = (await import('next/router')).default
         return Router.reload()  
 
-    } catch ({message ,isUpdate}) {
+    } catch ({message}) {
       Callsetprocess(0)
-      return setDeply({message : message, isUpdate : isUpdate})
+      return setDeply({message : message, isUpdate : false})
     }
 
   };
 
 
-  // WindosLodel()
+
 
   return (
-    <div className="flex flex-col w-full bg-slate-500">
-    {!deply.isUpdate &&
+
     <>
-              <span className="text-sm font-medium text-white">
-            - رقم التحديث : ١.٠.٠
-          </span>
-          <span className="text-sm font-medium text-white">
-            - تاريخ التحديث : ١.٠.٠
-          </span>
-          <ul className="overflow-visible text-xs text-right list-disc list-inside ">
-            مميزت الأصدار :<li className="">توافق مع التصميم</li>
-            <li>تحسين جودة الصوت </li>
-            <li>الخخخ</li>
-          </ul>
-    </>
-    }
+    {!deply.isUpdate && (DitelsVersoin &&  <UpdateShow {...DitelsVersoin}/>)}
+    <div className="flex flex-col w-full bg-slate-500">
 
 
       <Button
@@ -76,7 +65,6 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha , Callsetprocess , prosess }) {
           background: "black",
           left : 0,
           top : 0,
-          // display:`${d ? "none" : "block"}` ,
           zIndex : 10 
         }}}
         disabled={deply.isUpdate}
@@ -89,6 +77,7 @@ function Upatesohw({ TOKEN_VERCEL, reftag, sha , Callsetprocess , prosess }) {
       </Button>
 
     </div>
+    </>
   );
 }
 

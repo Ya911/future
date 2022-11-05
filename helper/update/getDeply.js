@@ -24,7 +24,7 @@ export const DeployProject = async (body, headr ) => {
 
 
 
-export async function getProjectByID(headr, id , setProcec ,value) {
+export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
 
    return await new Promise(async (resolve) => {
     let urlsi = `https://api.vercel.com/v13/deployments/${id}`;
@@ -32,7 +32,7 @@ export async function getProjectByID(headr, id , setProcec ,value) {
     let {readyState } = await key.json();
     if (readyState !== "READY"){
       setProcec(e=>e > 100 ? 100 : e + 4)
-      setTimeout(() => resolve(getProjectByID(headr, id , setProcec)), 4000);
+      setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 4000);
     }else{
       let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
       let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
@@ -44,14 +44,21 @@ export async function getProjectByID(headr, id , setProcec ,value) {
           body: JSON.stringify({ value: "null"}),
         }
       );
+      console.log(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR);
+      process.env.NEXT_PUBLIC_CHEK_ID_UPDATR = null
+      console.log(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR);
       await fetch(
         `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
         {
           headers: headr,
           method: "PATCH",
-          body: JSON.stringify({ value: value}),
+          body: JSON.stringify({ value: DitelsVersoin}),
         }
       );
+
+      console.log(process.env.NEXT_PUBLIC_BUILD_ID);
+      process.env.NEXT_PUBLIC_BUILD_ID = DitelsVersoin
+      console.log(process.env.NEXT_PUBLIC_BUILD_ID);
       setProcec(100)
       return resolve({message : {readyState} , isUpdate : false })
     }

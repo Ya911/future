@@ -30,9 +30,7 @@ const [sha , setSha] = useState()
 const [newVersoinDes , setnewVersoinDes] = useState({})
 const [prosess , setProsess] =  useState(0)
 const Callsetprocess = useCallback(()=>setProsess,[setProsess])
-
-
-let BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
+const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
 
 const getVersoin = async ()=>{
@@ -43,7 +41,8 @@ const getVersoin = async ()=>{
     let octokit = new O({auth : GIT})
 
     let {content} = await (await octokit.request('GET /repos/Ya911/future/contents/version.json')).data
-    setnewVersoinDes({...JSON.parse(Buffer.from(content , 'base64').toString('utf8'))})
+    const NeVersontoJson = {...JSON.parse(Buffer.from(content , 'base64').toString('utf8')) }
+    setnewVersoinDes(NeVersontoJson)
     
 
     if(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR !== "null"){
@@ -54,7 +53,8 @@ const getVersoin = async ()=>{
       setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
       return Router.reload
     }
-    if(newVersoinDes.Versoin === BulidUpdate.Versoin)throw {message : ' لايوجد تحديثات ', isUpdate : false}
+
+    if(NeVersontoJson.Versoin === BulidUpdate.Versoin)throw {message : ' لايوجد تحديثات ', isUpdate : false}
     let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
     setSha(sha)
     return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
@@ -88,7 +88,6 @@ const getVersoin = async ()=>{
         background: "black",
         left : 0,
         top : 0,
-        display:`${!CheakUP.isUpdate ? "none" : "block"}` ,
         zIndex : 10 
       }}}   
         disabled={CheakUP.message !== "أظغط للتحديث" && CheakUP.message !== 'التحقق من التحديث' }
@@ -100,7 +99,6 @@ const getVersoin = async ()=>{
         Callsetprocess={Callsetprocess} 
         sha={sha} 
         TOKEN_VERCEL={TOKEN_VERCEL}
-        Code={Code}
         prosess={prosess}  
         DitelsVersoin={newVersoinDes}
         />

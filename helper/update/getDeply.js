@@ -2,11 +2,13 @@
 
 
 
-export const DeployProject = async (body, headr ) => {
+export const DeployProject = async (body, headr) => {
   try {
+
     let urlsi = `https://api.vercel.com/v13/deployments`
     let key = await fetch(urlsi,{headers: headr, method: "POST" , body : JSON.stringify(body)})
     let {id} = await key.json()
+
      await fetch(
       `https://api.vercel.com/v9/projects/future/env/PhdujyopN65lVQHz`,
       {
@@ -18,6 +20,7 @@ export const DeployProject = async (body, headr ) => {
 
     return { message : {id} , isUpdate : false }
   } catch ({ message}) {
+    console.log("fromboe");
     throw { message: message, isUpdate: false };
   }
 };
@@ -44,9 +47,7 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
           body: JSON.stringify({ value: "null"}),
         }
       );
-      console.log(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR);
-      process.env.NEXT_PUBLIC_CHEK_ID_UPDATR = null
-      console.log(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR);
+
       await fetch(
         `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
         {
@@ -56,9 +57,6 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
         }
       );
 
-      console.log(process.env.NEXT_PUBLIC_BUILD_ID);
-      process.env.NEXT_PUBLIC_BUILD_ID = DitelsVersoin
-      console.log(process.env.NEXT_PUBLIC_BUILD_ID);
       setProcec(100)
       return resolve({message : {readyState} , isUpdate : false })
     }

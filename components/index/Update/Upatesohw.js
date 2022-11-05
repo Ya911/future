@@ -5,7 +5,7 @@ const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"));
 const UpdateShow = dynamic(() => import("./DecUpdate.js"));
 
 
-function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoin = false }) {
+function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoin }) {
 
   
   const [deply, setDeply] = useState({ message: "أظغط للتحديث", isUpdate: false });
@@ -14,8 +14,8 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
 
 //_ أمر حذف تاق واحد
 
-
   let Updeat = async () => {
+
     setDeply({message : " .. جاري التحقق ", isUpdate : true})
     let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let body = {
@@ -31,31 +31,31 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
       source: "git",
     };
     try {
-
         let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
         await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , DitelsVersoin)
-        setDeply({message : "جاري تحديث الصفحة", isUpdate : false})
+        setDeply({message : "جاري تحديث الصفحة", isUpdate : true})
+        Callsetprocess(0)
         let Router = (await import('next/router')).default
         return Router.reload()  
 
     } catch ({message}) {
+
       Callsetprocess(0)
-      return setDeply({message : message, isUpdate : false})
+      return setDeply({message : message, isUpdate : true})
     }
 
   };
 
 
-
+console.log(prosess);
+console.log(DitelsVersoin);
 
   return (
 
     <>
-    {!deply.isUpdate && (DitelsVersoin &&  <UpdateShow {...DitelsVersoin}/>)}
+    {!deply.isUpdate && <UpdateShow {...DitelsVersoin}/>}
     <div className="flex flex-col w-full bg-slate-500">
-
-
-      <Button
+        <Button
         sx={{
           "::before":{
           content:`""`,
@@ -69,7 +69,7 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
         }}}
         disabled={deply.isUpdate}
         onClick={Updeat}
-        endIcon={<Code className="h-3 pr-3 " />}
+        endIcon={<Code className="z-10 h-3 pr-3 "/>}
         variant="outlined"
         size="medium"
       >

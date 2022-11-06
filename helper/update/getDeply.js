@@ -2,10 +2,20 @@
 
 
 
-export const DeployProject = async (body, headr) => {
+export const DeployProject = async (body, headr , DitelsVersoin) => {
   try {
 
     let urlsi = `https://api.vercel.com/v13/deployments`
+    let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
+    let toJson = JSON.stringify(DitelsVersoin)
+    await fetch(
+      `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
+      {
+        headers: headr,
+        method: "PATCH",
+        body: JSON.stringify({ value: toJson}),
+      }
+    )
     let key = await fetch(urlsi,{headers: headr, method: "POST" , body : JSON.stringify(body)})
     let {id} = await key.json()
 
@@ -38,7 +48,7 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
       setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 4000);
     }else{
       let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
-      let ID_CK_BULID = "J2Uhy4z8kmSTMajZ"
+
       await fetch(
         `https://api.vercel.com/v9/projects/future/env/${ID_CK_IUPDATE}`,
         {
@@ -47,18 +57,6 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
           body: JSON.stringify({ value: "null"}),
         }
       );
-      console.log("typeof", DitelsVersoin);
-      let toJson = JSON.stringify(DitelsVersoin)
-      console.log(typeof toJson );
-      await fetch(
-        `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
-        {
-          headers: headr,
-          method: "PATCH",
-          body: JSON.stringify({ value: toJson}),
-        }
-      )
-
       setProcec(100)
       return resolve({message : {readyState} , isUpdate : false })
     }

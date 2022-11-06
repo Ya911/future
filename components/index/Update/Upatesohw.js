@@ -33,7 +33,7 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
 
     try {
 
-        let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
+        let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade , DitelsVersoin )
         await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , DitelsVersoin)
         setDeply({message : "جاري تحديث الصفحة", isUpdate : true})
         Callsetprocess(0)

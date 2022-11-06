@@ -3,7 +3,7 @@ import Pernt from "../components/index/pernt";
 function Setting() {
     return (
         <div className="text-white">
-            ... قيد العمل 
+            تفعيل الدارك مود : لا
         </div>
     );
 }

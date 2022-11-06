@@ -34,7 +34,7 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
     let key = await fetch(urlsi, { headers: headr, method: "GET" });
     let {readyState } = await key.json();
     if (readyState !== "READY"){
-      setProcec(e=>e > 100 ? 100 : e + 4)
+      setProcec(e=>e > 100 ? 100 : e + 7)
       setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 4000);
     }else{
       let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
@@ -47,21 +47,22 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
           body: JSON.stringify({ value: "null"}),
         }
       );
-
+      let toJson = JSON.stringify(DitelsVersoin)
       await fetch(
         `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
         {
           headers: headr,
           method: "PATCH",
-          body: JSON.stringify({ value: DitelsVersoin}),
+          body: JSON.stringify({ value: toJson}),
         }
-      );
+      )
 
       setProcec(100)
       return resolve({message : {readyState} , isUpdate : false })
     }
     
   }).catch(({message})=>{
+    console.log(message);
     throw {message,isUpdate : false }
   })
 

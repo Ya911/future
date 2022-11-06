@@ -16,7 +16,7 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
 
   let Updeat = async () => {
 
-    setDeply({message : " .. جاري التحقق ", isUpdate : true})
+    setDeply({message : " .. جاري التحديث ", isUpdate : true})
     let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let body = {
       gitSource: {
@@ -30,16 +30,16 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
       name: "future",
       source: "git",
     };
+
     try {
+
         let {message : {id}} = await (await import('../../../helper/update/getDeply')).DeployProject(body , AuthHeade)
         await (await import('../../../helper/update/getDeply')).getProjectByID(AuthHeade , id , Callsetprocess , DitelsVersoin)
         setDeply({message : "جاري تحديث الصفحة", isUpdate : true})
         Callsetprocess(0)
         let Router = (await import('next/router')).default
         return Router.reload()  
-
     } catch ({message}) {
-
       Callsetprocess(0)
       return setDeply({message : message, isUpdate : true})
     }
@@ -47,8 +47,6 @@ function Upatesohw({ TOKEN_VERCEL, sha , Callsetprocess , prosess , DitelsVersoi
   };
 
 
-console.log(prosess);
-console.log(DitelsVersoin);
 
   return (
 

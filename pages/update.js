@@ -29,7 +29,7 @@ const [CheakUP , setCheakUP] = useState({message : 'التحقق من التحد
 const [sha , setSha] = useState()
 const [newVersoinDes , setnewVersoinDes] = useState({})
 const [prosess , setProsess] =  useState(0)
-const Callsetprocess = useCallback(()=>setProsess,[setProsess])
+const Callsetprocess = useCallback((e)=>setProsess(e),[setProsess])
 const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
 

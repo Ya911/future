@@ -47,7 +47,9 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
           body: JSON.stringify({ value: "null"}),
         }
       );
+      console.log("typeof", DitelsVersoin);
       let toJson = JSON.stringify(DitelsVersoin)
+      console.log(typeof toJson );
       await fetch(
         `https://api.vercel.com/v9/projects/future/env/${ID_CK_BULID}`,
         {

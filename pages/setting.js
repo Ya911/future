@@ -3,7 +3,7 @@ import Pernt from "../components/index/pernt";
 function Setting() {
     return (
         <div className="text-xl text-center text-white">
-            Soon ..
+            Soon .. Up 3
         </div>
     );
 }

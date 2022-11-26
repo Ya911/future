@@ -1,7 +1,7 @@
 
 import Perntsidbar from "../components/index/pernt";
 import dynamic from "next/dynamic";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 
 
@@ -30,10 +30,8 @@ export default function Update({GIT,TOKEN_VERCEL}) {
 
 
 const [CheakUP , setCheakUP] = useState({message : 'التحقق من التحديث' , isUpdate : false})
-const [sha , setSha] = useState()
 const [newVersoinDes , setnewVersoinDes] = useState({})
 const [prosess , setProsess] =  useState(100)
-const Callsetprocess = useCallback((e)=>setProsess(e),[setProsess])
 const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
 
@@ -44,9 +42,12 @@ const getVersoin = async ()=>{
     let O = (await import('octokit')).Octokit
     let octokit = new O({auth : GIT})
 
-    let {content} = await (await octokit.request('GET /repos/Ya911/future/contents/version.json')).data
+
+    let {content} =  await (await octokit.request('GET /repos/Ya911/future/contents/version.json')).data
     const NeVersontoJson = {...JSON.parse(Buffer.from(content , 'base64').toString('utf8')) }
+    console.log(NeVersontoJson);
     setnewVersoinDes(NeVersontoJson)
+    console.log(NeVersontoJson);
     
 
     if(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR !== "null"){
@@ -59,10 +60,11 @@ const getVersoin = async ()=>{
     }
 
     if(NeVersontoJson.Versoin === BulidUpdate.Versoin)throw {message : ' لايوجد تحديثات ', isUpdate : false}
-    let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
-    setSha(sha)
+    // let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
+    // setSha(sha)
     return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
   } catch ({message}) {
+    console.log(message);
     setProsess(0)
     return setCheakUP({message : message , isUpdate : false})
   }
@@ -149,7 +151,7 @@ export async function getStaticProps() {
 
 let {GIT ,TOKEN_VERCEL } = process.env
 
-return {props : {GIT,TOKEN_VERCEL  }}
+return {props : {GIT,TOKEN_VERCEL }}
 }
 Update.getLayout = function getLayout (page){
   return ( 

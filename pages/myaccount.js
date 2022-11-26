@@ -222,20 +222,6 @@ export default function MyAccount() {
               />}
             </div>
 
-            <Button
-              style={{
-                fontSize: "0.7rem",
-                paddingTop: "0.2rem",
-                paddingBottom: "0.2rem",
-                paddingLeft: "0.6rem",
-                paddingRight: "0.6rem",
-                backgroundColor: "rgb(234, 179, 0)",
-              }}
-              variant="contained"
-              startIcon={<PencilAltIcon className="h-[1.0rem]" />}
-            >
-              تعديل البروفايل
-            </Button>
           </form>
           {/* info User END */}
 

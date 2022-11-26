@@ -15,25 +15,19 @@ export default function DateAndTime() {
 
 
 
-
   return (
     <>
       {/* Time H */}
-      <div className="flex items-center flex-col justify-center w-full gap-3 font-bold text-md h-20 font-fontar text-[#fcd34d] p-2 bg-zinc-800">
-        التاريخ والوقت هجري
-        <div className="flex items-center justify-center gap-5 font-fonten ">
+      <div className="flex items-center flex-col justify-center w-full gap-3 font-bold overflow-hidden text-md font-fontar text-[#fcd34d] p-2 ">
+        <div className="flex justify-end cursor-default rounded-xl hover:opacity-70 font-fontar ">
         <DateT data={"Ar"}/>
-          <span className="pl-2 border-l">{new Date().toLocaleDateString('ar-SA',{dateStyle:'long'}).toString() || ''}</span>
+          <span className="p-2 px-4 text-sm text-white shadow-xl text-end">{new Date().toLocaleDateString('ar-SA',{dateStyle:'long'}).toString() || ''}</span>
         </div>
-      </div>
-
-      {/* Time M */}
-      <div className="flex items-center flex-col justify-center w-full gap-3 font-bold text-md h-20 font-fontar text-[#fcd34d] p-2 bg-zinc-800">
-        التاريخ والوقت هجري
-        <div className="flex items-center justify-center gap-5 font-fonten ">
+        <div className="flex justify-end cursor-default hover:opacity-70 ">
         <DateT data={"En"}/>
-          <span className="pl-2 border-l" >{new Date().toLocaleDateString('en-EN',{dateStyle:'long'}).toString() || ''}</span>
+          <span className="p-2 px-4 text-sm text-white shadow-xl text-end" >{new Date().toLocaleDateString('en-EN',{dateStyle:'long'}).toString() || ''}</span>
         </div>
+
       </div>
     </>
   );

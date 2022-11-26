@@ -8,16 +8,12 @@ let Red = (state,action)=>{
         case "add":
             if(action.payload === 'En'){
                 return {
-                    horus : new Date().getUTCHours().toString(),
-                    min : new Date().getUTCMinutes().toString(),
-                    s : new Date().getUTCSeconds().toString(),
+                    Time : new Date().toLocaleTimeString('en', {hour12:true , timeZone:"UTC" , timeStyle:'medium' })
                 }
             }
             if (action.payload === 'Ar'){
                 return {
-                    horus : new Date().getHours().toString(),
-                    min : new Date().getMinutes().toString(),
-                    s : new Date().getSeconds().toString(),
+                    Time : new Date().toLocaleTimeString('ar-EG',{ hour12 : true , timeStyle:'medium'}),
                 }
             }
             
@@ -32,6 +28,7 @@ function DateT({data}) {
 
  let [time,dispatch]=useReducer(Red,ini)  
 
+
     useEffect(()=>{
        let c = setInterval(()=>dispatch({type:'add',payload:data}),1000)
        return ()=> clearInterval(c) 
@@ -39,9 +36,7 @@ function DateT({data}) {
 
     return (
         <div className="flex gap-2">
-            <span>{time?.horus}</span>
-            <span>: {time?.min}</span>
-            <span>: {time?.s}</span>
+            <span className="p-2 text-sm shadow-xl text-zinc-800">{time?.Time}</span>
         </div>
     );
 }

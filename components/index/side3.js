@@ -10,7 +10,7 @@ function Side3() {
     return (
         <>
         <Paper
-          className="after:absolute after:content-['']  after:h-full rounded-sm after:w-[3px] after:right-[0%] after:opacity-85  after:bg-black"
+          className="after:absolute after:content-['']  after:h-full after:w-[3px] after:right-[0%] after:opacity-85  after:bg-black"
           style={{
             background: "rgb(234 179 0)",
             left: "0",
@@ -19,6 +19,8 @@ function Side3() {
             height: "100%",
             position: "absolute",
             zIndex: -1,
+            borderTopLeftRadius:".6rem",
+            borderBottomLeftRadius:".6rem"
             
           }}
           elevation={3}

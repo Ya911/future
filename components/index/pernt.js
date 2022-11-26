@@ -46,21 +46,19 @@ function PerntSidbar({titel, children}) {
   
     return (
       <Provider store={store}> 
-      <div className="relative flex h-screen">
+      <div className="relative flex py-3 h-[39.5rem]">
         <PageTitel titel={titel}/>        
         <div
-        className="h-full overflow-hidden text-white shadow-sm rounded-r-md bg-zinc-800 w-6- font-fontar"
-        id="sidenavSecExample"
+        className="h-[37.5rem] relative justify-between drop-shadow-xl overflow-hidden text-white  w-[13%] rounded-r-xl bg-zinc-800 flex flex-col font-fontar"
       >
         {/* Start list All */}
-        <div className="flex flex-col justify-between h-full ">
+
 
           {/* Part 1 Start  */}
-          <div className="flex flex-col gap-8 px-3 pt-5">
+          <div className="flex flex-col gap-6 px-3 pt-5 pb-5">
           {/* Log Start */}
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <h3 className="text-right text-md">لوحة التحكم</h3>
           <ul className="flex flex-col gap-3 text-right">
           <LoopLink/>
           </ul>
@@ -74,8 +72,6 @@ function PerntSidbar({titel, children}) {
             />
           {/* Part 2 END LogOut */}
 
-
-        </div>
       </div>
      <LayoutIndex>
      {children}

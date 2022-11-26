@@ -2,8 +2,8 @@ import Pernt from "../components/index/pernt";
 
 function Setting() {
     return (
-        <div className="text-white">
-            تفعيل الدارك مود : لا
+        <div className="text-xl text-center text-white">
+            Soon ..
         </div>
     );
 }

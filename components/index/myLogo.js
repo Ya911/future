@@ -14,8 +14,8 @@ function MyLogo() {
             />
         </div>
 
-        <h2 className="text-sm text-center opacity-50 text-late-50 font-fonten">
-          &copy; Made By Ya
+        <h2 className="max-w-[39px] text-[0.2rem] text-center opacity-50 font-fonten">
+          Made By Ya
         </h2>
       </div>
     );

@@ -12,14 +12,18 @@ const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"), {
     ssr: false,
   });
 
-  const Upatesohw = dynamic(() => import("../components/index/Update/Upatesohw"), {
-    ssr: false,
-  });
-
   const UpDectiles = dynamic(() => import("../components/index/Update/DecUpdate.js"), {
     ssr: false,
   });
+
+  const Alert = dynamic(() => import('@mui/joy/Alert'), {
+    ssr: false,
+  });
   
+
+
+
+
 export default function Update({GIT,TOKEN_VERCEL}) {
 
 
@@ -28,7 +32,7 @@ export default function Update({GIT,TOKEN_VERCEL}) {
 const [CheakUP , setCheakUP] = useState({message : 'التحقق من التحديث' , isUpdate : false})
 const [sha , setSha] = useState()
 const [newVersoinDes , setnewVersoinDes] = useState({})
-const [prosess , setProsess] =  useState(0)
+const [prosess , setProsess] =  useState(100)
 const Callsetprocess = useCallback((e)=>setProsess(e),[setProsess])
 const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
@@ -67,19 +71,56 @@ const getVersoin = async ()=>{
 
 
 
-
     return (
-        <div style={{"direction" : "rtl"}} className="flex flex-row justify-between w-full p-2 border-2 border-solid rounded-md border-sky-600">
 
-          <div className="flex flex-col w-[50%] gap-1">
-          <UpDectiles {...BulidUpdate}/>
+        <div  style={{"direction" : "rtl"}}  className="flex flex-row justify-between w-full p-1 overflow-hidden">
+
+
+        <div className="flex flex-col justify-center items-center gap-2 shadow-2xl shadow-red p-2 w-[44%] bg-[#eab301] rounded-[0.3rem]">
+          <Alert 
+          sx={{color:'#eab301' ,justifyContent:'center' , borderColor:'#27272a' , backgroundColor:'black' , borderRadius:'.2rem' , padding:'.4rem' , width:"90%" }}
+          size='sm'
+          className='shadow-sm'
+          variant='soft'
+          >التحديثّ الحاليِ</Alert>
+
+        <div className="flex flex-col gap-1 text-xs w-[100%] text-zinc-800">
+        <UpDectiles {...BulidUpdate}/>
+        </div>
           </div>
 
-        <div className="flex flex-col items-center justify-center w-[50%] bg-slate-500 rounded-sm shadow-md p-2">
-       {
-       !CheakUP.isUpdate 
-       ?<Button 
+
+        <div className="flex flex-col justify-center gap-4 py-3 px-2  w-[50%] bg-zinc-800 rounded-[0.3rem]">
+       
+       
+       {/* Scend Part */}
+
+       
+
+       {CheakUP.message !== 'التحقق من التحديث' && (
+        <div className="flex flex-col gap-1 text-xs w-[100%] text-[#eab301]">
+        <UpDectiles {...newVersoinDes}/>
+        </div>
+      )}
+       <Button 
        sx={{
+        width:"100%",
+        padding:'.3rem',
+        color:'#eab301',
+        gap:'.3rem',
+        zIndex:0,
+        overflow:'hidden',
+        borderColor:'#eab301',
+        cursor:'pointer',
+        ":hover":{opacity:"90%" , boxShadow:'rgba(0, 0, 0, 0.24) 0px 3px 20px;' , borderColor:'#eab301', zIndex:0},
+        "& .MuiButton-endIcon":{
+          height:16,
+          padding:0,
+          margin:0,
+          zIndex:1,
+          
+        },
+
         "::before":{
         content:`""`,
         position:'absolute',
@@ -88,25 +129,18 @@ const getVersoin = async ()=>{
         background: "black",
         left : 0,
         top : 0,
-        zIndex : 10 
+        zIndex : 0,
       }}}   
         disabled={CheakUP.message !== "أظغط للتحديث" && CheakUP.message !== 'التحقق من التحديث' }
-        onClick={getVersoin}  endIcon={<Code className="h-3 pr-3 "/>}  variant="outlined" 
-        size='medium' >
-       <span className="z-10 text-xs font-fontar">{CheakUP.message}</span>
-       </Button>
-       :<Upatesohw
-        Callsetprocess={Callsetprocess} 
-        sha={sha} 
-        TOKEN_VERCEL={TOKEN_VERCEL}
-        prosess={prosess}  
-        DitelsVersoin={newVersoinDes}
-        />
-       }
-        </div>
-
+        onClick={getVersoin}  endIcon={<Code/>}  variant="outlined" 
+        size='small'
+         >
+       <span className="z-10 text-[.4rem]  font-fontar">{CheakUP.message}</span>
+      </Button>
 
         </div>
+        </div>
+
     );
 }
 

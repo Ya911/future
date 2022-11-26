@@ -1,9 +1,7 @@
 import PerntSidbar from "../components/index/pernt";
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useForm , Controller } from "react-hook-form";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-
 
 const MenuItem = dynamic(() => import("@mui/material/MenuItem/MenuItem"), {
   ssr: false,
@@ -27,12 +25,12 @@ const TextField = dynamic(() => import("@mui/material/TextField/TextField"), {
 
 function Bot() {
   const {
-    register,
+    control,
     setError,
     reset,
     handleSubmit,
     clearErrors,
-    formState: { errors, isValid },
+    formState: { errors,isValid },
   } = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
@@ -40,36 +38,51 @@ function Bot() {
     shouldFocusError: true,
   });
 
+  const [isConcect , setisConcect]=useState(false)
 
-const [token , setToken]=useState()
+
 
   useEffect(()=>{
-    if(errors.server_error){
+    if(errors.server_error || isConcect){
     setTimeout(()=>{
       reset()
+      setisConcect(false)
       clearErrors('server_error')
      },[2000])
     }
-    },[errors.server_error,clearErrors,reset,errors])
+    },[errors.server_error,clearErrors,reset,errors , isConcect])
 
 
   let Submit = async (data) => {
+
+
+
     try {
-      let send = await fetch("/api/bot", {
+
+      let postToChech = `https://api.telegram.org/bot${data.api_Token}/getMe`
+      let send0 = await fetch(postToChech, {
+        method: "get",
+        headers: { "Content-Type": "application/json" },
+      })
+      if(!send0.ok){
+        throw {message : "التوكين غير صالح"}
+      }
+      let send1 = await fetch("/api/bot", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       });
-      if (!send.ok)throw (await send.json());
-      return;
 
-    } catch ({description , error_code}) {
-      return setError("server_error", { type: "server", message:  `${description + ' | خطا رقم' + error_code }`  });
+      if (!send1.ok)throw (await send1.json());
+      return setisConcect(true)
+
+    } catch ({message}) {
+      if(message === "Failed to fetch" || message === "التوكين غير صالح") return setError("api_Token", { type: "server", message:  "التوكين غير صحيح"  },{shouldFocus:true});
+      return setError("server_error", { type: "server", message:  `${message + ' | خطا رقم' + 500 }`  });
     }
   };
 
  
-// if(errors)
 
 
 
@@ -84,52 +97,95 @@ const [token , setToken]=useState()
         className="flex flex-col items-center gap-2"
         onSubmit={handleSubmit(Submit)}
       >
-        {errors?.server_error &&
+        {(errors?.server_error || isConcect) &&
               <Alert 
-              className="font-fontar"
               style={{ width: 195, fontSize: 10 , marginBottom:10 }}
-              variant="filled" severity="error"
+              variant="filled" 
+              severity={errors?.server_error ? "error" : "success"}
               >
-                {errors?.server_error.message}
+                {errors?.server_error?.message ? errors?.server_error?.message : "تم الأتصال"}
               </Alert>
         }
-        <TextField
-          defaultValue=''
-          value={token}
+        <Controller
+        control={control}
+        name="api_Token"
+        defaultValue=''
+        rules={{required:true}}
+        render={({field , fieldState:{error}})=>{
+          return <TextField
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: "black",
+                borderWidth:'1px'
+              }
+            },
+          "& .MuiOutlinedInput-notchedOutline":{borderRadius:'.7rem' , borderWidth:'.1.5rem' },        
+        
+        "& .MuiInputLabel-root": {
+          "&.Mui-focused": {
+            color: "black"
+          }},
+          
+      }}
+        
+          {...field}
+          type='text'
           id="outlined-multiline-flexible"
           label="api_Token"
           size="small"
-          {...register("api_Token", {
-            required: { value: true, message: "لايمكن ترك الخانة فارغة" },
-          })}
-          helperText={errors.api_Token && errors.api_Token.message}
-          error={errors.api_Token && true}
+          helperText={error ? (errors?.api_Token.message || "لايمكن ترك الخانة فارغة") :''}
+          error={error !== undefined}
+        />}}
         />
-        <TextField
+
+        <Controller
+        control={control}
+        name="dojop"
+        defaultValue=''
+        rules={{required:true}}
+        render={({field , fieldState:{error}})=>{
+          return <TextField
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: "black",
+                borderWidth:'1px'
+              }
+            },
+          "& .MuiOutlinedInput-notchedOutline":{borderRadius:'.7rem' , borderWidth:'.1.5rem' },        
+        
+        "& .MuiInputLabel-root": {
+          "&.Mui-focused": {
+            color: "black"
+          }},
+          
+      }}
+          {...field}
           defaultValue=''
           autoComplete="off"
           size="small"
-          // value={getValues}
           style={{ width: 195 }}
           id="outlined-select-currency"
           select
           label="مهمة البوت"
-          {...register("dojop", {
-            required: { value: true, message: "لايمكن ترك الخانة فارغة" },
-          })}
-          helperText={errors.dojop && errors.dojop.message}
-          error={errors.dojop && true}
+          helperText={error ? "لايمكن ترك الخانة فارغة" : ''}
+          error={error !== undefined}
         >
           {options.map((option) => (
-            <MenuItem key={option.value} value={option.value || ""}>
+        <MenuItem key={option.value} value={option.value || ""}>
               {option.label}
-            </MenuItem>
+        </MenuItem>
           ))}
-        </TextField>
+        </TextField>}}
+        />
+
+
 
         <Button
+        sx={{backgroundColor:"#27272a" , cursor:"pointer" , fontFamily:"font-fontar" , ":hover":{opacity:"95%" , backgroundColor:"#27272a"}}}
           className="font-fontar"
-          disabled={!isValid && true}
+          disabled={!isValid}
           type="submit"
           variant="contained"
           size="medium"

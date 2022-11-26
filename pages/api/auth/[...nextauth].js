@@ -52,7 +52,6 @@ export const authOptions = {
         password: { type: "text" },
       },
       async authorize(credentials) {
-
         const result = await axios.post(
           `${process.env.NEXTAUTH_URL}/api/auth/tokens`,
           credentials,
@@ -61,6 +60,7 @@ export const authOptions = {
           }
         );
           let res = await result.data;
+          console.log(res);
         if (res)return res 
         else return null;
       },

@@ -7,12 +7,9 @@ import { MyBot } from "./classbot";
 
 
 export const cheackDataBOT = async (DataFromCilent) => {
-  const bot = new TelegramBot(DataFromCilent.api_Token, { polling: false });
 
-  
-
-
-
+  try {
+    const bot = new TelegramBot(DataFromCilent.api_Token, { polling: false });
     await bot.startPolling();
     await bot.setMyCommands([
       { command: MyBot.$SELECET.START.command, description: MyBot.$SELECET.START.description },
@@ -23,27 +20,12 @@ export const cheackDataBOT = async (DataFromCilent) => {
       { command: MyBot.$SELECET.QR.command, description: MyBot.$SELECET.QR.description },
     ]);
 
-
-
-    
-
-    bot.on("message", async (msg) => {
+  bot.on("message", async (msg) => {
       const {chat : {id ,first_name } ,text , message_id , video , photo } = msg
       const appendCount = text?.slice(1).toLocaleUpperCase()  
       let {photos} = await bot.getUserProfilePhotos(msg.from.id)
       let pic = photos[0][2].file_id
-      if(text){
-        console.log("911");
-       bot.closeWebHook().then(e=>{
-          console.log(e);
-        }).catch(e=>{
-          console.log("ca", e);
-        })
-   
-      }
-
-
-
+    
       try {
 
        //_ Chose Start Part 
@@ -62,11 +44,6 @@ export const cheackDataBOT = async (DataFromCilent) => {
             return await MyTypesChose(id  , appendCount , bot , message_id, pic)
 
         }
-
-
-
-       
-  
 
 
 
@@ -108,84 +85,81 @@ export const cheackDataBOT = async (DataFromCilent) => {
   
   });
 
-  
 
-    bot.on("callback_query", async (query) => {
+  bot.on("callback_query", async (query) => {
 
-      let {
-        from: { id  },
-        message: { message_id  },
-        data,
-      } = query;
-
- 
- let replyID = query.message?.reply_to_message?.message_id 
+    let {
+      from: { id  },
+      message: { message_id  },
+      data,
+    } = query;
 
 
-      let {type }= JSON.parse(data)
-      if(MyBot.chetInput === "SHOW" || MyBot.chetInput === "DELETE1" ){
-        MyBot.chetInput = null
-      }
-      if(MyBot.chetInput === type)return;
-      MyBot.chetInput = type
-      try {
-        switch (type) {
-          //_ Frist type
-          case "OPTIONS":
-          return await CallbackQuery(bot , id , type  )
-          case "QR":
-          return await CallbackQuery(bot , id ,type )
-          case "VIDEO":
-          return await CallbackQuery(bot , id , type )
-          case "PICTURE": 
-          return await CallbackQuery(bot, id , type)
-          case "LINK": 
-          return await CallbackQuery(bot , id , type)
-          case "DEFULT":
-          return await CallbackQuery(bot , id , type)
-          case "RED":
-          return await CallbackQuery(bot  , id , type)
-          case "GREEN":
-          return await CallbackQuery(bot , id , type  )
-          case "START":
-          return await CallbackQuery(bot  , id , type )
-          case "COLORS":
-          return await CallbackQuery(bot  , id , type )
-          case "DELETE":
-          return await handletQR_Arrey(bot , id , message_id , type )
-          case "DELETE1":
-          return await handletQR_Arrey(bot , id , message_id , type  , replyID  )
-          case "SHOW":
-          return await handletQR_Arrey(bot , id , message_id, type )
-          }
-        
-      } catch (error) {
+let replyID = query.message?.reply_to_message?.message_id 
 
-        await ERORHANDLER(bot , id , message_id , error.message )
-      }
- 
 
-    
-      }
-
-    )
-
-    bot.on("polling_error", async (error) => {
-      await bot.stopPolling()
-      return;
-
-    });
-
-    let res =  bot.isPolling()
-    if(res){
-      return {error : null , fullfiled : true}
+    let {type }= JSON.parse(data)
+    if(MyBot.chetInput === "SHOW" || MyBot.chetInput === "DELETE1" ){
+      MyBot.chetInput = null
     }
-    return {error : null , fullfiled : null}
+    if(MyBot.chetInput === type)return;
+    MyBot.chetInput = type
+    try {
+      switch (type) {
+        //_ Frist type
+        case "OPTIONS":
+        return await CallbackQuery(bot , id , type  )
+        case "QR":
+        return await CallbackQuery(bot , id ,type )
+        case "VIDEO":
+        return await CallbackQuery(bot , id , type )
+        case "PICTURE": 
+        return await CallbackQuery(bot, id , type)
+        case "LINK": 
+        return await CallbackQuery(bot , id , type)
+        case "DEFULT":
+        return await CallbackQuery(bot , id , type)
+        case "RED":
+        return await CallbackQuery(bot  , id , type)
+        case "GREEN":
+        return await CallbackQuery(bot , id , type  )
+        case "START":
+        return await CallbackQuery(bot  , id , type )
+        case "COLORS":
+        return await CallbackQuery(bot  , id , type )
+        case "DELETE":
+        return await handletQR_Arrey(bot , id , message_id , type )
+        case "DELETE1":
+        return await handletQR_Arrey(bot , id , message_id , type  , replyID  )
+        case "SHOW":
+        return await handletQR_Arrey(bot , id , message_id, type )
+        }
+      
+    } catch (error) {
+
+      await ERORHANDLER(bot , id , message_id , error.message )
+    }
 
 
-   
+  
+    }
+
+  )
 
 
+  bot.on("polling_error", async (error) => {
+    await bot.stopPolling()
+    return {error : "خطا في الأتصال" , }
+
+  })
+
+  return {error : false , fullfiled : true}
+    
+} catch ({message}) {
+    return {error : "خطا في الأتصال " , fullfiled : false}
+    
+  }
+  
 
 };
 

@@ -10,20 +10,27 @@ const SearchIcon = dynamic(() => import("@heroicons/react/outline/SearchIcon"), 
 
 function Search() {
 
+  
     const { addSearch , Search } = useContext(MYCONTEXTBOOOK);
     return (
-        <div className="flex flex-col justify-center  items-center  w-[50%]">
-          <div className="relative">
+        <div className="w-[50%]">
+          <div className="relative w-[80%] ">
             <SearchIcon className="absolute left-1.5 h-4 opacity-70 top-[35%]" />
             <input
               placeholder="أسم الكتاب"
-              className="w-full text-sm focus:border-2 focus:border-solid focus:border-[#1a76d2] text-right rounded-sm h-12 placeholder:pr-3 placeholder:text-xs"
+              className="w-full focus:outline-none focus:border-[1px] focus:border-solid focus:border-[#27272a] h-10 pr-2 text-sm text-right rounded-sm placeholder:pr-3 placeholder:text-xs"
               type="search"
+              maxLength={25}
               name="search"
               id="search"
               value={Search}
               onChange={(e)=>addSearch(e.target.value)}
             />
+        <style jsx>{`
+        input::-webkit-search-cancel-button{
+          display: none;
+        }`}</style>
+
           </div>
         </div>
     );

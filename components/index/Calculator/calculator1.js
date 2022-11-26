@@ -27,7 +27,7 @@ function Calculator1({frist,scend,thre,fored , id}) {
         <button onClick={(e)=>dCNum(e)}   className={`${caluc}`} >{scend}</button>
         {thre && <button onClick={(e)=>dCNum(e)} className={`${caluc}`} >{thre}</button>}
         <button 
-        onClick={(e)=>dCValC(e)} className={`text-center hover:opacity-80 shadow-md cursor-pointer w-16 h-16 text-2xl ${hovecaluc === fored && "bg-[#f8f8f8] text-[#eab301] "}  bg-[#eab301] text-white rounded-full `}>{fored}</button>
+        onClick={(e)=>dCValC(e)} className={`text-center  shadow-md cursor-pointer w-16 h-16 text-2xl ${hovecaluc === fored && "bg-[#f8f8f8] text-[#eab301] "}  bg-[#eab301] text-white rounded-full `}>{fored}</button>
       </div>
 
     );

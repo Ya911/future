@@ -26,7 +26,7 @@ function Side1() {
     return (
         <div className="flex flex-row-reverse items-center gap-2 p-4 overflow-hidden text-amber-300">
         {Icon &&  <Icon className="h-5"/>}
-        <h2 className="text-sm">{Text && Text}</h2>
+        <h2 className="text-sm ">{Text && Text}</h2>
         <br/>
         <h2 className="text-sm">{Versoin.slice(7) || ''}</h2>
       </div>

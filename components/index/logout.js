@@ -13,8 +13,8 @@ function Logout({image , name }) {
 
 
     return (
-        <div className="relative flex flex-row-reverse items-center justify-center gap-3 px-3 py-3 overflow-hidden bg-zinc-900">
-        <div className="relative w-10 h-10 p-1 overflow-hidden border-2 border-solid rounded-full border-zinc-800 hover:opacity-80">
+        <div style={{background : "rgb(234, 179, 0)"}} className="relative flex flex-col items-center justify-center px-1 py-1 overflow-hidden">
+        {/* <div className="relative w-8 h-8 p-1 overflow-hidden border-2 border-solid rounded-full border-neutral-900 hover:opacity-80">
           {image && <Image
             className=""
             quality={100}
@@ -22,14 +22,12 @@ function Logout({image , name }) {
             src={image}
             alt="img Profile"            
           />}
-        </div>
-        {name && <div className="text-xs max-w-[70px] overflow-hidden">
-          {name}
-        </div>}
-        <div className=" hover:opacity-80 p-[0.2rem] hover:bg-zinc-500 hover:cursor-pointer hover:rounded-sm">
+        </div> */}
+
+        <div className="px-2 py-1 p-[0.2rem] hover:bg-zinc-800 hover:cursor-pointer hover:rounded-md">
           <LogoutIcon
             onClick={async () => (await import('next-auth/react')).signOut()}
-            className={`flex flex-row-reverse gap-2 h-4   `}
+            className={`h-5`}
           />
         </div>
       </div>

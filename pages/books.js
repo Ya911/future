@@ -30,10 +30,15 @@ function Books() {
 
 
   return (
+  
     <ContextBooks>
+      <div className="relative flex flex-col items-center w-full gap-6 overflow-hidden">
 
-      {/* Frist Colem Start */}
-      <div className="flex justify-between w-full gap-2 px-1 ">
+
+
+
+          {/* Frist Colem Start */}
+      <div className="flex relative px-2  justify-between w-[100%] ">
         {/* Search Input  */}
         <Search/>
         {/* Category input  */}
@@ -43,12 +48,17 @@ function Books() {
 
 
 
+
+{/* 
       {/* {/* Scend Colem Start */}
-      <div className="flex flex-wrap justify-between w-full max-w-sm px-2 overflow-y-scroll text-white scrollbar-hide ">
+      <div className="flex relative h-[26rem] flex-wrap px-1 scrollbar-hide overflow-scroll  justify-between w-[100%]">
       <Booksapi/>
       </div>
-      {/* {/* Scend Colem END */}
+      {/* Scend Colem END */}
 
+
+
+      </div>
     </ContextBooks>
   );
 }

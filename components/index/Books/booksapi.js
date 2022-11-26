@@ -24,7 +24,7 @@ const BookShow = (m)=>(
     return (
       <div
         key={e.id}
-        className="flex flex-col items-center gap-2 p-4 overflow-hidden rounded-sm cursor-pointer hover:bg-slate-400 "
+        className="flex flex-col items-center py-2  gap-2 rounded-sm cursor-pointer max-w-[30%] max-h-[15rem] hover:bg-zinc-900 hover:text-white text-white hover:rounded-xl   "
       >
         <div className="relative w-20 h-20">
           <Image
@@ -33,13 +33,13 @@ const BookShow = (m)=>(
             src={e.volumeInfo.imageLinks?.thumbnail || e.volumeInfo.imageLinks?.smallThumbnail || '/google.svg'}
           />
         </div>
-        <span className="max-w-[5.5rem] max-h-8 overflow-scroll  text-center text-xs">
+        <span className="overflow-scroll text-xs text-center scrollbar-hide ">
           {e.volumeInfo?.subtitle}
         </span>
-        <h5 className="max-w-[5.5rem] max-h-8 overflow-scroll  text-center text-xs ">
+        <h5 className="overflow-scroll text-xs text-center scrollbar-hide">
           {e.volumeInfo?.title}
         </h5>
-        <span className="max-w-[5.5rem] text-center mt-2 ">50$</span>
+        <span className="mt-2 text-center ">50$</span>
       </div>
     );
 })}
@@ -50,7 +50,7 @@ const BookShow = (m)=>(
 
   return (
     <>
-      {result && (Search ? (SercheB.length === 0 ? (<span>لايوجد نتيجة في البحث</span>) : BookShow(SercheB) ) : BookShow(result))}
+      {result && (Search ? (SercheB.length === 0 ? (<span className="w-full mt-32 text-xl text-center text-white">لايوجد نتيجة في البحث</span>) : BookShow(SercheB) ) : BookShow(result))}
     </>
     
   );

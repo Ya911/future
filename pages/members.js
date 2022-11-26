@@ -91,10 +91,10 @@ if(toData){
       className="w-full h-10 border-collapse">
         
         <thead>
-        <tr className="text-sm text-center text-white">
-            <td className={`${'bg-slate-700 py-2'}`}>العضوية</td>
-            <td className={`${'bg-slate-700 py-2'}`}>تاريخ أنشاء الحساب </td>
-            <td className={`p-1 bg-slate-700`}>الأسم</td>
+        <tr className="text-sm text-center text-white ">
+            <td className={`${'bg-zinc-900 py-2'}`}>العضوية</td>
+            <td className={`${'bg-zinc-900  py-2'}`}>تاريخ أنشاء الحساب </td>
+            <td className={`p-1 bg-zinc-900 `}>الأسم</td>
         </tr>
         </thead>
         
@@ -134,7 +134,6 @@ if(toData){
           >
             <option>5</option>
             <option>10</option>
-            <option>15</option>
           </select>
 
           <span className="text-xs text-white ">العناصر</span>
@@ -142,9 +141,9 @@ if(toData){
 
         <div className="flex gap-2">
           <ChevronLeft  
-         color={'error'}
+          sx={{color:'#18181b'}}
           onClick={()=>dispatch({type:"onNext"})}
-          className={`${pages.conterPage === pages.numberPage ?"opacity-40" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`}/>
+          className={`${pages.conterPage === pages.numberPage ?"bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`}/>
           <label htmlFor="number_page">
           <input
           onChange={(e)=>dispatch({type:"onpageC",paylod:e.target.value})}
@@ -160,9 +159,9 @@ if(toData){
             من <span>{pages.conterPage}</span>
           </span>
           <ChevronRight  
-          color={'error'}
-            onClick={()=>dispatch({type:"onBack"})}
-          className={`${pages.numberPage === 1 ? "opacity-40" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`} />
+          sx={{color:'#18181b'}}
+          onClick={()=>dispatch({type:"onBack"})}
+          className={`${pages.numberPage === 1 ? "bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`} />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import {SessionProvider} from 'next-auth/react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 const NextPr = dynamic(()=>import('nextjs-progressbar'))
 
@@ -21,7 +22,7 @@ return (
 {/* Lyout Start with Chaldrin with progress */}
 <NextPr
 nonce={`${import('../styles/nprogress.css')}`}
-color="#29D"
+color="#f3f3f3"
 height={4}
 />
 <Head>
@@ -39,9 +40,11 @@ height={4}
 <meta name="theme-color" content="#317efb" />
 </Head>
 
+<ErrorBoundary>
 <SessionProvider session={session} >
 {getLayout(<Component {...pageProps} />)}
 </SessionProvider>
+</ErrorBoundary>
 </>
 )
 

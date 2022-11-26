@@ -1,34 +1,35 @@
 import Layoutauth from "../../components/auth/layoutauth";
-import { skemayup } from "../../lib/vaildetor/vaildetor";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import {skemayup} from "../../lib/vaildetor/vaildetor"
+import {  useState } from "react";
+import { useForm , Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import dynamic from "next/dynamic";
 
-
-
-const ArrowLeftIcon = dynamic(() => import('@heroicons/react/solid/ArrowLeftIcon'), {
+const CircularProgress = dynamic(() => import('../../Loding/Loding'));
+const Container = dynamic(() => import('../../components/auth/layoutForm'));
+const TextField = dynamic(() => import("@mui/joy/TextField"), {
   ssr: false,
-  loading : ()=>''
 });
-const CircularProgress = dynamic(() => import('@mui/material/CircularProgress/CircularProgress'), {
+const Button = dynamic(() => import("@mui/joy/Button"), {
   ssr: false,
-  loading : ()=>''
 });
+
+const Uploud = dynamic(() => import('@heroicons/react/outline/CloudUploadIcon'));
 
 
 
 export default function Signup() {
   
   let [looding , setLooding] = useState(false)
-  let [errorServer , setErrorServer] = useState(null)
 
 
-  const { register , handleSubmit,formState: {errors}} = useForm({
-    mode:'onTouched',
+
+  const {control ,handleSubmit ,trigger , setError , formState:{isValid}} = useForm({
+    mode:'onChange',
     resolver: yupResolver(skemayup),
     criteriaMode:'firstError',
-    reValidateMode:'onChange'
+    reValidateMode:'onChange',
+    shouldFocusError: true,
   });
 
 
@@ -38,8 +39,9 @@ export default function Signup() {
 
 
 
-
-  const onSubmitHandler = async (data) => {
+  const onSubmitHandler = async (data, e) => {
+    setLooding(true)
+    e.preventDefault();
     const { fristname, email, username, password , image } = data;
     let formdata = new FormData();
     formdata.append("fristname", fristname);
@@ -48,141 +50,155 @@ export default function Signup() {
     formdata.append("password", password);
     formdata.append("image", image[0]);
 
+
     let url = process.env.NEXT_PUBLIC_URL + "/api/auth/signup";
 
     const Router = (await import('next/router')).default
     const axios = (await import('axios')).default
-    setLooding(true)
     axios
       .post(url, formdata, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
-        console.log(res.status);
-        if(res.status === 200){
         setLooding(false)
         return res.data && Router.push("/auth")
-      }
-        setLooding(false);
-        return setErrorServer("Error in login ") 
       })
       .catch(e=>{
         setLooding(false);
-        return setErrorServer(e.response.data)})
+        let [frist , scend] = Object.keys(e.response.data)
+        if(frist) setError(frist,{type:'value' , message:e.response.data[frist]})
+        if(scend) setError(scend,{type:'value' , message:e.response.data[scend]})
+        return 
+      })
     };
       
- 
+
 
   return (
 
-    <form
-      onSubmit={handleSubmit(onSubmitHandler)}
-      className="bg-sky-600 gap-2 relative rounded-md p-6 w-[85%] flex flex-col items-center  justify-center font-fontar"
-    >
-     {looding && <CircularProgress
-      className='absolute translate-y-full'
-      />}
-      <ArrowLeftIcon
-        onClick={async () => {
-          const Router = (await import('next/router')).default
-          return Router.push('/auth')
 
-        }}
-        className="absolute w-6 p-1 text-white rounded-sm cursor-pointer hover:opacity-75 text-bold left-4 top-4"
-      />
+      <Container>
 
-{/* Start Form input  */}
-      <div className={'flex flex-col gap-1'}>
-      <label htmlFor="fristname" className={'text-right'}>
-        {"الأسم الأول"}
-      </label>
 
-      <input
-        className={`"px-2 rounded-sm py-1 border-[1.0px] border-transparent border-solid text-right" ${errors.fristname  && " border-red-600 "} focus:border-sky-300 focus:border-2`}
-        type='text'
+      {looding&& <CircularProgress/>}
+      <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col items-center gap-3">
+      {/* Start Form input  */}
+       <Controller
+        control={control}
         name="fristname"
-        id="fristname"
-       {...register('fristname')}
-      />
-      {errors.fristname && (
-        <span className={'text-xs text-right text-red-500'}>{errors.fristname.message}</span>
-      )}
-    </div>
+        defaultValue=''
+        render={({field , fieldState:{error}})=>
+         <TextField
+          {...field}
+          size="sm"
+          type='text'
+          label=": الأسم الأول"
+          required
+          placeholder="أكتب أسمك الأول"
+          error={error && true}
+          helperText={error && error?.message}
+        />}
+        />
 
-    <div className={'flex flex-col gap-1'}>
-      <label htmlFor="username" className={'text-right'}>
-        {"أسم المستخدم"}
-      </label>
-
-      <input
-        className={`${`px-2 rounded-sm py-1 border-[1.0px] border-transparent border-solid text-right`} ${errors.username && "  border-red-600 "}focus:border-sky-300 focus:border-2`}
-        type='text'
+        <Controller
+        control={control}
         name="username"
-        id="username"
-       {...register('username')}
-      />
-      {(errors?.username || errorServer?.username) && (
-        <span className={'text-xs text-right text-red-500'}>{errors.username?.message || errorServer?.username}</span>
-      )}
-    </div>
+        defaultValue=''
+        render={({field , fieldState:{error}})=>
+        <TextField
+          {...field}
+          size="sm"
+          label=": أسم المستخدم"
+          required
+          type='text'
+          placeholder="أكتب اسم المستخدم"
+          error={error && true}
+          helperText={error && error?.message}
+        />}
+        />
 
-    <div className={'flex flex-col gap-1'}>
-      <label htmlFor="email" className={'text-right'}>
-        {"البريد الألكتروني"}
-      </label>
-
-      <input
-               className={`${`px-2 rounded-sm py-1 border-[1.0px] border-transparent border-solid text-right`} ${errors.email&& "  border-red-600 "}focus:border-sky-300 focus:border-2`}
-        type='email'
+        <Controller
+        control={control}
         name="email"
-        id="email"
-       {...register('email')}
-      />
-      {(errors.email || errorServer?.email ) && (
-        <span className={'text-xs text-right text-red-500'}>{errors.email?.message || errorServer.email}</span>
-      )}
-    </div>
+        defaultValue=''
+        render={({field , fieldState:{error}})=>
+        <TextField
+          {...field}
+          required
+          size="sm"
+          label=": البريد الألكتروني"
+          type='email'
+          placeholder="أكتب البريد الألكتروني"
+          error={error && true}
+          helperText={error && error?.message}
+        />}
 
-    <div className={'flex flex-col gap-1'}>
-      <label htmlFor='password' className={'text-right'}>
-        {"كلمة المرور"}
-      </label>
 
-      <input
-        className={`${`px-2 rounded-sm py-1 border-[1.0px] border-transparent border-solid text-right`} ${errors.password && "border-red-600 "}focus:border-sky-300 focus:border-2`}
-        type='password'
+        />
+
+        <Controller
+        control={control}
         name="password"
-        id="password" 
-       {...register('password')}
-  
-      />
-      {errors.password && (
-        <span className={'text-xs text-right text-red-500'}>{errors.password.message}</span>
-      )}
-    </div>
+        defaultValue=''
+        render={({field , fieldState:{error}})=>
+        <TextField
+          {...field}
+          required
+          size="sm"
+          label=': كلمة المرور'
+          type='password'
+          placeholder="أكتب كلمة المرور"
+          error={error && true}
+          helperText={error && error?.message}
+        />}
+        />
 
-
-    <label htmlFor='image' className='text-right'>
-        {"صورة العرض"}
-      </label>
-      <input
-        {...register('image')}
-        type="file"
+        <Controller
+        control={control}
         name="image"
-        id="image"
-        accept="image/*"
-      />
+        defaultValue=''
+        render={({field:{onChange,value,name ,ref} , fieldState:{error}})=>
+        <div className="flex flex-col items-center w-full gap-1">
+        <Button 
+        variant="contained" 
+        component="label"
+        sx={{background:'black !important' , border:`${error ? "1.5px solid red":'none' }`, boxShadow:`${error ? "0px 2px 10px #ff0000bd":'none'}`  , width:'89%', textShadow:'none' , marginBottom:'0' , color:'hsl(0deg 0% 84%)' , ":hover":{backgroundColor:'#0000002b !important' , boxShadow:'none' ,opacity:'80%', color :'white !important' }}}
+        style={{ fontSize:'0.8rem',fontFamily:'Alexandria',gap:'.2rem'}}
+        startDecorator={<Uploud color="#e8eaed" className="h-5"/>}
+        name={name}
+        ref={ref}
+        value={value}
+        onChange={(e)=>onChange(e.target.files)}  
+        onClick={()=> document.body.onfocus = ()=> setTimeout(()=>{
+          trigger("image")
+          return document.body.onfocus = null
+        },200)}
+        >
+     {"أختر صوره"}
+        <input hidden  accept="image/*"  type="file"/>
+       </Button>
+       {error && <span className="font-[Alexandria] text-[#d3232f] text-[.4rem] self-end pr-[8%]">{error.message}</span>}
+       {(!error && value) && <span className="font-[Alexandria] text-[white] text-[.4rem] self-end pr-[8%]"> <span className="text-[#eab301]">{value[0]?.name.split('.')[0].substring(0,10)}&nbsp;</span> :  أسم الصورة </span>}
+       </div>}
+        />
 
-      { errors.image && (
-        <span className="text-xs text-right text-red-500">{errors.image.message}</span>
-      )}
 
-      {/* ENF Form input  */}
 
-      <button  type="submit" className="w-[60%] text-xs bg-white p-2 ">
-        أرسال
-      </button>
-    </form>
+        <Button
+        size="md"
+        variant='soft'
+        color='neutral'
+        type='submit'
+        sx={{marginBottom:0}}
+        disabled={!isValid}
+       >تسجيل عضوية        
+       </Button>
+
+
+
+      </form>
+      </Container>
+
 
   );
 }
@@ -191,7 +207,7 @@ export default function Signup() {
 
 
 Signup.getLayout = function getLayout(page) {
-  return <Layoutauth titel='تسجيل عضوية جديدة' >{page}</Layoutauth>;
+  return <Layoutauth titel='تسجيل عضوية جديدة' isOpen={true} >{page}</Layoutauth>;
 };
 
 

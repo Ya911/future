@@ -1,14 +1,16 @@
 function DecUpdate({Versoin , DateEX , Description }) {
     return (
+
             <>
-            <span>- رقم التحديث: {Versoin.slice(7) || ''}</span>
-            <span>- تاريخ التحديث: {DateEX || ''}</span>
-            <ul className="overflow-visible text-sm text-right list-disc list-inside ">مميزت الأصدار :
+            <span className="text-[.5rem] font-bold" >-ّرقمّ التحديث : <span className='font-bold'>{Versoin.slice(7) || ''}</span></span>
+            <span className="text-[.5rem] font-bold" >-ّتاريخّ التحديث : <span className='font-bold'>{DateEX || ''}</span></span>
+            <ul className="overflow-visible text-[.5rem] font-bold text-right list-decimal list-inside ">مميزاتّ الأصدارِ :
             {Description?.length !== 0 && Description.map(li=>{
-                return <li key={li} className="">{li}</li>
+                return <li  key={li} className="mt-1 text-[.5rem] font-bold">{li + ' .'}</li>
             })}
             </ul>
             </>
+
 
     );
 }

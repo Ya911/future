@@ -22,7 +22,6 @@ const Code = dynamic(() => import("@heroicons/react/solid/CodeIcon"), {
 
 
 
-
 export default function Update({GIT,TOKEN_VERCEL}) {
 
 

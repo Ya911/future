@@ -116,7 +116,7 @@ const getVersoin = async ()=>{
 
        
 
-       {CheakUP.message !== 'التحقق من التحديث' || CheakUP.message === 'لايوجد تحديثات'   && (
+       {(CheakUP.message !== 'التحقق من التحديث' || CheakUP.message !== ' لايوجد تحديثات')  && (
         <div className="flex flex-col gap-1 text-xs w-[100%] text-[#eab301]">
         <UpDectiles {...newVersoinDes}/>
         </div>
@@ -151,7 +151,7 @@ const getVersoin = async ()=>{
         top : 0,
         zIndex : 0,
       }}}   
-        disabled={CheakUP.message !== "أظغط للتحديث" && CheakUP.message !== 'التحقق من التحديث' }
+        disabled={CheakUP.message !== "أظغط للتحديث" || CheakUP.message !== 'التحقق من التحديث' }
         onClick={getVersoin}  endIcon={<Code/>}  variant="outlined" 
         size='small'
          >

@@ -51,6 +51,7 @@ export const viert_accessToken = (token)=>new Promise((resolve,reject)=>{
 
 export const post_refrshToken = (data)=>new Promise((resolve,reject)=>{
 
+
     const op = {
         expiresIn:'20m',
         audience:data._id.toString(),
@@ -62,7 +63,7 @@ export const post_refrshToken = (data)=>new Promise((resolve,reject)=>{
         image:data.image.url || data.image 
     }
     const secret = process.env.JWT_NEXT_REFRESH_TOKEN
-
+    
        jwt.sign(payload,secret,op,(errRf,tokenRf)=>{
 
         if(errRf)return reject({errRf})
@@ -85,7 +86,7 @@ export const viert_refrshToken = (refrshtoken)=>new Promise((resolve,reject)=>{
   
 
        jwt.verify(refrshtoken,secret,(err,paylod)=>{
-        if(err)return reject({err})
+        if(err)return {err}
   
         return resolve({paylod})
 

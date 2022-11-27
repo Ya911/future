@@ -75,7 +75,7 @@ export const authOptions = {
 
   callbacks: {
 
-    async jwt({ token, user, account, isNewUser, profile }) {
+    async jwt({ token, user, account}) {
       if (account && user) {  
         return {
           accessToken: user.tokenAc,

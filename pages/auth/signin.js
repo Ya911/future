@@ -70,7 +70,7 @@ return ()=> clearTimeout(doSmthing)
     if (password.length <= 0 || email.length <= 0)
     return setError({
       password: password.length <= 0 ? "يجب أدخال كلمة مرور" : false,
-      email: email.length <= 0 ? 'يجب أدخال البريد الألكتروني' : false,
+      email: email.length <= 0 ? 'يجب أدخال أسم المستخدم ' : false,
     });
     setError({ password: false, email: false });
 

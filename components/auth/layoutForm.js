@@ -32,6 +32,7 @@ let thems = extendTheme({
       styleOverrides: {
         root: {
           alignItems: "center",
+          width:"100%",
 
           "--FormLabel-margin": "0 0 0.28rem 0",
           "--FormHelperText-margin": "0.35rem 0 0 0",
@@ -51,28 +52,24 @@ let thems = extendTheme({
             "--Input-minHeight": "2.3rem",
             fontFamily: "Noto Kufi Arabic",
             fontSize: ".8rem !important",
-            border: `1px solid #f4f4f4`,
-            borderRadius: ".2rem",
+            border: `3px solid #f4f4f4`,
+            borderRadius: ".4rem",
 
             backgroundColor: "#f4f4f4",
-            boxShadow: "0px 1px 3px #f0d800d6",
+            // boxShadow: "0px 1px 3px #f0d800d6",
             "& ::placeholder": { fontSize: "0.9rem", textAlign: "right" },
             "&.Joy-focused": {
               borderColor: `#eab301`,
-              outline: `3px solid #f0d800d6`,
-              borderRadius: ".2rem",
-              boxShadow: "0px 2px 10px #f0d800d6",
+              borderRadius: ".4rem",
+              boxShadow: "0px 2px 0px #deaa0a , 2px 2px 0px #deaa0a , -2px 2px 0px #deaa0a , -2px -2px 1px #deaa0a , 2px -2px 1px #deaa0a",
             },
             "& .JoyInput-input": { textAlign: "right" , width:'88%' , fontSize: "1rem"},
             "&.Joy-error": {
               borderColor: "red !important",
-              borderRadius: ".2rem",
-              boxShadow: "0px 2px 10px #ff0000bd",
+              borderRadius: ".4rem",
+              boxShadow: "0px 0px 0px #D30002,0px 0px 0px #d30000,0px 0px 0px #ff0000ba,0px 0px 0px #D30000,0px 0px 0px #d30000!important",
               "&.Joy-focused": {
-                borderColor: `red`,
-                outline: `3px solid #ff000075`,
-                borderRadius: ".2rem",
-                boxShadow: "0px 2px 10px #ff000075",
+                // boxShadow: "0px 2px 0px #deaa0a , 2px 2px 0px #deaa0a , -2px 2px 0px #deaa0a , -2px -2px 1px #deaa0a , 2px -2px 1px #deaa0a",
               },
             },
           };

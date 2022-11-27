@@ -36,6 +36,8 @@ const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
 const getVersoin = async ()=>{
 
+
+
   try {
     let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let O = (await import('octokit')).Octokit
@@ -92,8 +94,6 @@ const getVersoin = async ()=>{
     return (
 
         <div  style={{"direction" : "rtl"}}  className="flex flex-row justify-between w-full p-1 overflow-hidden">
-
-
         <div className="flex flex-col justify-center items-center gap-2 shadow-2xl shadow-red p-2 w-[44%] bg-[#eab301] rounded-[0.3rem]">
           <Alert 
           sx={{color:'#eab301' ,justifyContent:'center' , borderColor:'#27272a' , backgroundColor:'black' , borderRadius:'.2rem' , padding:'.4rem' , width:"90%" }}
@@ -115,7 +115,7 @@ const getVersoin = async ()=>{
 
        
 
-       {CheakUP.message !== 'التحقق من التحديث' && (
+       {CheakUP.message !== 'التحقق من التحديث' || CheakUP.message === 'لايوجد تحديثات'   && (
         <div className="flex flex-col gap-1 text-xs w-[100%] text-[#eab301]">
         <UpDectiles {...newVersoinDes}/>
         </div>

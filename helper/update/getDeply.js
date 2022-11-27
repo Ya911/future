@@ -44,7 +44,7 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
     let {readyState } = await key.json();
     if (readyState !== "READY"){
       setProcec(e=>e > 100 ? 100 : e + 7)
-      setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 4000);
+      setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 5000);
     }else{
       let ID_CK_IUPDATE = "PhdujyopN65lVQHz"
 
@@ -61,7 +61,6 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
     }
     
   }).catch(({message})=>{
-    console.log(message);
     throw {message,isUpdate : false }
   })
 

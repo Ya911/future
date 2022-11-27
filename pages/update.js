@@ -77,7 +77,7 @@ const getVersoin = async ()=>{
       setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
       return setTimeout(()=>Router.reload(),5000)
     }
-
+    // 
     if(NeVersontoJson.Versoin === BulidUpdate.Versoin){
       throw {message : ' لايوجد تحديثات ', isUpdate : false}
     }else  return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
@@ -88,6 +88,7 @@ const getVersoin = async ()=>{
   }
 
 }
+
 
 
 
@@ -115,7 +116,7 @@ const getVersoin = async ()=>{
 
        
 
-       {(CheakUP.message !== 'التحقق من التحديث' || CheakUP.message !== ' لايوجد تحديثات')  && (
+       {(CheakUP.message === 'التحقق من التحديث' ? false :  (CheakUP.message === ' لايوجد تحديثات ' ? false : true) )  && (
         <div className="flex flex-col gap-1 text-xs w-[100%] text-[#eab301]">
         <UpDectiles {...newVersoinDes}/>
         </div>
@@ -138,7 +139,7 @@ const getVersoin = async ()=>{
           zIndex:1,
           
         },
-        "& .Mui-disabled":{borderColor:'rgba(0, 0, 0, 0.12) !important'},
+        "&.Mui-disabled":{borderColor:'rgba(0, 0, 0, 0.12) !important' , color:'rgb(234 234 234 / 58%)'},
 
         "::before":{
         content:`""`,
@@ -150,7 +151,7 @@ const getVersoin = async ()=>{
         top : 0,
         zIndex : 0,
       }}}   
-        disabled={CheakUP.message !== "أظغط للتحديث" || CheakUP.message !== 'التحقق من التحديث' }
+        disabled={CheakUP.message === 'التحقق من التحديث' ? false : (CheakUP.message === "أظغط للتحديث" ? false : true)}
         onClick={getVersoin}  endIcon={<Code/>}  variant="outlined" 
         size='small'
          >

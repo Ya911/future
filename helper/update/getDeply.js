@@ -30,7 +30,6 @@ export const DeployProject = async (body, headr , DitelsVersoin) => {
 
     return { message : {id} , isUpdate : false }
   } catch ({ message}) {
-    console.log("fromboe");
     throw { message: message, isUpdate: false };
   }
 };

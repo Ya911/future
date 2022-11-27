@@ -1,4 +1,3 @@
-
 import Perntsidbar from "../components/index/pernt";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -31,40 +30,57 @@ export default function Update({GIT,TOKEN_VERCEL}) {
 
 const [CheakUP , setCheakUP] = useState({message : 'التحقق من التحديث' , isUpdate : false})
 const [newVersoinDes , setnewVersoinDes] = useState({})
-const [prosess , setProsess] =  useState(100)
+const [prosess , setProsess] =  useState(0)
 const BulidUpdate = JSON.parse(process.env.NEXT_PUBLIC_BUILD_ID)
 
 
 const getVersoin = async ()=>{
 
   try {
-
+    let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
     let O = (await import('octokit')).Octokit
     let octokit = new O({auth : GIT})
 
 
     let {content} =  await (await octokit.request('GET /repos/Ya911/future/contents/version.json')).data
-    const NeVersontoJson = {...JSON.parse(Buffer.from(content , 'base64').toString('utf8')) }
-    console.log(NeVersontoJson);
+    const NeVersontoJson = {...JSON.parse(Buffer.from(content , 'base64').toString('utf8'))}
     setnewVersoinDes(NeVersontoJson)
-    console.log(NeVersontoJson);
     
-
+    if(CheakUP.message === "أظغط للتحديث"){
+    let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
+    let body = {
+      gitSource: {
+        type: "github",
+        ref: "main",
+        repoId: 552801563,
+        sha: sha,
+        prId: null,
+      },
+      target: "production",
+      name: "future",
+      source: "git",
+    };
+    let {message : {id}} = await (await import('../helper/update/getDeply')).DeployProject(body , AuthHeade , NeVersontoJson )
+    await (await import('../helper/update/getDeply')).getProjectByID(AuthHeade , id , setProsess , NeVersontoJson)
+    setProsess(0)
+    setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
+    let Router = (await import('next/router')).default
+    return Router.reload()  
+    }
     if(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR !== "null"){
-      let AuthHeade = { "Authorization": `Bearer ${TOKEN_VERCEL}`};
       setCheakUP({message : 'جاري أكمال التحديث', isUpdate : false})
-      await (await import('../helper/update/getDeply')).getProjectByID(AuthHeade , process.env.NEXT_PUBLIC_CHEK_ID_UPDATR, setProsess , newVersoinDes)
+      await (await import('../helper/update/getDeply')).getProjectByID(AuthHeade , process.env.NEXT_PUBLIC_CHEK_ID_UPDATR, setProsess , NeVersontoJson)
+      setProsess(0)
       let Router = (await import('next/router')).default
       setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
-      return Router.reload
+      return Router.reload()
     }
 
-    if(NeVersontoJson.Versoin === BulidUpdate.Versoin)throw {message : ' لايوجد تحديثات ', isUpdate : false}
-    // let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
-    // setSha(sha)
-    return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
+    if(NeVersontoJson.Versoin === BulidUpdate.Versoin){
+      throw {message : ' لايوجد تحديثات ', isUpdate : false}
+    }else  return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
+
   } catch ({message}) {
-    console.log(message);
     setProsess(0)
     return setCheakUP({message : message , isUpdate : false})
   }

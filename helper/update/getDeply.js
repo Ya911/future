@@ -43,7 +43,7 @@ export async function getProjectByID(headr, id, setProcec ,DitelsVersoin) {
     let key = await fetch(urlsi, { headers: headr, method: "GET" });
     let {readyState } = await key.json();
     if (readyState !== "READY"){
-      setProcec(e=>e > 100 ? 100 : e + 7)
+      setProcec(e=>e > 100 ? 100 : e + 8)
       setTimeout(() => resolve(getProjectByID(headr,id, setProcec , DitelsVersoin)), 5000);
     }else{
       let ID_CK_IUPDATE = "PhdujyopN65lVQHz"

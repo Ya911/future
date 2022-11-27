@@ -67,7 +67,8 @@ const getVersoin = async ()=>{
     setProsess(0)
     setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
     let Router = (await import('next/router')).default
-    return Router.reload()  
+
+    return setTimeout(()=> Router.reload(),5000) 
     }
     if(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR !== "null"){
       setCheakUP({message : 'جاري أكمال التحديث', isUpdate : false})
@@ -75,7 +76,7 @@ const getVersoin = async ()=>{
       setProsess(0)
       let Router = (await import('next/router')).default
       setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
-      return Router.reload()
+      return setTimeout(()=>Router.reload(),5000)
     }
 
     if(NeVersontoJson.Versoin === BulidUpdate.Versoin){
@@ -138,6 +139,7 @@ const getVersoin = async ()=>{
           zIndex:1,
           
         },
+        "& .Mui-disabled":{borderColor:'rgba(0, 0, 0, 0.12) !important'},
 
         "::before":{
         content:`""`,

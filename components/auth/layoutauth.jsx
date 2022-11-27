@@ -21,7 +21,7 @@ const ArrowLeftIcon = dynamic(
 const LayoutAuth = ({ titel, children, isOpen }) => {
   return (
     <div
-      className={`w-full relative grid  grid-rows-[repeat(5, minmax(0, auto))] grid-cols-1 justify-items-center h-[40rem] p-5 `}
+      className={`w-full relative grid  grid-rows-[repeat(5, minmax(0, auto))] grid-cols-1 justify-items-center items-center h-[40rem] ${isOpen ? "p-0" : "p-5" }  `}
     >
       {isOpen && (
         <ArrowLeftIcon
@@ -29,7 +29,7 @@ const LayoutAuth = ({ titel, children, isOpen }) => {
             const roter = (await import("next/router")).default;
             roter.push("/auth");
           }}
-          className="absolute p-1 h-5 shadow-[0px_0px_0px_1px_#d7d7d7,0px_0px_0px_3px_#eab301] hover:bg-[#f3f3f3] hover:text-[#eab301] hover:shadow-[0px_0px_0px_4px_#eab301,0px_0px_0px_4px_#d7d7d7] hover:transition hover:ease-in-out hover:duration-[1s]  hover:delay-[250]   text-[#d7d7d7] rounded-2xl cursor-pointer bg-[#222222]  text-bold left-6 top-8"
+          className="absolute p-1 h-7 shadow-[0px_0px_0px_1px_#eab301]   hover:shadow-[0px_0px_0px_2px_#eab301] hover:transition hover:ease-in-out hover:duration-[1s]  hover:delay-[250]   text-[#d7d7d7] rounded-md cursor-pointer bg-[#222222]  text-bold left-6 top-8"
         />
       )}
       <PageTitel titel={titel} />

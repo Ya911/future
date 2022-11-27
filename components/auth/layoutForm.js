@@ -1,6 +1,5 @@
 import { extendTheme, CssVarsProvider } from "@mui/joy/styles";
 import { Container } from "@mui/material";
-import dynamic from "next/dynamic";
 import { memo } from "react";
 
 
@@ -13,14 +12,15 @@ let thems = extendTheme({
       styleOverrides: {
         root: {
           "--joy-radius-sm": ".2rem",
-          width:"87%",
+          width:"100%",
           gap:'.3rem',
+          minHeight:'2.5rem',
           direction:'rtl',
           overflow:'hidden',
           textOverflow:'unset',
           "--Alert-gap":'0rem',
           "--Alert-padding": "0.3rem",
-          fontSize:'.7rem',
+          fontSize:'1rem',
           fontFamily: "Noto Kufi Arabic",
           
 
@@ -35,7 +35,6 @@ let thems = extendTheme({
 
           "--FormLabel-margin": "0 0 0.28rem 0",
           "--FormHelperText-margin": "0.35rem 0 0 0",
-          width: "85%",
           ":hover": { color: "#eab301 !important" },
         },
       },
@@ -46,25 +45,25 @@ let thems = extendTheme({
         root: ({ theme }) => {
           return {
             width: "100%",
-            minHeight: "1.8rem",
+            minHeight: "2.6rem",
             "&:hover": { borderColor: `#eab301 !important` },
             "--Input-focusedHighlight": "none",
             "--Input-minHeight": "2.3rem",
             fontFamily: "Noto Kufi Arabic",
-            fontSize: ".8rem",
+            fontSize: ".8rem !important",
             border: `1px solid #f4f4f4`,
             borderRadius: ".2rem",
 
             backgroundColor: "#f4f4f4",
             boxShadow: "0px 1px 3px #f0d800d6",
-            "& ::placeholder": { fontSize: "0.3rem", textAlign: "right" },
+            "& ::placeholder": { fontSize: "0.9rem", textAlign: "right" },
             "&.Joy-focused": {
               borderColor: `#eab301`,
               outline: `3px solid #f0d800d6`,
               borderRadius: ".2rem",
               boxShadow: "0px 2px 10px #f0d800d6",
             },
-            "& .JoyInput-input": { textAlign: "right" },
+            "& .JoyInput-input": { textAlign: "right" , width:'88%' , fontSize: "1rem"},
             "&.Joy-error": {
               borderColor: "red !important",
               borderRadius: ".2rem",
@@ -86,7 +85,7 @@ let thems = extendTheme({
         root: ({ theme }) => {
           return {
             fontFamily: "Alexandria",
-            fontSize: ".7rem",
+            fontSize: ".9rem",
             fontWeight: 300,
             paddingRight: "1px",
             marginBottom: "7px",
@@ -101,7 +100,7 @@ let thems = extendTheme({
       styleOverrides: {
         root: {
           fontFamily: "Alexandria",
-          fontSize: "10px",
+          fontSize: "`1rem`",
           alignSelf: "flex-end",
           paddingTop: 2,
         },
@@ -114,15 +113,15 @@ let thems = extendTheme({
         root: {
           paddingInline: ".5rem",
           fontFamily: "Noto Kufi Arabic",
-          fontSize: ".8rem",
+          fontSize: ".9rem",
           color: "hsl(0deg 100% 96%)",
           textShadow: "0px 0px 1px black",
           fontWeight: 600,
           borderRadius: ".2rem",
-          minHeight: "1.9rem",
-          width: "87%",
+          minHeight: "2.8rem",
+          width: "100%",
           backgroundColor: "#eab301 !important",
-          marginBottom: "1.5rem",
+          // marginBottom: "1.5rem",
           marginTop: ".5rem",
           ":hover": {
             backgroundColor: "#d7d7d7 !important",
@@ -144,28 +143,29 @@ let thems = extendTheme({
   },
 });
 
-function LayoutForm({children}) {
+function LayoutForm({children , rouls}) {
   return (
     <div
-      className=" 
-        relative flex flex-col  items-center  w-[76.666667%] p-4 mt-5 rounded-[0.6rem]
-        before:absolute before:left-[-2%]  before:h-8 before:w-[calc(100%_+_4%)]
-        before:bottom-[-2%] before:shadow-[rgba(234,179,1,1)_0px_4px,rgba(234,179,1,0.80)_0px_11px,rgba(234,179,1,0.70)_0px_17px] before:rounded-[0.8rem]
-        after:absolute after:right[-2%]  after:h-12 after:z-[-1] after:w-[calc(100%_+_4%)]
-        after:top-[-2%] after:shadow-[rgb(215_215_215)_0px_-12px] after:rounded-[0.8rem]
-        "
+      className={`
+        relative flex flex-col  items-center  w-[60.666667%] p-1 rounded-[0.6rem]
+        before:absolute before:left-[-2%]  before:h-12 before:w-[calc(100%_+_4%)]
+        before:bottom-[-2%] ${rouls} before:rounded-[0.8rem]
+        after:absolute after:right[-2%]  after:h-20 after:z-[-1] after:w-[calc(100%_+_4%)]
+        after:top-[-2%]  after:rounded-[0.8rem]
+        `}
     >
       <Container
         fixed
         sx={{
-          display: "flex",
-          gap: ".5rem",
+          display: "grid",
+          gap: ".7rem",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: 'center',
           margin:'auto',
-          padding: 0,
+          padding: '0 !important',
           position:'relative',
+          justifyItems:'center'
         }}
       >
         <CssVarsProvider theme={thems} >{children}</CssVarsProvider>

@@ -77,8 +77,7 @@ export default function Signup() {
   return (
 
 
-      <Container>
-
+      <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_.3rem,rgba(234,179,1,0.80)_0px_.5rem,rgba(234,179,1,0.70)_0px_.9rem] after:shadow-[rgb(215_215_215)_0px_-1.2rem]"}>
 
       {looding&& <CircularProgress/>}
       <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col items-center gap-3">
@@ -162,7 +161,7 @@ export default function Signup() {
         <Button 
         variant="contained" 
         component="label"
-        sx={{background:'black !important' , border:`${error ? "1.5px solid red":'none' }`, boxShadow:`${error ? "0px 2px 10px #ff0000bd":'none'}`  , width:'89%', textShadow:'none' , marginBottom:'0' , color:'hsl(0deg 0% 84%)' , ":hover":{backgroundColor:'#0000002b !important' , boxShadow:'none' ,opacity:'80%', color :'white !important' }}}
+        sx={{background:'black !important' , border:`${error ? "1.5px solid red":'none' }`, boxShadow:`${error ? "0px 2px 10px #ff0000bd":'none'}`  , width:'100%', textShadow:'none' , marginTop:'0' , color:'hsl(0deg 0% 84%)' , ":hover":{backgroundColor:'#0000002b !important' , boxShadow:'none' ,opacity:'80%', color :'white !important' }}}
         style={{ fontSize:'0.8rem',fontFamily:'Alexandria',gap:'.2rem'}}
         startDecorator={<Uploud color="#e8eaed" className="h-5"/>}
         name={name}
@@ -177,7 +176,7 @@ export default function Signup() {
      {"أختر صوره"}
         <input hidden  accept="image/*"  type="file"/>
        </Button>
-       {error && <span className="font-[Alexandria] text-[#d3232f] text-[.4rem] self-end pr-[8%]">{error.message}</span>}
+       {error && <span className="font-[Alexandria] text-[#d3232f] text-[0.75rem] self-end ">{error.message}</span>}
        {(!error && value) && <span className="font-[Alexandria] text-[white] text-[.4rem] self-end pr-[8%]"> <span className="text-[#eab301]">{value[0]?.name.split('.')[0].substring(0,10)}&nbsp;</span> :  أسم الصورة </span>}
        </div>}
         />

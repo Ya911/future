@@ -58,7 +58,7 @@ let ckesValusDown = (value ,l)=> setError((e)=>{
 useEffect(()=>{
 let doSmthing = setTimeout(()=>{
 return setErrorAlert(false)
-},3000)
+},300000)
 
 return ()=> clearTimeout(doSmthing) 
 },[setErrorAlert , errorAlert])
@@ -113,9 +113,10 @@ return ()=> clearTimeout(doSmthing)
 
   return (
 
-        <div className="h-[20rem]  w-full flex justify-center ">
-        <Container>
+
+        <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_1.5rem,rgba(234,179,1,0.80)_0px_2rem,rgba(234,179,1,0.70)_0px_2.5rem] after:shadow-[rgb(215_215_215)_0px_-2rem]"}>
         {loding && <CircularProgress />}
+        <form  className="flex flex-col items-center w-full gap-3 mt-5 mb-4">
         {errorAlert && (
           <Alert     
             startDecorator={errorAlert === 'جاري تحويلك' ? <CheckIcon className="h-5"/> :  <Warnin className="h-5"/> }
@@ -129,7 +130,7 @@ return ()=> clearTimeout(doSmthing)
         )}
           <TextField
             size="sm"
-            label="أسم المستخدم"
+            label=" : أسم المستخدم"
             value={email}
             name="email"
             placeholder="أكتب أسم المستخدم "
@@ -141,7 +142,7 @@ return ()=> clearTimeout(doSmthing)
 
           <TextField
             size="sm"
-            label="كلمة المرور"
+            label=": كلمة المرور"
             helperText={error?.password && error?.password}
             onChange={(e) => valuWitheay(e)}
             onBlur={({target})=> ckesValusDown(target.name , target.value.length)}
@@ -151,7 +152,7 @@ return ()=> clearTimeout(doSmthing)
             minLength={6}
             startDecorator={
             <EyeIcon
-            height={15}
+            height={20}
             onMouseDown={handleMouseDownPassword}
             onClick={textShow}
             />
@@ -160,7 +161,7 @@ return ()=> clearTimeout(doSmthing)
             type={eyeicon ? "password" : "text"}
             placeholder="أكتب كلمة المرور"
           />
-          <span className="self-end pr-[7%] text-[.5rem] text-white cursor-pointer hover:opacity-80 ">
+          <span className="self-start w-[70%] text-[.3rem] font-[Alexandria] text-white cursor-pointer hover:opacity-80 ">
                   هل نسيت كلمة السر ؟
           </span>
 
@@ -173,9 +174,10 @@ return ()=> clearTimeout(doSmthing)
           >
             تسجيل الدخول
           </Button>
+          </form>
 
       </Container>
-      </div>
+   
 
   );
 }

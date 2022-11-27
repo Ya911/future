@@ -38,8 +38,8 @@ export default function Index (){
 
 
 return (
-<div className={`flex flex-col items-center w-full mb-3 gap-3 mt-[0.5rem] font-fontar `}>
-<Link href='/auth/signin'><Button sx={{":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
+<div className={`flex flex-col items-center w-full gap-3 mt-[0.5rem] font-fontar `}>
+<Link href='/auth/signin'><Button sx={{marginBottom:'.8rem',":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
 <Link href='/auth/signup'><Button sx={{"&:hover": {marginTop:'.5rem'},...scSty}}variant='soft' color='neutral'   id='Reg'>التسجيل</Button></Link>
 </div>
 )

@@ -113,7 +113,7 @@ return ()=> clearTimeout(doSmthing)
 
   return (
 
-        <div className="h-[20rem] w-full flex justify-center ">
+        <div className="h-[20rem]  w-full flex justify-center ">
         <Container>
         {loding && <CircularProgress />}
         {errorAlert && (

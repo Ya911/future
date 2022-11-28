@@ -54,10 +54,12 @@ let thems = extendTheme({
             fontSize: ".8rem !important",
             border: `3px solid #f4f4f4`,
             borderRadius: ".4rem",
-
             backgroundColor: "#f4f4f4",
-            // boxShadow: "0px 1px 3px #f0d800d6",
+            "--Input-paddingInline": ".7rem",
+                
+    
             "& ::placeholder": { fontSize: "0.9rem", textAlign: "right" },
+            "& .JoyInput-startDecorator":{marginLeft :'.3rrm !im'},
             "&.Joy-focused": {
               borderColor: `#eab301`,
               borderRadius: ".4rem",
@@ -71,6 +73,7 @@ let thems = extendTheme({
               "&.Joy-focused": {
                 // boxShadow: "0px 2px 0px #deaa0a , 2px 2px 0px #deaa0a , -2px 2px 0px #deaa0a , -2px -2px 1px #deaa0a , 2px -2px 1px #deaa0a",
               },
+      
             },
           };
         },

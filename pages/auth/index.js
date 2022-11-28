@@ -39,7 +39,7 @@ export default function Index (){
 
 return (
 <div className={`grid grid-cols-1 justify-items-center grid-row-2 items-center w-full  font-fontar `}>
-<Link href='/auth/signin'><Button sx={{marginBottom:'.8rem',":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
+<Link href='/auth/signin'><Button sx={{marginBottom:'.6rem',":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
 <Link href='/auth/signup'><Button sx={{"&:hover": {marginTop:'.5rem'},...scSty}}variant='soft' color='neutral'   id='Reg'>التسجيل</Button></Link>
 </div>
 )

@@ -161,7 +161,7 @@ export default function Signup() {
         <Button 
         variant="contained" 
         component="label"
-        sx={{background:'black !important' , border:`${error ? "3px solid red":'none' }`, boxShadow:`${error ? "0px 0px 0px #ff0000bd":'none'}`  , width:'100%', textShadow:'none' , marginTop:'0' , color:'hsl(0deg 0% 84%)' , ":hover":{backgroundColor:'#0000002b !important' , boxShadow:'none' ,opacity:'80%', color :'white !important' }}}
+        sx={{background:'black !important' , border:`${error ? "3px solid red":'none' }`, boxShadow:`${error ? "0px 0px 0px #ff0000bd":'none'}`  , width:'100%', textShadow:'none' , marginTop:'.1rem' , color:'hsl(0deg 0% 84%)' , ":hover":{backgroundColor:'#0000002b !important' , boxShadow:'none' ,opacity:'80%', color :'white !important' }}}
         style={{ fontSize:'0.8rem',fontFamily:'Alexandria',gap:'.2rem'}}
         startDecorator={<Uploud color="#e8eaed" className="h-5"/>}
         name={name}

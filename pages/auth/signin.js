@@ -116,7 +116,7 @@ return ()=> clearTimeout(doSmthing)
 
         <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_1.5rem,rgba(234,179,1,0.80)_0px_2rem,rgba(234,179,1,0.70)_0px_2.5rem] after:shadow-[rgb(215_215_215)_0px_-2rem]"}>
         {loding && <CircularProgress />}
-        <form  className="flex flex-col items-center w-full gap-3 mt-5 mb-4">
+        <form  className="grid gap-[.8rem] items-center w-full grid-rows-[4] mt-5 mb-4">
         {errorAlert && (
           <Alert     
             startDecorator={errorAlert === 'جاري تحويلك' ? <CheckIcon className="h-5"/> :  <Warnin className="h-5"/> }
@@ -161,7 +161,7 @@ return ()=> clearTimeout(doSmthing)
             type={eyeicon ? "password" : "text"}
             placeholder="أكتب كلمة المرور"
           />
-          <span className="self-start w-[70%] text-[.3rem] font-[Alexandria] text-white cursor-pointer hover:opacity-80 ">
+          <span className="self-start w-[70%] text-[.8rem] font-[Alexandria] text-white cursor-pointer hover:opacity-80 mb-3 ">
                   هل نسيت كلمة السر ؟
           </span>
 

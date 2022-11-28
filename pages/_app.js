@@ -28,7 +28,7 @@ height={4}
 <Head>
 <meta charSet="utf-8"/>
 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5 height=device-height"/>
 <meta name="description" content="موقع تجريبي لأختبار الأنتاجية"/>
 <meta name="keywords" content="Keywords" />
 <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"/>

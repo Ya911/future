@@ -10,30 +10,33 @@ html {
 @apply  font-fonten;
 } 
 
-
-
-
-}
-
-
 body{
-box-sizing: border-box;
-padding: 0;
-margin: 0;
-font-family: 'Rubik', sans-serif;
-background-color: #222222;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: #222222;
+    
+    
+    }
+
+
+    a{
+        color: inherit;
+        text-decoration: none;
+        }
+        
+        
+        
+        button ,input {
+        outline: none;
+        border: none;
+        appearance: none;
+        }
+
 
 }
 
-a{
-color: inherit;
-text-decoration: none;
-}
 
 
 
-button ,input {
-outline: none;
-border: none;
-appearance: none;
-}

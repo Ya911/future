@@ -55,11 +55,11 @@ function PerntSidbar({titel, children}) {
 
 
           {/* Part 1 Start  */}
-          <div className="flex flex-col gap-6 px-3 pt-5 pb-5">
+          <div className="flex flex-col justify-between px-2 pt-5 ">
           {/* Log Start */}
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <ul className="flex flex-col gap-3 text-right">
+          <ul className="flex flex-col justify-between text-right">
           <LoopLink/>
           </ul>
           {/* Lust Number 1 END */}

@@ -3,7 +3,7 @@ import {memo} from 'react'
 
 function MyLogo() {
     return (
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col mb-6 ">
         <div className="relative w-full h-20 overflow-hidden">
           <Image
             objectFit="contain"

@@ -15,7 +15,7 @@ function LoopLinkIndex() {
           return (
             <li key={id}>
               <Link href={Herf}>
-                <div className={`flex flex-row-reverse justify-center px-2 py-1 cursor-pointer ${window.location.pathname === Herf && "bg-zinc-900 rounded-md"  } hover:rounded-md hover:bg-zinc-900`}>
+                <div className={`flex flex-row-reverse my-2  justify-center px-1 py-1 cursor-pointer ${window.location.pathname === Herf && "bg-zinc-900 rounded-md"  } hover:rounded-md hover:bg-zinc-900`}>
                   <Icon className="w-4 h-5" />
                 </div>
               </Link>

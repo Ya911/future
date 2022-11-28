@@ -114,9 +114,9 @@ return ()=> clearTimeout(doSmthing)
   return (
 
 
-        <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_1.5rem,rgba(234,179,1,0.80)_0px_2rem,rgba(234,179,1,0.70)_0px_2.5rem] after:shadow-[rgb(215_215_215)_0px_-2rem]"}>
+        <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_1.5rem,rgba(234,179,1,0.80)_0px_2rem,rgba(234,179,1,0.70)_0px_2.5rem] after:shadow-[rgb(215_215_215)_0px_-2rem] mt-12"}>
         {loding && <CircularProgress />}
-        <form  className="grid gap-[.8rem] items-center w-full grid-rows-[4] mt-5 mb-4">
+        <form  className="grid gap-[.8rem] items-center w-full grid-rows-[4] mt-9 mb-7  ">
         {errorAlert && (
           <Alert     
             startDecorator={errorAlert === 'جاري تحويلك' ? <CheckIcon className="h-5"/> :  <Warnin className="h-5"/> }

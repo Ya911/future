@@ -21,7 +21,7 @@ const ArrowLeftIcon = dynamic(
 const LayoutAuth = ({ titel, children, isOpen }) => {
   return (
     <div
-      className={`w-full relative grid  grid-rows-[repeat(${isOpen?"1":"4"},minmax(0,auto))] content-evenly space-x-1 justify-items-center  h-screen ${isOpen ? "p-0" : "p-[.3rem]" }  `}
+      className={`w-full relative  flex flex-col items-center h-[38rem] xs:h-[40rem] ${isOpen ? "p-0 justify-center" : "p-[.3rem] justify-between " }  `}
     >
       {isOpen && (
         <ArrowLeftIcon

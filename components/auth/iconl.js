@@ -2,7 +2,7 @@ import { memo } from "react";
 
 function Iconl() {
   return (
-    <div className="relative flex justify-center w-full ">
+    <div className="relative flex justify-center w-full row-span-1 ">
       {/* <MicrophoneIcon  className="h-40 bg-clip-content bg-gradient-to-r from-cyan-500 to-blue-500"/> */}
 
       <svg

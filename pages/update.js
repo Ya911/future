@@ -26,7 +26,6 @@ export default function Update({GIT,TOKEN_VERCEL}) {
 
 
 
-
 const [CheakUP , setCheakUP] = useState({message : 'التحقق من التحديث' , isUpdate : false})
 const [newVersoinDes , setnewVersoinDes] = useState({})
 const [prosess , setProsess] =  useState(0)
@@ -48,6 +47,7 @@ const getVersoin = async ()=>{
     setnewVersoinDes(NeVersontoJson)
     
     if(CheakUP.message === "أظغط للتحديث"){
+    setCheakUP({message : "جاري تنزيل التحديث", isUpdate : false})
     let {sha} = await (await octokit.request('GET /repos/Ya911/future/commits/main')).data
     let body = {
       gitSource: {
@@ -66,7 +66,6 @@ const getVersoin = async ()=>{
     setProsess(0)
     setCheakUP({message : "جاري تحديث الصفحة", isUpdate : false})
     let Router = (await import('next/router')).default
-
     return setTimeout(()=> Router.reload(),5000) 
     }
     if(process.env.NEXT_PUBLIC_CHEK_ID_UPDATR !== "null"){
@@ -80,7 +79,7 @@ const getVersoin = async ()=>{
     // 
     if(NeVersontoJson.Versoin === BulidUpdate.Versoin){
       throw {message : ' لايوجد تحديثات ', isUpdate : false}
-    }else  return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
+    }else return setCheakUP({message : "أظغط للتحديث" , isUpdate : true}) 
 
   } catch ({message}) {
     setProsess(0)

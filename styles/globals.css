@@ -12,30 +12,7 @@ html {
 
 
 
-/* MYClass Css END */
-@layer utilities {
-.yasir__foc:focus{
-border: dashed 1px white;
 
-}
-
-.yasir__inv:invalid{
-border : 1.0px solid #e11d48;
-}
-.yasir__vailed:valid{
-    border : 1.0px  #e11d48;
-    }
-
-
-}
-
-
-/* MYClass Css END */
-
-
-body {
-@apply dark:bg-DarkMy dark:bg-none bg-gradient-to-r from-cyan-500 to-blue-500
-}
 }
 
 
@@ -44,6 +21,7 @@ box-sizing: border-box;
 padding: 0;
 margin: 0;
 font-family: 'Rubik', sans-serif;
+background-color: #222222;
 
 }
 

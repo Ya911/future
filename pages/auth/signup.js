@@ -77,7 +77,7 @@ export default function Signup() {
   return (
 
 
-      <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_.3rem,rgba(234,179,1,0.80)_0px_.5rem,rgba(234,179,1,0.70)_0px_.9rem] after:shadow-[rgb(215_215_215)_0px_-1.2rem]"}>
+      <Container rouls={"before:shadow-[rgba(234,179,1,1)_0px_.3rem,rgba(234,179,1,0.80)_0px_.5rem,rgba(234,179,1,0.70)_0px_.9rem] after:shadow-[rgb(215_215_215)_0px_-1.2rem] mt-8"}>
 
       {looding&& <CircularProgress/>}
       <form onSubmit={handleSubmit(onSubmitHandler)} className="grid gap-[.8rem] items-center w-full grid-rows-[4] ">

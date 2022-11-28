@@ -6,7 +6,7 @@ function Iconl() {
       {/* <MicrophoneIcon  className="h-40 bg-clip-content bg-gradient-to-r from-cyan-500 to-blue-500"/> */}
 
       <svg
-        className="h-[11rem] mb-1"
+        className="h-[11rem]"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"

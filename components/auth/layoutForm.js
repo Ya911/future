@@ -59,7 +59,7 @@ let thems = extendTheme({
                 
     
             "& ::placeholder": { fontSize: "0.9rem", textAlign: "right" },
-            "& .JoyInput-startDecorator":{marginLeft :'.3rrm !im'},
+            "& .JoyInput-startDecorator":{marginLeft :'.3rem'},
             "&.Joy-focused": {
               borderColor: `#eab301`,
               borderRadius: ".4rem",

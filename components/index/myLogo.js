@@ -14,7 +14,7 @@ function MyLogo() {
             />
         </div>
 
-        <h2 className="max-w-[99%] text-[#e6e6e6] text-[0.3rem] text-center font-fonten">
+        <h2 className="text-[#e6e6e6] text-[0.5rem] text-center font-fonten">
           Made By Ya
         </h2>
       </div>

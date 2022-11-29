@@ -134,13 +134,10 @@ return ()=> clearTimeout(doSmthing)
             value={email}
             name="email"
             placeholder="أكتب أسم المستخدم "
-            autoComplete
             onChange={(e) => setEmail(e.target.value)}
             onBlur={({target})=>ckesValusDown(target.name , target.value.length)}
-            error={error?.email && true}
-            autoFocus={true}
-            autoSave
-            helperText={error?.email && error?.email}
+            error={error?.email}
+            helperText={error?.email}
           />
 
           <TextField
@@ -151,10 +148,8 @@ return ()=> clearTimeout(doSmthing)
             onBlur={({target})=> ckesValusDown(target.name , target.value.length)}
             value={password}
             name="password"
-            autoSave
             error={error?.password && true}
             minLength={6}
-            autoComplete
             startDecorator={
             <EyeIcon
             height={20}

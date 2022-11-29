@@ -49,7 +49,7 @@ function PerntSidbar({titel, children}) {
       <div className="relative flex w-full h-screen py-3">
         <PageTitel titel={titel}/>        
         <div
-        className="relative justify-between overflow-hidden  h-full text-white  w-[13%]  max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
+        className="relative justify-between overflow-hidden h-screen text-white  w-[13%]  max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
       >
         {/* Start list All */}
 

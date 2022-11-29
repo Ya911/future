@@ -21,7 +21,7 @@ const ArrowLeftIcon = dynamic(
 const LayoutAuth = ({ titel, children, isOpen }) => {
   return (
     <div
-      className={`w-full relative h-screen min-h-screen  flex flex-col items-center p-[.3rem] ${isOpen ? "justify-center":"justify-evenly"} `}
+      className={`w-full relative h-screen max-h-screen flex flex-col items-center p-[1%] ${isOpen ? "justify-center":"justify-evenly"} `}
     >
       {isOpen && (
         <ArrowLeftIcon
@@ -29,14 +29,25 @@ const LayoutAuth = ({ titel, children, isOpen }) => {
             const roter = (await import("next/router")).default;
             roter.push("/auth");
           }}
-          className="absolute p-1 h-7 shadow-[0px_0px_0px_1px_#eab301]   hover:shadow-[0px_0px_0px_2px_#eab301] hover:transition hover:ease-in-out hover:duration-[1s]  hover:delay-[250]   text-[#d7d7d7] rounded-md cursor-pointer bg-[#222222]  text-bold left-6 top-8"
+          className="absolute z-1 p-1 h-10 xs:h-7 sm:h-8 hover:ring-inset hover:ring-1 hover:ring-slate-200   text-[#d7d7d7] rounded-[.2rem] cursor-pointer  left-6 top-8"
         />
       )}
       <PageTitel titel={titel} />
       {!isOpen && <Iconl />}
       {!isOpen && <Wlcome />}
       {children}
-      {!isOpen && <Tuche />}
+
+      {!isOpen &&
+      <>
+        <span className="font-light text-white font-fontar">
+        {" "}
+        أو الدخول السريع
+        <br />
+        مع معرف اللمس
+      </span>
+      <Tuche />
+      </>
+      }
     </div>
   );
 };

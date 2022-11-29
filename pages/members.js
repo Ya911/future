@@ -121,8 +121,8 @@ if(toData){
 
 
       {/* Foter Pages */}
-      <div className="flex justify-between w-full px-3 mb-2">
-        <div className="flex gap-2 w-[30%] items-center">
+      <div className="flex justify-between w-full px-6 mb-2 xs:px-2 sm:px-3">
+        <div className="flex justify-between w-[30%] max-w-[6rem] items-center">
           {/* fix input */}
 
           <select
@@ -139,29 +139,29 @@ if(toData){
           <span className="text-xs text-white ">العناصر</span>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex justify-between items-center overflow-hidden  w-[20%] xs:min-w-[35%] xs:w-[37%] sm:w-[25%] sm:max-w-[27%]">
           <ChevronLeft  
-          sx={{color:'#18181b'}}
+          sx={{color:'#18181b' , height:'1.3rem'}}
           onClick={()=>dispatch({type:"onNext"})}
-          className={`${pages.conterPage === pages.numberPage ?"bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`}/>
-          <label htmlFor="number_page">
+          className={`${pages.conterPage === pages.numberPage ?"bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } rounded-[.1rem]`}/>
+          <label  htmlFor="number_page">
           <input
           onChange={(e)=>dispatch({type:"onpageC",paylod:e.target.value})}
           value={pages.numberPage}
-            className="h-6 text-xs text-center text-black border-none rounded-sm outline-none w-7 bg-slate-100"
+            className="text-[.87rem] text-center text-black border-none rounded-[.1rem] w-7 bg-slate-100"
             type="text"
             name="number_page"
             id="number_page"
           />
           </label>
 
-          <span className="flex gap-1 text-white">
-            من <span>{pages.conterPage}</span>
+          <span className="flex text-sm text-white">
+            من <span className="ml-1">{pages.conterPage}</span>
           </span>
           <ChevronRight  
-          sx={{color:'#18181b'}}
+          sx={{color:'#18181b' , height:'1.3rem'}}
           onClick={()=>dispatch({type:"onBack"})}
-          className={`${pages.numberPage === 1 ? "bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } h-6  w-5 rounded-sm`} />
+          className={`${pages.numberPage === 1 ? "bg-[#ffffff] opacity-25" : "bg-[#eab301] cursor-pointer" } rounded-[.1rem]`} />
         </div>
       </div>
     </div>

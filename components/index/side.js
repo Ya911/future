@@ -22,8 +22,8 @@ function LayoutIndex({children}) {
 
     return (
      
-    <div className="relative w-[80%] grow h-[37.5rem] px-3 overflow-hidden font-fontar ">
-    <div className="flex flex-col rounded-xl w-full  relative h-[100%] gap-10  drop-shadow-sm bg-zinc-800">
+    <div className="relative w-[80%] grow h-full px-3  overflow-hidden font-fontar ">
+    <div className="flex flex-col z-0 w-full relative h-[100%]  bg-zinc-800">
 
           <Side3/>
           <Side1 />   

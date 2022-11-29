@@ -19,8 +19,6 @@ function Side3() {
             height: "100%",
             position: "absolute",
             zIndex: -1,
-            borderTopLeftRadius:".6rem",
-            borderBottomLeftRadius:".6rem"
             
           }}
           elevation={3}

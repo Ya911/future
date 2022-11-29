@@ -18,8 +18,8 @@ export default function DateAndTime() {
   return (
     <>
       {/* Time H */}
-      <div className="flex items-center flex-col justify-center w-full gap-3 font-bold overflow-hidden text-md font-fontar text-[#fcd34d] p-2 ">
-        <div className="flex justify-end cursor-default rounded-xl hover:opacity-70 font-fontar ">
+      <div className="flex items-center flex-col justify-center w-full font-bold overflow-hidden text-md font-fontar text-[#fcd34d] p-2 ">
+        <div className="flex justify-end mb-4 cursor-default rounded-xl hover:opacity-70 font-fontar ">
         <DateT data={"Ar"}/>
           <span className="p-2 px-4 text-sm text-white shadow-xl text-end">{new Date().toLocaleDateString('ar-SA',{dateStyle:'long'}).toString() || ''}</span>
         </div>

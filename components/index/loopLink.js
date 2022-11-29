@@ -12,11 +12,12 @@ function LoopLinkIndex() {
       {navbar &&
         navbar.map((n) => {
           const { Herf, id, Icon  } = n;
+       
           return (
             <li key={id}>
               <Link href={Herf}>
-                <div className={`flex flex-row-reverse my-2  justify-center px-1 py-1 cursor-pointer ${window.location.pathname === Herf && "bg-zinc-900 rounded-md"  } hover:rounded-md hover:bg-zinc-900`}>
-                  <Icon className="w-4 h-5" />
+                <div className={`flex flex-row-reverse py-[.4rem] px-[.4rem] items-center  cursor-pointer ${window.location.pathname === Herf && "bg-zinc-900 rounded-md"  } hover:rounded-md hover:bg-zinc-900`}>
+                  <Icon className="h-[1.1rem]" />
                 </div>
               </Link>
             </li>

@@ -46,20 +46,20 @@ let thems = extendTheme({
         root: ({ theme }) => {
           return {
             width: "100%",
-            minHeight: "2.6rem",
+            maxWidth:"100%",
             "&:hover": { borderColor: `#eab301 !important` },
             "--Input-focusedHighlight": "none",
-            "--Input-minHeight": "2.3rem",
+            "--Input-minHeight": "2.6rem",
             fontFamily: "Noto Kufi Arabic",
             fontSize: ".8rem !important",
             border: `3px solid #f4f4f4`,
             borderRadius: ".4rem",
             backgroundColor: "#f4f4f4",
-            "--Input-paddingInline": ".7rem",
-                
-    
-            "& ::placeholder": { fontSize: "0.9rem", textAlign: "right" },
-            "& .JoyInput-startDecorator":{marginLeft :'.3rem'},
+            "--Input-paddingInline": "0",
+            padding:'0 .8rem',
+            // paddingInline:'0px',
+            "& ::placeholder": { fontSize: "0.9rem", textAlign: "right"  },
+            // "& .JoyInput-startDecorator":{marginLeft :'.3rem'},
             "&.Joy-focused": {
               borderColor: `#eab301`,
               borderRadius: ".4rem",
@@ -147,7 +147,7 @@ function LayoutForm({children , rouls}) {
   return (
     <div
       className={`
-        relative flex flex-col  items-center  w-[60.666667%] p-1 rounded-[0.6rem]
+        relative flex flex-col  items-center xs:w-[60.666667%] sm:w-[45%]  w-[40%] p-1 rounded-[0.6rem]
         before:absolute before:left-[-2%]  before:h-12 before:w-[calc(100%_+_4%)]
         before:bottom-[-2%] ${rouls} before:rounded-[0.8rem]
         after:absolute after:right[-2%]  after:h-20 after:z-[-1] after:w-[calc(100%_+_4%)]

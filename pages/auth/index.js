@@ -15,7 +15,7 @@ const scSty = {
        fontWeight: 900,
        borderRadius: ".2rem",
        minHeight: "2.5rem",
-       width: "55%",
+       width: "100%",
 
        backgroundColor: "#eab301 !important",
        ":hover": {
@@ -38,7 +38,7 @@ export default function Index (){
 
 
 return (
-<div className={`grid grid-cols-1 justify-items-center grid-row-2 items-center w-full  font-fontar `}>
+<div className={`grid grid-cols-1 justify-items-center max-w-[20%] grid-row-2   xs:max-w-[55%] sm:max-w-[40%] w-full  items-center   font-fontar `}>
 <Link href='/auth/signin'><Button sx={{marginBottom:'.6rem',":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
 <Link href='/auth/signup'><Button sx={{"&:hover": {marginTop:'.5rem'},...scSty}}variant='soft' color='neutral'   id='Reg'>التسجيل</Button></Link>
 </div>

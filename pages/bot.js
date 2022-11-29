@@ -67,7 +67,7 @@ function Bot() {
       if(!send0.ok){
         throw {message : "التوكين غير صالح"}
       }
-      let send1 = await fetch("/api/bot", {
+      let send1 = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/bot`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
@@ -91,10 +91,10 @@ function Bot() {
   ];
 
   return (
-    <div className="flex flex-col items-center w-full gap-4">
+    <div className="flex flex-col items-center h-[40%] justify-between w-full">
       {/* Start Form */}
       <form
-        className="flex flex-col items-center gap-2"
+        className="flex flex-col items-center h-[55%] justify-between"
         onSubmit={handleSubmit(Submit)}
       >
         {(errors?.server_error || isConcect) &&

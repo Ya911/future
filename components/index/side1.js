@@ -24,11 +24,15 @@ function Side1() {
 
 
     return (
-        <div className="flex flex-row-reverse items-center gap-2 p-4 overflow-hidden text-amber-300">
-        {Icon &&  <Icon className="h-5"/>}
-        <h2 className="text-sm ">{Text && Text}</h2>
-        <br/>
-        <h2 className="text-sm">{Versoin.slice(7) || ''}</h2>
+        <div className="flex w-[100%] mb-5 xs:mb-8 sm:mb-10  flex-row-reverse p-[5%] xs:p-[7%] sm:p-[8%] items-center justify-between text-amber-300">
+        {Icon &&  
+        <div className="flex flex-row-reverse items-center ">
+        <Icon className="h-12 pl-3 sm:h-8 xs:h-5 xs:pl-2"/>
+        <h2 className="text-4xl sm:text-2xl xs:text-base ">{Text && Text}</h2>
+        </div>
+        }
+
+        <h2 className="font-bold tracking-[-0.10em] truncate max-w-[50%] w-[50%]  font-[monospace] text-3xl sm:tracking-[-0.15em] xs:tracking-[-0.20em] sm:text-2xl xs:text-base text-[#27272a] ">{Versoin.slice(7)+" " + ":رقم النسخة " || ''}</h2>
       </div>
     );
 }

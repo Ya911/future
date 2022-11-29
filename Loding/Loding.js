@@ -5,7 +5,7 @@ function LodingPage() {
 
 
     sx={{
-        boxShadow:'inset 4px 2px 1px #eab401 , inset 8px 4px 1px #d7d7d7',
+        boxShadow:'inset 4px 12px 0px #eab401 , inset -6px 11px 0px #d7d7d7',
         borderRadius: "2rem",
     "& .MuiCircularProgress-circle":{stroke :'none'}
 
@@ -13,7 +13,9 @@ function LodingPage() {
 }}
 style={{    
 position:'absolute',    
-top:'37%',
+top:'50%',
+height:"4rem",
+width:'4rem',
 translate: "0% -50%",
 zIndex: 1
 }}

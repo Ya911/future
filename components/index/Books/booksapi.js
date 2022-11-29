@@ -24,7 +24,7 @@ const BookShow = (m)=>(
     return (
       <div
         key={e.id}
-        className="flex flex-col items-center py-2  gap-2 rounded-sm cursor-pointer max-w-[30%] max-h-[15rem] hover:bg-zinc-900 hover:text-white text-white hover:rounded-xl   "
+        className="flex flex-col items-center py-2 justify-between rounded-sm cursor-pointer w-[19%] xs:w-[40%] sm:w-[35%] max-w-[9rem] overflow-ellipsis  max-h-[15rem] hover:bg-zinc-900 hover:text-white text-white hover:rounded-sm"
       >
         <div className="relative w-20 h-20">
           <Image

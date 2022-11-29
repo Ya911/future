@@ -30,10 +30,10 @@ function Category() {
 
 
     return (
-        <div className="w-[50%] flex justify-end">
+        <div className="w-[30%] xs:w-[40%] sm:w-[35%] justify-end flow-hidden">
         <FormControl   
         sx={{
-        width:'80%' ,
+        width:'100%' ,
         '& .MuiSelect-select':{pb:'.6rem'  ,textAlign:"center",  fontSize:'.3rem', fontFamily:"Noto Kufi Arabic", color:'white'},
       }} 
         size='small'

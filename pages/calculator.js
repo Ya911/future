@@ -26,10 +26,10 @@ function Calculator() {
 
   return (
 <div className="flex items-center justify-center">
-    <div className="flex flex-col h-full gap-2 p-3 font-fonten ">
+    <div className="flex flex-col h-full p-3 font-fonten ">
 
 
-    <span  className="max-w-[18rem] overflow-hidden scroll-my-36 pb-2 pr-2 text-white text-4xl text-right text-clip">{hovecaluc || !obr ? value1 : value2}</span>
+    <span  className="max-w-[18rem] overflow-hidden scroll-my-36 mb-8 pr-2 text-white text-4xl text-right text-clip">{hovecaluc || !obr ? value1 : value2}</span>
       {/* ALL Col  */}
 {allvalue && allvalue.map(col=>{
       // Calculator1.displayName = `${i}`

@@ -13,12 +13,12 @@ function Search() {
   
     const { addSearch , Search } = useContext(MYCONTEXTBOOOK);
     return (
-        <div className="w-[50%]">
-          <div className="relative w-[80%] ">
+
+          <div className="relative w-[30%] xs:w-[40%] sm:w-[35%] justify-center overflow-hidden ">
             <SearchIcon className="absolute left-1.5 h-4 opacity-70 top-[35%]" />
             <input
               placeholder="أسم الكتاب"
-              className="w-full focus:outline-none focus:border-[1px] focus:border-solid focus:border-[#27272a] h-10 pr-2 text-sm text-right rounded-sm placeholder:pr-3 placeholder:text-xs"
+              className="w-full focus:border-[1px] focus:border-solid focus:border-[#27272a] h-10 pr-2 xs:pr-1 text-sm text-right  rounded-sm placeholder:pr-3 xs:placeholder:pr-1  placeholder:text-xs"
               type="search"
               maxLength={25}
               name="search"
@@ -32,7 +32,7 @@ function Search() {
         }`}</style>
 
           </div>
-        </div>
+
     );
 }
 

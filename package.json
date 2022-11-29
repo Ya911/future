@@ -1,6 +1,6 @@
 {
   "name": "future-app",
-  "version": "future@v1.2.1",
+  "version": "future@v1.2.2",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",

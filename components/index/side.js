@@ -23,7 +23,7 @@ function LayoutIndex({children}) {
     return (
      
     <div className="relative w-[80%] grow  h-screen px-3  overflow-hidden font-fontar ">
-    <div className="flex flex-col z-0 w-full relative h-[100%]  bg-zinc-800">
+    <div className="relative z-0 flex flex-col w-full h-full bg-zinc-800">
 
           <Side3/>
           <Side1 />   

@@ -63,7 +63,7 @@ function PerntSidbar({titel, children}) {
           <div className="flex flex-col m-auto w-full h-[90%]  min-h-[90%] ">
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <ul className="flex flex-col w-full justify-between min-h-[66%] h-[66%] ">
+          <ul className="flex flex-col w-full items-center justify-between min-h-[66%] h-[66%] ">
           <LoopLink/>
           </ul>
           </div>

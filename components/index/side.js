@@ -23,13 +23,11 @@ function LayoutIndex({children}) {
     return (
      
 
-    <div className="relative z-0 flex flex-col w-full h-full overflow-hidden bg-zinc-800">
-
+    <>
           <Side3/>
           <Side1 />   
           {children}
-
-      </div>
+      </>
     );
 }
 

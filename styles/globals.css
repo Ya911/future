@@ -19,7 +19,7 @@ body {
     background-color: #222222;
   }
   
-  /* Avoid Chrome to see Safari hack */
+
   @supports (-webkit-touch-callout: none) {
     body {
       /* The hack for Safari */

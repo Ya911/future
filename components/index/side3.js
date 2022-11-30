@@ -13,7 +13,7 @@ function Side3() {
           className="after:absolute after:content-['']  after:h-full after:w-[3px] after:right-[0%] after:opacity-85  after:bg-black"
           style={{
             background: "rgb(234 179 0)",
-            left: "0",
+            left: "0%",
             top: "0",
             width: "55%",
             height: "100%",

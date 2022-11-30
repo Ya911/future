@@ -3,13 +3,34 @@ import {SessionProvider} from 'next-auth/react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
+import { useEffect } from 'react';
 
 const NextPr = dynamic(()=>import('nextjs-progressbar'))
 
 
-
 export default function MyApp({ Component, pageProps: { session , ...pageProps }}) {
 // استخدام البروفايدر وداخله بروبس الستور لتفعيل الريدكس 
+
+// useEffect(()=>{
+//     var customViewportCorrectionVariable = 'vh';
+//     function setViewportProperty(doc) {
+//       var prevClientHeight;
+//       var customVar = '--' + ( customViewportCorrectionVariable || 'vh' );
+//       function handleResize() {
+//         var clientHeight = doc.clientHeight;
+//         if (clientHeight === prevClientHeight) return;
+//         requestAnimationFrame(function updateViewportHeight(){
+//           doc.style.setProperty(customVar, (clientHeight * 0.01) + 'px');
+//           prevClientHeight = clientHeight;
+//         });
+//       }
+//       handleResize();
+//       return handleResize;
+//     }
+//     window.addEventListener('resize', setViewportProperty(document.documentElement));
+//     return ()=> window.removeEventListener('resize', setViewportProperty(document.documentElement));
+    
+// },[])
 
 const getLayout = Component.getLayout ?? ((page) => page) 
 

@@ -1,6 +1,6 @@
 {
   "name": "future-app",
-  "version": "future@v1.3.10",
+  "version": "future@v1.3.11",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
@@ -30,6 +30,7 @@
     "nextjs-progressbar": "^0.0.16",
     "node-telegram-bot-api": "^0.59.0",
     "octokit": "^2.0.9",
+    "postcss-viewport-height-correction": "^1.1.1",
     "qrcode": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

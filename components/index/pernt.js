@@ -62,7 +62,7 @@ function PerntSidbar({titel, children}) {
           <div className="flex flex-col items-center w-full justify-between h-[85%] ">
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <ul className="flex flex-col w-full items-center justify-between h-[76%] ">
+          <ul className="flex flex-col w-full items-center justify-between h-[80%] ">
           <LoopLink/>
           </ul>
           </div>
@@ -75,8 +75,8 @@ function PerntSidbar({titel, children}) {
          {/*_ Nav Bar Start */}
 
 
-      <div className="relative  h-screen min-h-screen  px-[2%] ml-[1.5%] overflow-hidden grow  rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
-      before:absolute before:content-[''] before:w-[50%]  before:h-full  before:left-[0%] before:opacity-85  before:bg-[#eab300]
+      <div className="relative  h-screen min-h-screen ml-[1.5%] overflow-hidden grow  rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
+      before:absolute before:content-[''] before:w-[51%]  before:h-full  before:left-[0%] before:opacity-85  before:bg-[#eab300]
       before:z-[-1]
       ">
      <LayoutIndex>

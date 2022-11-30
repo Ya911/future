@@ -38,7 +38,7 @@ function Books() {
 
 
           {/* Frist Colem Start */}
-      <div className="flex relative h-[15%] sm:px-[0]  xs:px-2 justify-between w-[90%] sm:w-[95%]  xs:w-[100%] ">
+      <div className="flex relative min-h-[15%] h-[15%] sm:px-[0]  xs:px-2 justify-between w-[90%] sm:w-[95%]  xs:w-[100%] ">
         {/* Search Input  */}
         <Search/>
         {/* Category input  */}

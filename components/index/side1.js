@@ -24,7 +24,7 @@ function Side1() {
 
 
     return (
-        <div className="flex w-[100%] mb-5 xs:mb-8 sm:mb-10  flex-row-reverse p-[5%] xs:p-[7%] sm:p-[8%] items-center justify-between text-amber-300">
+        <div className="flex w-[100%] min-h-[10%] mb-5 xs:mb-8 sm:mb-10  flex-row-reverse p-[5%] xs:p-[7%] sm:p-[8%] items-center justify-between text-amber-300">
         {Icon &&  
         <div className="flex flex-row-reverse items-center ">
         <Icon className="h-12 pl-3 sm:h-8 xs:h-5 xs:pl-2"/>

@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
   "tailwindcss",
-  "postcss-100vh-fix",
+  "postcss-viewport-height-correction",
   "autoprefixer",
   ],
 };

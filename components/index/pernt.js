@@ -49,7 +49,7 @@ function PerntSidbar({titel, children}) {
     return (
       <Provider store={store}> 
       <PageTitel titel={titel}/>    
-      <div className="relative flex flex-row w-full h-screen py-2 ">
+      <div className="relative flex flex-row w-full h-screen min-h-screen py-2 ">
       
 
 

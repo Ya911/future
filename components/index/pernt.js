@@ -49,20 +49,20 @@ function PerntSidbar({titel, children}) {
     return (
       <Provider store={store}> 
       <PageTitel titel={titel}/>    
-      <div className="relative flex flex-row w-full py-2 ">
+      <div className="relative flex flex-row w-full h-screen min-h-screen py-2 ">
       
 
 
 
       {/*_ Nav Bar Start */}
         <div
-        className="relative justify-between overflow-hidden text-white h-screen min-h-screen w-[13%] px-[0.2%] pt-[4%] sm:px-[.5%] xs:px-[1%] max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
+        className="relative justify-between overflow-hidden text-white m-h-screen h-screen min-h-screen w-[13%] px-[0.2%] sm:px-[.5%] xs:px-[1%] max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
       >
            {/* Logo Start */}
           <div className="flex flex-col items-center w-full justify-between h-[85%] min-h-[85%] ">
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <ul className="flex flex-col w-full items-center justify-between h-[80%] min-h-[80%] ">
+          <ul className="flex flex-col w-full items-center justify-between max-h-[80%] h-[80%] min-h-[79%] ">
           <LoopLink/>
           </ul>
           </div>

@@ -3,8 +3,8 @@ import {memo} from 'react'
 
 function MyLogo() {
     return (
-        <div className="flex flex-col w-full overflow-hidden  mb-6 h-[20%]">
-        <div className="relative mb-[10%] h-full">
+        <div className="flex flex-col w-full items-center justify-between mb-6 h-[18%] min-h-[18%] ">
+        <div className="relative h-[4rem] max-h-[4rem] w-full">
           <Image
             objectFit="contain"
             layout="fill"
@@ -14,7 +14,7 @@ function MyLogo() {
             />
         </div>
 
-        <h2 className="text-[#e6e6e6] max-w-[40px] m-auto w-full text-[0.5rem] text-center font-fonten">
+        <h2 className="text-[#e6e6e6] max-w-[40px] w-full text-[0.5rem] text-center font-fonten">
           Made By Ya
         </h2>
       </div>

@@ -12,9 +12,9 @@ function Logout() {
 
 
     return (
-        <div className="relative flex flex-col items-center rounded-sm justify-end pb-[23%]  h-[15%]  overflow-hidden">
+        <div className="relative flex flex-col items-center rounded-sm justify-end pb-[23%]  h-[15%] min-h-[15%] overflow-hidden">
 
-        <div className="py-[.3rem]   hover:bg-zinc-900 px-[.3rem] hover:cursor-pointer hover:rounded-md">
+        <div className="py-[.3rem]  hover:bg-zinc-900 px-[.3rem] hover:cursor-pointer hover:rounded-md">
           <LogoutIcon
           color="#eab301"
             onClick={async () => (await import('next-auth/react')).signOut({callbackUrl:'/auth/signin'})}

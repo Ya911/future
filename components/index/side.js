@@ -8,10 +8,7 @@ const Side1 = dynamic(() => import('./side1'), {
   ssr: false,
   loading:()=>''
 });
-const Side3 = dynamic(() => import('./side3'), {
-  ssr: false,
-  loading:()=>''
-});
+
 
 
 function LayoutIndex({children}) {
@@ -24,7 +21,6 @@ function LayoutIndex({children}) {
      
 
     <>
-          <Side3/>
           <Side1 />   
           {children}
       </>

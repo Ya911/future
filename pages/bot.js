@@ -91,7 +91,7 @@ function Bot() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full">
+    <div className="flex flex-col items-center justify-between grow">
       {/* Start Form */}
       <form
         className="flex flex-col items-center h-[35%] justify-between"

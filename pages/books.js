@@ -38,7 +38,7 @@ function Books() {
 
 
           {/* Frist Colem Start */}
-      <div className="flex relative mb-6 sm:px-[0]  xs:px-2 justify-between w-[90%] sm:w-[95%]  xs:w-[100%] ">
+      <div className="flex relative h-[15%] sm:px-[0]  xs:px-2 justify-between w-[90%] sm:w-[95%]  xs:w-[100%] ">
         {/* Search Input  */}
         <Search/>
         {/* Category input  */}
@@ -51,7 +51,7 @@ function Books() {
 
 {/* 
       {/* {/* Scend Colem Start */}
-      <div className="relative flex flex-wrap justify-between w-full px-1 overflow-scroll scrollbar-hide">
+      <div className="relative flex flex-wrap justify-between w-full h-[84%] overflow-scroll scrollbar-hide">
       <Booksapi/>
       </div>
       {/* Scend Colem END */}

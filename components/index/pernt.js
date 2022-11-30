@@ -59,10 +59,10 @@ function PerntSidbar({titel, children}) {
         className="relative justify-between overflow-hidden text-white m-h-screen h-screen min-h-screen w-[13%] px-[0.2%] sm:px-[.5%] xs:px-[1%] max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
       >
            {/* Logo Start */}
-          <div className="flex flex-col items-center w-full justify-between h-[85%] min-h-[85%] ">
+          <div className="flex flex-col items-center w-full  h-[90%]">
           <MyLogo/>
           {/* Lust Number 1 Start */}
-          <ul className="flex flex-col w-full items-center justify-between max-h-[80%] h-[80%] min-h-[79%] ">
+          <ul className="flex flex-col w-full items-center justify-between h-[69%] ">
           <LoopLink/>
           </ul>
           </div>

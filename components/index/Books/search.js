@@ -15,7 +15,7 @@ function Search() {
     return (
 
           <div className="relative w-[30%] xs:w-[40%] sm:w-[35%] justify-center overflow-hidden ">
-            <SearchIcon className="absolute left-1.5 h-4 opacity-70 top-[35%]" />
+            <SearchIcon className="absolute left-[5%] h-4 opacity-70 top-[15%]" />
             <input
               placeholder="أسم الكتاب"
               className="w-full focus:border-[1px] focus:border-solid focus:border-[#27272a] h-10 pr-2 xs:pr-1 text-sm text-right  rounded-sm placeholder:pr-3 xs:placeholder:pr-1  placeholder:text-xs"

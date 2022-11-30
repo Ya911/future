@@ -91,10 +91,10 @@ function Bot() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between grow">
+    <div className="flex flex-col items-center justify-between h-full ">
       {/* Start Form */}
       <form
-        className="flex flex-col items-center h-[35%] justify-between"
+        className="flex flex-col items-center h-[40%] justify-between"
         onSubmit={handleSubmit(Submit)}
       >
         {(errors?.server_error || isConcect) &&

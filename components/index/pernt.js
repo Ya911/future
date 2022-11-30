@@ -49,14 +49,14 @@ function PerntSidbar({titel, children}) {
     return (
       <Provider store={store}> 
       <PageTitel titel={titel}/>    
-      <div className="relative flex flex-row w-full h-screen py-3 ">
+      <div className="relative flex flex-row w-full h-screen py-2 ">
       
 
 
 
       {/*_ Nav Bar Start */}
         <div
-        className="relative justify-between overflow-hidden text-white max-h-screen  w-[13%] px-[0.2%] pt-[4%] sm:px-[.5%] xs:px-[1%] max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
+        className="relative justify-between overflow-hidden text-white h-full w-[13%] px-[0.2%] pt-[4%] sm:px-[.5%] xs:px-[1%] max-w-[3.3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
       >
            {/* Logo Start */}
           <div className="flex flex-col items-center w-full justify-between h-[85%] ">
@@ -74,10 +74,10 @@ function PerntSidbar({titel, children}) {
       </div>
          {/*_ Nav Bar Start */}
 
-      <div className="relative px-[2%] ml-[1.5%] overflow-hidden grow h-full min-h-screen rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
+
+      <div className="relative px-[2%] ml-[1.5%] overflow-hidden grow h-full  rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
       before:absolute before:content-[''] before:w-[50%]  before:h-full  before:left-[0%] before:opacity-85  before:bg-[#eab300]
       before:z-[-1]
-      
       ">
      <LayoutIndex>
           {children}

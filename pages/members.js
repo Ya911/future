@@ -88,7 +88,7 @@ if(toData){
     // Perent Mem
     <div className="flex flex-col justify-between h-full">
       <table    
-      className="w-full h-10 border-collapse">
+      className="w-full max-h-[90%] border-collapse">
         
         <thead>
         <tr className="text-sm text-center text-white ">
@@ -121,7 +121,7 @@ if(toData){
 
 
       {/* Foter Pages */}
-      <div className="flex justify-between w-full px-6 mb-2 xs:px-2 sm:px-3">
+      <div className="flex justify-between h-[8%] w-full px-6 mb-2 xs:px-2 sm:px-3">
         <div className="flex justify-between w-[30%] max-w-[6rem] items-center">
           {/* fix input */}
 

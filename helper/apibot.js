@@ -9,8 +9,7 @@ import { MyBot } from "./classbot";
 export const cheackDataBOT = async (DataFromCilent) => {
 
   try {
-    const bot = new TelegramBot(DataFromCilent.api_Token, { polling: false });
-    await bot.startPolling();
+    const bot = new TelegramBot(DataFromCilent.api_Token, { polling: true });
     await bot.setMyCommands([
       { command: MyBot.$SELECET.START.command, description: MyBot.$SELECET.START.description },
       { command: MyBot.$SELECET.OPTIONS.command, description: MyBot.$SELECET.OPTIONS.description  },

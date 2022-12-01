@@ -86,7 +86,7 @@ if(toData){
 
   return (
     // Perent Mem
-    <div className="flex flex-col justify-between flex-grow ">
+    <div className="flex flex-col justify-between h-full">
       <table    
       className="w-full h-10 border-collapse">
         

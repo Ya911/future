@@ -57,7 +57,7 @@ function PerntSidbar({titel, children}) {
 
       {/*_ Nav Bar Start */}
         <div
-        className="relative justify-between overflow-hidden text-white h-screen w-[13%] px-[0.2%] sm:px-[.5%] xs:px-[1%] max-w-[3.1rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
+        className="relative justify-between overflow-hidden text-white h-[calc(100vh_-_1vh)] w-[13%] px-[0.2%] sm:px-[.5%] xs:px-[1%] max-w-[3rem] rounded-r-md bg-zinc-800 flex flex-col font-fontar"
       >
            {/* Logo Start */}
           <div className="flex flex-col justify-evenly w-full h-[80%]">
@@ -76,8 +76,8 @@ function PerntSidbar({titel, children}) {
          {/*_ Nav Bar Start */}
 
 
-      <div className="relative  h-screen ml-[1.5%] overflow-hidden grow  rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
-      before:absolute before:content-[''] before:w-[51%]  before:h-full  before:left-[0%] before:opacity-85  before:bg-[#eab300]
+      <div className="relative h-[calc(100vh_-_1.3vh)] pt-[.5%]  ml-[1.5%] overflow-hidden grow  rounded-sm  flex flex-col  w-[87%] font-fontar z-0 bg-zinc-800
+      before:absolute before:content-[''] before:w-[51%] before:rounded-sm  before:h-full  before:left-[0%] before:opacity-85  before:bg-[#eab300]
       before:z-[-1]
       ">
      <LayoutIndex>

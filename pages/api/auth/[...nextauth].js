@@ -60,7 +60,6 @@ export const authOptions = {
           }
         );
           let res = await result.data;
-          console.log(res);
         if (res)return res 
         else return null;
       },

@@ -25,10 +25,6 @@ const ChevronRightIcon = dynamic(() => import("@mui/icons-material/ChevronRight"
   ssr: false,
   loading : ()=>''
 });
-const PencilAltIcon = dynamic(() => import("@heroicons/react/solid/PencilAltIcon"), {
-  ssr: false,
-  loading : ()=>''
-});
 const CloudUploadIcon = dynamic(() => import("@heroicons/react/solid/CloudUploadIcon"), {
   ssr: false,
   loading : ()=>''

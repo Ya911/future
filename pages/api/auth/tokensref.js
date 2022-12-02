@@ -2,13 +2,11 @@ import { post_accessToken, viert_refrshToken , viert_accessToken , post_refrshTo
 export default async function tokensId(req, res) {
 
   let { method } = req;
-
     switch (method) {
     case "POST":
         if(!req.body.tokenRf)return res.status(403).send({msg:"send refr"})
 
 try {
-
   let {paylod}= await viert_refrshToken(req.body.tokenRf)
   let {tokenAc} = await post_accessToken(paylod)
   let {tokenRf} = await  post_refrshToken(paylod);
@@ -19,7 +17,6 @@ try {
 
 
 } catch (error) {
-  console.log(error);
   res.status(401).send({msg:'cant accses ref'})
 }
 

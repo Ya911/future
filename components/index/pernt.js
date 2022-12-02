@@ -32,14 +32,14 @@ const LayoutIndex = dynamic(() => import('./side'), {
 
 function PerntSidbar({titel, children}) {
 
-  const { data: session } = useSession();
+  const { data: session , status} = useSession();
 
  useEffect(()=>{
   (async()=>{
-    if (session?.error === "RefreshAccessTokenError") {
+    if (status === 'unauthenticated' || session?.error === "RefreshAccessTokenError") {
       signIn()
   }})()
- },[session])
+ },[session,status])
 
 
 

@@ -10,11 +10,11 @@ import { MyBot } from "./classbot";
 export const cheackDataBOT = async (DataFromCilent) => {
 
   try {
+    let Tokenapi = DataFromCilent.api_Token
 
-
-    const bot = new TelegramBot(DataFromCilent.api_Token,{webHook:{port:8000 , host:process.env.NEXTAUTH_URL , autoOpen:true}})
-    // let webHookURL = process.env.NEXTAUTH_URL + '/api/bot'
-    // await bot.setWebHook(webHookURL)
+    const bot = new TelegramBot(DataFromCilent.api_Token)
+    let webHookURL = process.env.NEXTAUTH_URL + '/api/bot' + Tokenapi
+    await bot.setWebHook(webHookURL)
 
 
     await bot.setMyCommands([

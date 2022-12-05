@@ -91,10 +91,10 @@ function Bot() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between h-full ">
+    <div className="flex flex-col items-center justify-between h-[26%] ">
       {/* Start Form */}
       <form
-        className="flex flex-col items-center h-[40%] justify-between"
+        className="flex flex-col items-center justify-between h-full"
         onSubmit={handleSubmit(Submit)}
       >
         {(errors?.server_error || isConcect) &&
@@ -114,6 +114,7 @@ function Bot() {
         render={({field , fieldState:{error}})=>{
           return <TextField
           sx={{
+            "&.MuiTextField-root":{ width:'100%'},
             "& .MuiOutlinedInput-root": {
               "&.Mui-focused fieldset": {
                 borderColor: "black",
@@ -131,6 +132,7 @@ function Bot() {
         
           {...field}
           type='text'
+          style={{width:'100% !important'}}
           id="outlined-multiline-flexible"
           label="api_Token"
           size="small"
@@ -147,7 +149,9 @@ function Bot() {
         render={({field , fieldState:{error}})=>{
           return <TextField
           sx={{
+            "&.MuiTextField-root":{ width:'100%'},
             "& .MuiOutlinedInput-root": {
+              width:'100% !important',
               "&.Mui-focused fieldset": {
                 borderColor: "black",
                 borderWidth:'1px'
@@ -164,8 +168,7 @@ function Bot() {
           {...field}
           defaultValue=''
           autoComplete="off"
-          size="small"
-          style={{ width: 195 }}
+          size='small'
           id="outlined-select-currency"
           select
           label="مهمة البوت"
@@ -195,7 +198,7 @@ function Bot() {
 
         <Alert
         className="font-fontar"
-        style={{ width: 195, fontSize: 10 }}
+        style={{ width: 195 }}
         severity="warning"
       >
         ملاحظة حين خروجك من الموقع لن يعمل البوت{" "}

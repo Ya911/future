@@ -14,7 +14,9 @@ export const cheackDataBOT = async (DataFromCilent) => {
     const bot = new TelegramBot(DataFromCilent.api_Token,{webHook:{autoOpen:false}})
     let webHookURL = process.env.NEXTAUTH_URL + '/api/bot'
     await bot.openWebHook()
-    await axios.post(`${process.env.NEXTAUTH_URL}/api/bot<${DataFromCilent.api_Token}>/setWebhook`,{},{headers : {"Content-type": "application/json"}})
+    let testWeb = await axios.post(`${process.env.NEXTAUTH_URL}/api/bot${DataFromCilent.api_Token}/setWebhook`,{},{headers : {"Content-type": "application/json"}})
+    let rws = await testWeb.data
+    console.log(rws);
 
     await bot.setMyCommands([
       { command: MyBot.$SELECET.START.command, description: MyBot.$SELECET.START.description },
@@ -154,7 +156,8 @@ let replyID = query.message?.reply_to_message?.message_id
 
 
   bot.on('webhook_error', (error) => {
-      return bot.setWebHook(webHookURL,{certificate:'../key.pem'})
+    console.log(error , 'from webhok');
+      return bot.setWebHook(webHookURL)
   });
 
   bot.on("polling_error", async (error) => {

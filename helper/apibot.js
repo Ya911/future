@@ -11,12 +11,11 @@ export const cheackDataBOT = async (DataFromCilent) => {
 
   try {
 
+
     const bot = new TelegramBot(DataFromCilent.api_Token,{webHook:{autoOpen:false}})
     let webHookURL = process.env.NEXTAUTH_URL + '/api/bot'
-    await bot.openWebHook()
-    let testWeb = await axios.post(`${process.env.NEXTAUTH_URL}/api/bot${DataFromCilent.api_Token}/setWebhook`,{},{headers : {"Content-type": "application/json"}})
-    let rws = await testWeb.data
-    console.log(rws);
+    await axios.post(`${process.env.NEXTAUTH_URL}/api/bot${DataFromCilent.api_Token}/setWebhook`,{},{headers : {"Content-type": "application/json"}})
+
 
     await bot.setMyCommands([
       { command: MyBot.$SELECET.START.command, description: MyBot.$SELECET.START.description },

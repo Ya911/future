@@ -72,6 +72,7 @@ function Bot() {
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       });
+      console.log(send1);
 
       if (!send1.ok)throw (await send1.json());
       return setisConcect(true)
@@ -91,7 +92,7 @@ function Bot() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between h-[26%] ">
+    <div className="flex flex-col items-center justify-between h-[32%] ">
       {/* Start Form */}
       <form
         className="flex flex-col items-center justify-between h-full"

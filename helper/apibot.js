@@ -13,8 +13,8 @@ export const cheackDataBOT = async (DataFromCilent) => {
     let Tokenapi = DataFromCilent.api_Token
 
     const bot = new TelegramBot(DataFromCilent.api_Token)
-    let webHookURL = process.env.NEXTAUTH_URL + '/api/bot' + Tokenapi
-    await bot.setWebHook(webHookURL)
+    let webHookURL = `https://api.telegram.org/bot${Tokenapi}/setWebhook?url=${process.env.NEXTAUTH_URL + '/api/bot'}`
+    await axios.post(webHookURL)
 
 
     await bot.setMyCommands([

@@ -12,9 +12,9 @@ export const cheackDataBOT = async (DataFromCilent) => {
   try {
 
 
-    const bot = new TelegramBot(DataFromCilent.api_Token,{webHook:{autoOpen:false}})
-    let webHookURL = process.env.NEXTAUTH_URL + '/api/bot'
-    await axios.post(`${process.env.NEXTAUTH_URL}/api/bot${DataFromCilent.api_Token}/setWebhook`,{},{headers : {"Content-type": "application/json"}})
+    const bot = new TelegramBot(DataFromCilent.api_Token,{webHook:{port:8000 , host:process.env.NEXTAUTH_URL , autoOpen:true}})
+    // let webHookURL = process.env.NEXTAUTH_URL + '/api/bot'
+    // await bot.setWebHook(webHookURL)
 
 
     await bot.setMyCommands([
@@ -156,7 +156,7 @@ let replyID = query.message?.reply_to_message?.message_id
 
   bot.on('webhook_error', (error) => {
     console.log(error , 'from webhok');
-      return bot.setWebHook(webHookURL)
+      return;
   });
 
   bot.on("polling_error", async (error) => {

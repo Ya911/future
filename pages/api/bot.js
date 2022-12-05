@@ -1,5 +1,4 @@
 
-import  {pick}  from 'lodash'
 import { cheackDataBOT } from '../../helper/apibot'
 
   

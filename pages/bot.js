@@ -72,7 +72,6 @@ function Bot() {
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       });
-      console.log(send1);
 
       if (!send1.ok)throw (await send1.json());
       return setisConcect(true)

@@ -39,7 +39,7 @@ function PerntSidbar({titel, children}) {
     if (status === 'unauthenticated' || session?.error === "RefreshAccessTokenError") {
       signIn()
   }})()
- },[session,status])
+ })
 
 
 

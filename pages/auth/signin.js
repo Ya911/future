@@ -3,7 +3,6 @@ import Layoutauth from "../../components/auth/layoutauth";
 import dynamic from "next/dynamic";
 
 
-
 const Container = dynamic(() => import("../../components/auth/layoutForm"));
 
 const Button = dynamic(() => import("@mui/joy/Button"), {
@@ -83,14 +82,9 @@ return ()=> clearTimeout(doSmthing)
 
     setLoding(true);
     const roter = (await import("next/router")).default;
-    const signin = (await import("next-auth/react")).signIn(
-      "credentials",
-      opiton
-    );
+    const signin = (await import("next-auth/react")).signIn("credentials",opiton);
 
-  
-    signin
-      .then((res) => {
+    signin.then((res) => {
         if (!res.ok) {
           setErrorAlert("البيانات خاطئة");
           return setLoding(false);
@@ -181,6 +175,9 @@ return ()=> clearTimeout(doSmthing)
 
   );
 }
+
+
+
 
 Signin.getLayout = function getLayout(page) {
   return (

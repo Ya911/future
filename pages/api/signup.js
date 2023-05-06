@@ -1,4 +1,4 @@
-import { formResult, addUser } from "../../../helper/signup/promise";
+import { formResult, addUser } from "../../helper/signup/promise";
 
 
 export default async function signup(req, res) {

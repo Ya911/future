@@ -3,9 +3,6 @@ import PerntSidbar from "../components/index/pernt";
 
 function Index() {
 
-
-
-
   return (
 
   <div className="text-lg font-bold text-center text-white">

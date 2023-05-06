@@ -21,7 +21,7 @@ function LayoutIndex({children}) {
      
 
     <>
-          <Side1 />   
+          <Side1/>   
           {children}
       </>
     );

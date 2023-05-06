@@ -51,12 +51,12 @@ export default function Signup() {
     formdata.append("image", image[0]);
 
 
-    let url = process.env.NEXT_PUBLIC_URL + "/api/auth/signup";
+  
 
     const Router = (await import('next/router')).default
     const axios = (await import('axios')).default
     axios
-      .post(url, formdata, {
+      .post("/api/signup", formdata, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
@@ -65,7 +65,7 @@ export default function Signup() {
       })
       .catch(e=>{
         setLooding(false);
-        let [frist , scend] = Object.keys(e.response.data)
+        let [frist , scend] = Object.keys(e.response.data || {})
         if(frist) setError(frist,{type:'value' , message:e.response.data[frist]})
         if(scend) setError(scend,{type:'value' , message:e.response.data[scend]})
         return 

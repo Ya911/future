@@ -1,18 +1,32 @@
-
-.next/
-out/
+/.next/
+/out/
 
 # ملفات ومجلدات تخص Docker
 Dockerfile
 .dockerignore
+Docker-*
 
 # ملفات ومجلدات تخص Node.js
-node_modules/
+/node_modules
+/.pnp
+.pnp.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
 # ملفات ومجلدات تخص محررات النصوص والتكوينات الشخصية
 *.swp
 *.swo
@@ -20,17 +34,20 @@ pnpm-debug.log*
 *.bak
 *.orig
 *.log
-.vscode/
-.idea/
+/.vscode
+/.idea
 *.iml
 *.sublime-*
 *.sublime-project
 *.sublime-workspace
 postcss.config.js
+kind.yaml
+.eslintrc.json
+README.md
+tailwind.config.js
 
 # ملفات ومجلدات أخرى غير ضرورية
-*.DS_Store
-*.cache
+
 *.pid
 *.seed
 *.lock
@@ -45,4 +62,4 @@ postcss.config.js
 !.env.production.example
 *.env.test
 !.env.test.example
-coverage/
+/coverage

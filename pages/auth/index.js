@@ -36,7 +36,6 @@ const scSty = {
 
 export default function Index (){
 
-
 return (
 <div className={`grid grid-cols-1 justify-items-center max-w-[20%] grid-row-2   xs:max-w-[55%] sm:max-w-[40%] w-full  items-center   font-fontar `}>
 <Link href='/auth/signin'><Button sx={{marginBottom:'.6rem',":hover": {marginBottom:'.5rem'},...scSty}} variant='soft' color='neutral'  id='login'>تسجيل الدخول</Button></Link>
@@ -46,7 +45,26 @@ return (
 }
 
 
+// export async function getServerSideProps(ctx){
 
+
+//   const redis =  (await import('redis')).createClient({
+//     url: 'redis://future_Redis:6379',
+//   })
+
+//   // root:Yaseer10@
+
+//   redis.on('error', err => console.log('Redis Client Error', err));
+//   redis.on('connect', () => console.log('conect rides'));
+//         await redis.connect();
+//         await redis.set('name', 'yasir');
+//         const value = await redis.get('name');
+
+//         return {
+//           props:{
+//             data:value || null
+//           }}
+// }
 
 
 

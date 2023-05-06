@@ -1,4 +1,4 @@
-import { post_accessToken, viert_refrshToken , viert_accessToken , post_refrshToken } from "../../../helper/signin/signin";
+import { post_accessToken, viert_refrshToken , viert_accessToken , post_refrshToken } from "../../helper/signin/signin";
 export default async function tokensId(req, res) {
 
   let { method } = req;

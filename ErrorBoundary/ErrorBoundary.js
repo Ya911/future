@@ -8,7 +8,7 @@ export default class ErrorBoundary extends Component {
     static getDerivedStateFromError(error) {
       // عرض واجهة مستخدم بديلة
       console.log(error);
-      return { hasError: true };
+      return { hasError: true , error };
     }
   
     componentDidCatch(error, errorInfo) {
@@ -21,7 +21,7 @@ export default class ErrorBoundary extends Component {
         // You can render any custom fallback UI
         return (
           <div>
-            <h2>Oops, there is an error!</h2>
+            <h2>{this.state.error || " " }</h2>
             <button
               type="button"
               onClick={() => this.setState({ hasError: false })}

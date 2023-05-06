@@ -8,7 +8,7 @@ function MyLogo() {
           <Image
             objectFit="contain"
             layout="fill"
-            src='/img/1-01.png'
+            src='/img/icon.png'
             alt='1-01.png'
             priority={true}   
             />

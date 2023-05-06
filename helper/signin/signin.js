@@ -99,10 +99,10 @@ export const viert_refrshToken = (refrshtoken)=>new Promise((resolve,reject)=>{
 
     
     
-    export const isUserDb = async ({email,password}, res )=>{
+    export const isUserDb = async ({email,password})=>{
     
        
-                  
+              
 
        
         try {

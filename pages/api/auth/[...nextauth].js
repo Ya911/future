@@ -1,14 +1,13 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import axios from "axios";
 
 
 
 
 async function refreshAccessToken(token) {
   try {
-    let url = `${process.env.NEXTAUTH_URL}/api/auth/tokensref`
-    const response = await axios.post(url,{tokenRf: token.refreshToken});
+
+    const response = await axios.post(`${process.env.NEXTAUTH_URL+"/api/tokensref"}`,{tokenRf: token.refreshToken});
 
     const refreshedTokens = await response.data
     
@@ -48,27 +47,32 @@ export const authOptions = {
       id: "credentials",
       name: "Credentials",
       credentials: {
-        email: { type: "text" },
-        password: { type: "text" },
+        email: { type: "text"  },
+        password: { type: "password"  }
       },
       async authorize(credentials) {
-        const result = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/auth/tokens`,
-          credentials,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-          let res = await result.data;
-        if (res)return res 
-        else return null;
-      },
+        const authResponse = await fetch(`${process.env.NEXTAUTH_URL+"/api/tokens"}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        })
+        if (!authResponse.ok) {
+          return null
+        }
+
+        const user = await authResponse.json()
+
+        return user
+      }
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
 
+
   pages: {
-    signIn: "/auth",   
+    signIn: '/auth',   
     error : '/auth/error' 
   },
 
@@ -113,4 +117,7 @@ export const authOptions = {
 
 };
 
+
 export default NextAuth(authOptions);
+
+

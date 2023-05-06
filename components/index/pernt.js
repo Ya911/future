@@ -1,4 +1,4 @@
-import {signIn, useSession } from "next-auth/react";
+import {signOut, useSession } from "next-auth/react";
 import PageTitel from '../PageTitel'
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
@@ -37,9 +37,15 @@ function PerntSidbar({titel, children}) {
  useEffect(()=>{
   (async()=>{
     if (status === 'unauthenticated' || session?.error === "RefreshAccessTokenError") {
-      signIn()
-  }})()
- })
+      await signOut()
+  }
+  return
+
+})()
+ }
+ 
+ 
+ )
 
 
 

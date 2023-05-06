@@ -1,6 +1,5 @@
-import { isUserDb, post_accessToken  , post_refrshToken ,viert_accessToken } from "../../../helper/signin/signin";
-export default async function tokensId(req, res) {
-
+import { isUserDb, post_accessToken  , post_refrshToken ,viert_accessToken } from "../../helper/signin/signin";
+export default async function dosmthin(req, res) {
   let { method , body  } = req;
 
   switch (method) {
@@ -21,8 +20,7 @@ export default async function tokensId(req, res) {
       let {_id,role , name , image , exp}= tokenVi
 
 
-     res.status(200).send({_id, role,name,image,exp,tokenAc,tokenRf})
-      break;
+     return res.status(200).send({_id, role,name,image,exp,tokenAc,tokenRf})
 
     // _ If Method NOT POST
 

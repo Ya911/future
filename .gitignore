@@ -2,7 +2,7 @@
 /out/
 
 # ملفات ومجلدات تخص Docker
-Dockerfile
+# Dockerfile
 .dockerignore
 .gitignore
 

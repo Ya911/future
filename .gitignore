@@ -4,7 +4,8 @@
 # ملفات ومجلدات تخص Docker
 Dockerfile
 .dockerignore
-Docker-*
+.gitignore
+
 
 # ملفات ومجلدات تخص Node.js
 /node_modules

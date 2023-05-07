@@ -1,0 +1,38 @@
+services:
+  future_app:
+    container_name: future_app_c
+    volumes:
+    - ../../:/future:rw
+    - /future/node_modules
+    - /future/.next
+    ports:
+    - 3001:3001
+    environment:
+      - NODE_ENV=development
+    build: 
+      dockerfile: docker/development/Dockerfile
+      context: ../../  
+
+  future_db:
+    image: mongo
+    container_name: future_db_c
+    restart: always
+    volumes:
+      -future_storage:/data/db:ro
+    environment:
+       - MONGO_INITDB_ROOT_USERNAME: root
+       - MONGO_INITDB_ROOT_PASSWORD: Yaseer10
+
+  future_storage:
+    image: mongo-express
+    container_name: future_storage_c
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Yaseer10
+      ME_CONFIG_MONGODB_URL: mongodb://root:Yaseer10@mongo:27017/
+version: '3.9'
+
+

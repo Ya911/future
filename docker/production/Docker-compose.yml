@@ -1,0 +1,102 @@
+services: 
+
+  future:
+    container_name: future_App_c
+    image: yasir911/future:v1.0.2
+    depends_on:
+      - future_Db
+    env_file:
+      - ../../.env.production
+    ports:
+      - 3000:3000
+    build:  
+      dockerfile: docker/production/Dockerfile 
+      context: ../../  
+      target: runner
+
+
+  future_Db:
+    image: mongo
+    container_name: future_Db_c
+    restart: always
+    volumes:
+      - future_storage_Db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Yaseer10
+
+
+  future_Nginx:
+    image: nginx
+    container_name: future_Nginx_c
+    depends_on:
+      - future
+    volumes:
+     - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+     - 8080:80
+
+
+
+volumes:
+ future_storage_Db:
+#  future_storage_Redis:
+version: '3.9'
+
+
+
+
+
+
+  # future_Mysql:
+  #   image: mariadb:10.6
+  #   container_name: future_Mysql_c
+  #   restart: always
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: Yaseer10@
+
+  # future_Phpmyadmin:
+  #   image: phpmyadmin
+  #   container_name: future_Phpmyadmin_c
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     - PMA_ARBITRARY=1
+  #     - PMA_PORTS=3306
+
+  # future_DbUI:
+  #   image: mongo-express
+  #   container_name: future_DbUI_c
+  #   restart: always
+  #   depends_on:
+  #     - future_Db
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: Yaseer10
+  #     ME_CONFIG_MONGODB_URL: mongodb://root:Yaseer10@future_db:27017/
+
+  # future_Redis:
+  #   image: redis
+  #   container_name: future_Redis_c
+  #   ports:
+  #     - 6379:6379
+
+
+  # future_RedisUI:
+  #   image: redis/redis-stack
+  #   container_name: future_RedisUI_c
+  #   depends_on:
+  #     - future_Redis
+  #   ports:
+  #     - 8001:8001
+  #   volumes:
+  #     - future_storage_Redis:/data
+
+
+
+
+
+# /docker/host/dir:/data

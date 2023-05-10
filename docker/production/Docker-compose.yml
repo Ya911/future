@@ -5,8 +5,8 @@ services:
     image: yasir911/future:v1.0.2
     depends_on:
       - future_Db
-    env_file:
-      - ../../.env.production
+    # env_file:
+      # - ../../.env.production
     ports:
       - 3000:3000
     build:  
@@ -20,7 +20,7 @@ services:
     container_name: future_Db_c
     restart: always
     volumes:
-      - future_storage_Db:/data/db
+      - future_storage_db:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: Yaseer10
@@ -39,7 +39,7 @@ services:
 
 
 volumes:
- future_storage_Db:
+ future_storage_db:
 #  future_storage_Redis:
 version: '3.9'
 

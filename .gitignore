@@ -53,7 +53,8 @@ tailwind.config.js
 *.seed
 *.lock
 *.pid.lock
-.env*
+.env
+.env.development
 !.env.example
 *.env.local
 !.env.local.example

@@ -1,17 +1,16 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-
-
+import Os from 'os'
 
 async function refreshAccessToken(token) {
   try {
+
 
     const response = await axios.post(`${process.env.NEXTAUTH_URL+"/api/tokensref"}`,{tokenRf: token.refreshToken});
 
     const refreshedTokens = await response.data
     
-
+    
     if (!refreshedTokens) {
       throw refreshedTokens
     }
@@ -51,6 +50,10 @@ export const authOptions = {
         password: { type: "password"  }
       },
       async authorize(credentials) {
+  
+        console.log(Os.cpus.name);
+        console.log(Os.hostname.name);
+        console.log("fdkjdf");
         const authResponse = await fetch(`${process.env.NEXTAUTH_URL+"/api/tokens"}`, {
           method: "POST",
           headers: {

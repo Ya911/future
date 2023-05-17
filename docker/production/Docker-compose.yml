@@ -1,7 +1,7 @@
 services: 
 
   future_app:
-    image: yasir911/future:v1.0.4
+    image: yasir911/future:v1.0.0
     depends_on:
       - future_db
     env_file:
@@ -10,10 +10,10 @@ services:
       replicas: 4
       update_config:
         parallelism: 2
-        delay: 20s
+        delay: 10s
       restart_policy:
         condition: on-failure
-        delay: 20s
+        delay: 10s
     build:  
       dockerfile: docker/production/Dockerfile 
       context: ../../  
@@ -37,7 +37,7 @@ services:
     volumes:
      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
-     - 80:80
+     - 8080:80
 
 volumes:
  future_storage_db:

@@ -1,12 +1,12 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import Os from 'os'
+
 
 async function refreshAccessToken(token) {
   try {
 
 
-    const response = await axios.post(`${process.env.NEXTAUTH_URL+"/api/tokensref"}`,{tokenRf: token.refreshToken});
+    const response = await axios.post(`${process.env.NEXTAUTH_URL_INTERNAL+"api/tokensref"}`,{tokenRf: token.refreshToken});
 
     const refreshedTokens = await response.data
     
@@ -51,16 +51,14 @@ export const authOptions = {
       },
       async authorize(credentials) {
   
-        console.log(Os.cpus.name);
-        console.log(Os.hostname.name);
-        console.log("fdkjdf");
-        const authResponse = await fetch(`${process.env.NEXTAUTH_URL+"/api/tokens"}`, {
+        const authResponse = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL+"/api/tokens"}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(credentials),
         })
+        console.log(authResponse.statusText);
         if (!authResponse.ok) {
           return null
         }
@@ -76,8 +74,11 @@ export const authOptions = {
 
   pages: {
     signIn: '/auth',   
-    error : '/auth/error' 
+    error : '/auth/error' ,
+    signOut: '/auth/signin',
+    
   },
+  useSecureCookies:false,
 
   callbacks: {
 

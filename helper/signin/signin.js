@@ -4,7 +4,7 @@ import Dataset from '../../model/userModel'
 
 export const post_accessToken =  (data)=> new Promise( (resolve,reject)=>{
     const op = {
-        expiresIn:'10s',
+        expiresIn:'60s',
     }
 
     const payload = {
@@ -14,7 +14,7 @@ export const post_accessToken =  (data)=> new Promise( (resolve,reject)=>{
         image:data.image.url || data.image 
         
     }
-
+ 
     const secret = process.env.JWT_NEXT_ACCESS_TOKEN
 
         jwt.sign(payload,secret,op,(errAc,tokenAc)=>{
@@ -79,7 +79,7 @@ export const post_refrshToken = (data)=>new Promise((resolve,reject)=>{
 
 
 
-export const viert_refrshToken = (refrshtoken)=>new Promise((resolve,reject)=>{
+export const viert_refrshToken = (refrshtoken)=>new Promise((resolve)=>{
 
     const secret = process.env.JWT_NEXT_REFRESH_TOKEN
 
@@ -102,7 +102,6 @@ export const viert_refrshToken = (refrshtoken)=>new Promise((resolve,reject)=>{
     export const isUserDb = async ({email,password})=>{
     
        
-              
 
        
         try {

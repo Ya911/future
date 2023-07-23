@@ -61,7 +61,7 @@ export default function Signup() {
       })
       .then((res) => {
         setLooding(false)
-        return res.data && Router.push("/auth")
+        return res.data && Router.push("/")
       })
       .catch(e=>{
         setLooding(false);

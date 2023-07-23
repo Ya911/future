@@ -4,8 +4,6 @@ export default async function dosmthin(req, res) {
 
   switch (method) {
     case "POST":
-
-
       let {findE , findU , err } = await isUserDb(body, res);
       if(err)return res.status(400).send({err})
 

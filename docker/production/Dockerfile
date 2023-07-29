@@ -21,7 +21,7 @@ WORKDIR /future
 COPY --from=dependencies /future/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
-COPY .env.production .env.production
+# COPY .env.production .env.production
 RUN yarn build
 
 

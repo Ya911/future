@@ -10,6 +10,8 @@ services:
       dockerfile: docker/production/Dockerfile 
       context: ../../  
       target: runner
+    ports:
+    - "3000:3000"
 
 
   future_db:
